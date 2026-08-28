@@ -124,7 +124,11 @@ python publish.py --push     # ...and commit + push to GitHub
 ```
 
 `docs/` is served by GitHub Pages at
-<https://accayo14.github.io/stock-and-ipo-predictor/>. Only the **IPO**
+<https://accayo14.github.io/stock-and-ipo-predictor/>. The site is always
+reachable; its contents change only when the analysis is run and pushed.
+There is deliberately no scheduled rebuild - an automated attempt published
+an empty dashboard, because the data sources return nothing when queried from
+a datacenter address. Only the **IPO**
 dashboard is published — it contains public market data and analysis of it.
 The portfolio report renders real holdings and is excluded twice over: by
 `.gitignore`, and by a check in `publish.py` that refuses to publish if
