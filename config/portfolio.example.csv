@@ -1,0 +1,20 @@
+# Copy this file to portfolio.csv and put your real holdings in it.
+# portfolio.csv is gitignored so your holdings stay private.
+#
+# symbol        : BSE trading symbol (e.g. RELIANCE, TCS, HDFCBANK)
+# scrip_code    : BSE numeric scrip code (e.g. 500325). Optional - leave blank
+#                 and the tool resolves it from the BSE bhavcopy automatically.
+# quantity      : number of shares you hold
+# avg_buy_price : your average cost per share, in INR
+#                 NOTE: if the stock has had a split or bonus since you bought,
+#                 this must be the ADJUSTED price. The tool checks BSE corporate
+#                 actions against your buy_date and warns you when it looks off.
+# buy_date      : YYYY-MM-DD of purchase. Optional, but without it the tool
+#                 cannot warn you about short- vs long-term capital gains.
+# target_price  : your own price target, if you have one. Optional.
+# stop_loss     : your own stop loss, if you have one. Optional - the tool
+#                 suggests an ATR-based one when this is blank.
+symbol,scrip_code,quantity,avg_buy_price,buy_date,target_price,stop_loss
+RELIANCE,500325,25,1180.50,2025-03-14,1500,
+TCS,532540,15,2100.00,2025-11-02,,
+HDFCBANK,500180,40,780.25,2026-01-20,,690

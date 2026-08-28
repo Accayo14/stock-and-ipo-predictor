@@ -1,0 +1,3619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPO Dashboard — 26 Aug 2026</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --surface:#fff; --surface-2:#eef1f5; --surface-3:#f8f9fb;
+    --ink:#12161d; --ink-2:#48525f; --muted:#8a94a2; --line:#e0e5ec;
+    --up:#0a7d4f; --up-bg:#e6f5ee; --down:#c22b3d; --down-bg:#fdebed;
+    --warn:#96610a; --warn-bg:#fdf2e0; --accent:#1f5fbf; --accent-bg:#e9f0fc;
+    --radius:14px;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0c0f14; --surface:#151a21; --surface-2:#1b212a; --surface-3:#11161c;
+      --ink:#e9eef5; --ink-2:#aab4c2; --muted:#6c7787; --line:#242c37;
+      --up:#3fb984; --up-bg:#0e2a20; --down:#f2687c; --down-bg:#2b1317;
+      --warn:#e0a33a; --warn-bg:#2a2114; --accent:#5b9bf5; --accent-bg:#12233d;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+       font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:30px 18px 80px}
+  h1{font-size:27px;letter-spacing:-.02em;margin:0 0 4px}
+  .sub{color:var(--ink-2);font-size:14px;margin:0 0 22px}
+  h2{font-size:12px;text-transform:uppercase;letter-spacing:.1em;
+     color:var(--muted);margin:34px 0 12px;font-weight:650}
+
+  /* summary chips */
+  .chips{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:8px}
+  .chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;
+        padding:6px 14px;font-size:13px;font-weight:600}
+  .chip b{font-weight:750}
+  .chip.apply{background:var(--up);color:#fff;border-color:var(--up)}
+  .chip.consider{background:var(--warn-bg);color:var(--warn);border-color:var(--warn)}
+  .chip.avoid{background:var(--down);color:#fff;border-color:var(--down)}
+
+  .howto{background:var(--surface-3);border:1px solid var(--line);
+         border-radius:var(--radius);padding:13px 17px;font-size:13.5px;
+         color:var(--ink-2);margin-bottom:6px}
+  .howto b{color:var(--ink)}
+
+  /* card */
+  .card{background:var(--surface);border:1px solid var(--line);
+        border-radius:var(--radius);padding:20px 22px;margin-bottom:16px}
+  .card.v-apply{border-left:4px solid var(--up)}
+  .card.v-consider{border-left:4px solid var(--warn)}
+  .card.v-avoid{border-left:4px solid var(--down)}
+  .card.v-nodata{border-left:4px solid var(--muted);opacity:.9}
+  .head{display:flex;justify-content:space-between;gap:16px;
+        align-items:flex-start;flex-wrap:wrap}
+  .name{font-size:19px;font-weight:700;letter-spacing:-.015em;margin:0}
+  .tags{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:5px}
+  .tag{font-size:11px;font-weight:650;letter-spacing:.03em;padding:2px 8px;
+       border-radius:5px;background:var(--surface-2);color:var(--ink-2)}
+  .tag.sme{background:var(--warn-bg);color:var(--warn)}
+  .tag.urgent{background:var(--down);color:#fff}
+  .tag.soon{background:var(--warn);color:#fff}
+  .verdict{font-size:13px;font-weight:750;letter-spacing:.04em;padding:7px 15px;
+           border-radius:9px;white-space:nowrap}
+  .v-apply .verdict,.verdict.apply{background:var(--up);color:#fff}
+  .verdict.consider{background:var(--warn-bg);color:var(--warn);
+                    border:1px solid var(--warn)}
+  .verdict.neutral{background:var(--surface-2);color:var(--ink-2)}
+  .verdict.avoid{background:var(--down);color:#fff}
+  .verdict.nodata{background:var(--surface-2);color:var(--muted)}
+  .score{font-size:12px;color:var(--muted);text-align:right;margin-top:5px;
+         font-variant-numeric:tabular-nums}
+
+  /* key strip */
+  .strip{display:flex;gap:22px;flex-wrap:wrap;margin:15px 0 4px;padding:12px 0;
+         border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+         font-size:13.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+  .strip b{color:var(--ink);font-weight:670}
+
+  /* score breakdown */
+  .axes{display:flex;flex-direction:column;gap:5px;margin:14px 0}
+  .axis{display:flex;align-items:center;gap:10px;font-size:12.5px}
+  .axis .lbl{width:92px;flex:0 0 92px;color:var(--ink-2)}
+  .axis .track{flex:1;height:7px;background:var(--surface-2);border-radius:4px;
+               position:relative;overflow:hidden}
+  .axis .mid{position:absolute;left:50%;top:0;bottom:0;width:1px;
+             background:var(--line)}
+  .axis .fill{position:absolute;top:0;bottom:0;border-radius:4px}
+  .axis .val{width:44px;text-align:right;font-variant-numeric:tabular-nums;
+             color:var(--muted)}
+
+  /* subscription */
+  .subs{display:flex;flex-direction:column;gap:6px;margin:6px 0 2px}
+  .subrow{display:flex;align-items:center;gap:10px;font-size:13px}
+  .subrow .lbl{width:150px;flex:0 0 150px;color:var(--ink-2)}
+  .subrow .track{flex:1;height:16px;background:var(--surface-2);
+                 border-radius:5px;overflow:hidden}
+  .subrow .fill{height:100%;border-radius:5px;background:var(--accent)}
+  .subrow .fill.strong{background:var(--up)}
+  .subrow .fill.weak{background:var(--down)}
+  .subrow .val{width:62px;text-align:right;font-weight:670;
+               font-variant-numeric:tabular-nums}
+
+  /* gmp */
+  .gmpbox{display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+          background:var(--surface-3);border:1px solid var(--line);
+          border-radius:10px;padding:12px 15px;margin:12px 0}
+  .gmpbox .big{font-size:22px;font-weight:720;font-variant-numeric:tabular-nums}
+  .gmpspark{display:block}
+  .gmpnote{font-size:12.5px;color:var(--muted);flex:1 1 240px}
+
+  /* reasons */
+  ul.reasons{list-style:none;padding:0;margin:8px 0 0}
+  ul.reasons li{display:flex;gap:10px;padding:6px 0;font-size:14px;
+                color:var(--ink-2);align-items:flex-start;
+                border-bottom:1px solid var(--surface-2)}
+  ul.reasons li:last-child{border-bottom:none}
+  .ico{flex:0 0 auto;width:13px;font-size:11px;line-height:1.75}
+  .i-bull{color:var(--up)} .i-bear{color:var(--down)} .i-neu{color:var(--muted)}
+  .wt{flex:0 0 auto;font-size:11px;color:var(--muted);
+      font-variant-numeric:tabular-nums;min-width:38px;text-align:right}
+
+  /* data grid */
+  .datagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));
+            gap:12px;margin-top:10px}
+  .dgroup{background:var(--surface-3);border:1px solid var(--line);
+          border-radius:10px;padding:12px 14px}
+  .dgroup h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;
+             letter-spacing:.08em;color:var(--muted);font-weight:650;
+             display:flex;justify-content:space-between}
+  .dgroup h4 span{font-weight:500;text-transform:none;letter-spacing:0}
+  .dgroup dl{margin:0;display:grid;grid-template-columns:1fr auto;
+             gap:3px 10px;font-size:12.5px}
+  .dgroup dt{color:var(--ink-2)}
+  .dgroup dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;
+             font-weight:600;color:var(--ink)}
+  .dgroup dd.na{color:var(--muted);font-weight:400}
+
+  details{margin-top:12px}
+  summary{cursor:pointer;font-size:12.5px;color:var(--accent);font-weight:600;
+          padding:5px 0;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"▸ ";display:inline-block;transition:transform .15s}
+  details[open] summary::before{content:"▾ "}
+
+  .gaps{font-size:12.5px;color:var(--muted);margin-top:11px;
+        background:var(--surface-2);border-radius:8px;padding:9px 12px}
+
+  /* research notes */
+  .notes{background:var(--accent-bg);border:1px solid var(--accent);
+         border-radius:10px;padding:14px 16px;margin-top:14px}
+  .notes h3{margin:0 0 7px;font-size:12px;text-transform:uppercase;
+            letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .notes .summary{font-size:14px;color:var(--ink);margin:0 0 9px}
+  .notes ul{list-style:none;padding:0;margin:0}
+  .notes li{display:flex;gap:9px;padding:4px 0;font-size:13.5px;
+            color:var(--ink-2);align-items:flex-start}
+  .notes .src{color:var(--muted);font-size:11.5px}
+  .notes .adj{margin-top:9px;padding-top:9px;border-top:1px solid var(--accent);
+              font-size:13px;color:var(--ink)}
+  .stale{background:var(--warn-bg);border-color:var(--warn)}
+  .stale h3{color:var(--warn)}
+  .nonotes{font-size:12.5px;color:var(--muted);margin-top:12px;
+           border:1px dashed var(--line);border-radius:8px;padding:9px 12px}
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);
+         color:var(--muted);font-size:12.5px}
+  .empty{background:var(--surface);border:1px solid var(--line);
+         border-radius:var(--radius);padding:26px;text-align:center;
+         color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>IPO Dashboard</h1>
+  <p class="sub">
+    Wednesday 26 August 2026, 22:01 IST ·
+    4 open for subscription · 7 upcoming
+  </p>
+
+  <div class="chips">
+    <span class="chip consider">CONSIDER <b>4</b></span>
+    <span class="chip neutral">NEUTRAL <b>5</b></span>
+    <span class="chip apply">APPLY <b>1</b></span>
+    <span class="chip nodata">NO DATA <b>1</b></span>
+  </div>
+
+  <div class="howto">
+    <b>How to read this.</b> Each verdict comes from five weighted axes —
+    valuation, financials, demand, grey market and issue structure. Axes with
+    no published data are dropped and lower the confidence figure rather than
+    being guessed at. Grey market premium is deliberately capped: if removing
+    it would drop an issue below the APPLY bar, the verdict is held at
+    CONSIDER and says so. QIB demand before the final day is discounted,
+    because institutional bids almost always land on the last day.
+    <br><br>
+    <b>No news layer today.</b> These verdicts rest purely on published
+    figures. Numbers cannot see a regulatory notice, a sector downturn or a
+    weak anchor book — run <code>/ipo</code> in Claude Code to add that.
+  </div>
+
+
+  <div class="card v-consider">
+
+    <div class="head">
+      <div>
+        <p class="name">Hy Tech Engineers Limited</p>
+        <div class="tags">
+          <span class="tag ">MainBoard</span>
+<span class="tag">Iron & Steel Products</span>          <span class="tag soon">
+            Closes tomorrow</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict consider">CONSIDER</span>
+        <div class="score">score +0.39 ·
+          confidence 100%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>50.00 - 53.00</b></span>
+      <span>Lot <b>283</b></span>
+      <span>Min <b>₹14,999</b></span>
+      <span>Size <b>₹135.73 Cr</b></span>
+      <span>Closes <b>2026-08-27</b></span>
+      <span>Lists <b>1st Sep 2026</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:35.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.70</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:33.19166666666667%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.66</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:27.670833333333334%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.55</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:3.7500000000000004%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.08</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:1.5740740740740686%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.03</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+    <h2 style="margin:16px 0 8px">Demand</h2>
+    <div class="subs">
+      <div class="subrow">
+        <span class="lbl">QIB (institutions)</span>
+        <span class="track"><span class="fill weak"
+              style="width:24.9%"></span></span>
+        <span class="val">0.83x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">NII (wealthy individuals)</span>
+        <span class="track"><span class="fill strong"
+              style="width:100.0%"></span></span>
+        <span class="val">84.57x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">Retail</span>
+        <span class="track"><span class="fill strong"
+              style="width:100.0%"></span></span>
+        <span class="val">66.80x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">Total</span>
+        <span class="track"><span class="fill strong"
+              style="width:100.0%"></span></span>
+        <span class="val">51.76x</span>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin:8px 0 0">
+      A one-lot retail application has roughly a
+      <b style="color:var(--ink)">1%</b>
+      chance of allotment, since retail is
+      oversubscribed and allotment becomes a lottery.
+    </p>
+
+    <!-- grey market -->
+    <div class="gmpbox">
+      <div>
+        <div class="big" style="color:var(--up)">
+          +83.0%</div>
+        <div style="font-size:12px;color:var(--muted)">grey market premium</div>
+      </div>
+<svg class="gmpspark" viewBox="0 0 200 40" width="200" height="40" preserveAspectRatio="none" aria-hidden="true"><polyline points="3.0,37.0 35.3,37.0 67.7,29.3 100.0,32.4 132.3,24.6 164.7,24.6 197.0,3.0" fill="none" stroke="var(--up)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="197.0" cy="3.0" r="2.6" fill="var(--up)"/></svg>      <div class="gmpnote">
+Implies a listing near
+          <b style="color:var(--ink)">₹97</b>.          Premium is <b style="color:var(--ink)">rising</b>
+          (+35.8pp over
+          3 days).
+        Unofficial and unregulated — treat as sentiment, not a forecast.
+      </div>
+    </div>
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Overall subscription is 51.8x on day 3 - very heavy demand, though it also means allotment odds are thin</span>
+        <span class="wt">+1.00</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Demand accelerated from 19.57x to 51.76x since the previous session</span>
+        <span class="wt">+1.00</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Grey market premium is 83.0%, implying a listing near 97 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days</span>
+        <span class="wt">+1.00</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Return on net worth is 21.4%, improved from 20.2% - comfortably above the ~12% that marks a business earning more than its cost of capital</span>
+        <span class="wt">+0.63</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Net profit margin is 11.8%, up from 11.7%</span>
+        <span class="wt">+0.48</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>The premium has risen from 47.2% to 83.0% over the last 3 day(s) - unofficial demand is building into the close</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Promoters retain 71.2% after the issue (from 98.0%), keeping their interests aligned with yours</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Priced at 22.3x post-issue earnings - a reasonable, mid-range multiple</span>
+        <span class="wt">+0.30</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>56% of the issue is an offer for sale, so only 44% of the proceeds fund the company itself</span>
+        <span class="wt">-0.25</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>EPS falls from 2.70 to 2.38 post-issue (-12%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline</span>
+        <span class="wt">-0.24</span>
+      </li>
+      <li>
+        <span class="ico i-neu">
+          •</span>
+        <span>Institutional (QIB) book is 0.83x, but QIB bids almost always arrive on the final day, so this figure carries little information yet</span>
+        <span class="wt">-0.01</span>
+      </li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+    <div class="nonotes">
+      No news research recorded for this issue today. The verdict above rests
+      on published figures alone — run <code>/ipo</code> in Claude Code to add
+      the news and context layer.
+    </div>
+
+    <!-- everything we hold -->
+    <details open>
+      <summary>All data on Hy Tech Engineers Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>11/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">50.00 - 53.00</dd>
+            <dt>Face value</dt>
+            <dd class="">5.00</dd>
+            <dt>Lot size</dt>
+            <dd class="">283 shares</dd>
+            <dt>Minimum investment</dt>
+            <dd class="">₹14,999</dd>
+            <dt>Total issue size</dt>
+            <dd class="">₹135.73 Cr</dd>
+            <dt>Fresh issue</dt>
+            <dd class="">₹60.00 Cr</dd>
+            <dt>Offer for sale</dt>
+            <dd class="">₹75.73 Cr</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="">56%</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="">Bigshare Services Pvt.Ltd.</dd>
+            <dt>Sector</dt>
+            <dd class="">Iron & Steel Products</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>7/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="">283 shares (1 lot)</dd>
+            <dt>Retail maximum</dt>
+            <dd class="">3962 shares (14 lots)</dd>
+            <dt>Small HNI from</dt>
+            <dd class="">3962 shares (14 lots)</dd>
+            <dt>Big HNI from</dt>
+            <dd class="">18961 shares (67 lots)</dd>
+            <dt>Retail reservation</dt>
+            <dd class="">Not less than 35% of the Net Offer</dd>
+            <dt>QIB reservation</dt>
+            <dd class="">Not more than 50% of the Net Offer</dd>
+            <dt>NII reservation</dt>
+            <dd class="">Not less than 15% of the Net Offer</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>6/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="">0.83x</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="">84.57x</dd>
+            <dt>Retail</dt>
+            <dd class="">66.80x</dd>
+            <dt>Total</dt>
+            <dd class="">51.76x</dd>
+            <dt>Last updated</dt>
+            <dd class="">26th Aug 2026 18:56</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="">~1% chance of 1 lot</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>6/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="">₹44</dd>
+            <dt>Premium %</dt>
+            <dd class="">83.0%</dd>
+            <dt>Implied listing price</dt>
+            <dd class="">₹97</dd>
+            <dt>Direction</dt>
+            <dd class="">rising (+35.8pp over 3d)</dd>
+            <dt>Quotes on record</dt>
+            <dd class="">7 days</dd>
+            <dt>Last updated</dt>
+            <dd class="">Aug 26th 2026 09:36 PM</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>12/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="">2026-03-31</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="">2.70</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="">2.38</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="">19.63x</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="">22.27x</dd>
+            <dt>Return on net worth</dt>
+            <dd class="">21.4%</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="">20.2%</dd>
+            <dt>Net profit margin</dt>
+            <dd class="">11.8%</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="">11.7%</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="">22.2%</dd>
+            <dt>Debt to equity</dt>
+            <dd class="na">—</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="">98.0%</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="">71.2%</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>6/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-24</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-08-27</dd>
+            <dt>Allotment</dt>
+            <dd class="">28th Aug 2026</dd>
+            <dt>Refunds start</dt>
+            <dd class="">31st Aug 2026</dd>
+            <dt>Shares in demat</dt>
+            <dd class="">31st Aug 2026</dd>
+            <dt>Listing</dt>
+            <dd class="">1st Sep 2026</dd>
+          </dl>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">
+        Source detail page: https://www.investorgain.com/ipo/hy-tech-engineers-ipo/1876</p>
+    </details>
+
+    <div class="gaps">
+      <b>Not available:</b>
+      debt/equity.
+      These were excluded from the score rather than estimated.
+    </div>
+
+  </div>
+  <div class="card v-neutral">
+
+    <div class="head">
+      <div>
+        <p class="name">Skyways Air Services Limited</p>
+        <div class="tags">
+          <span class="tag ">MainBoard</span>
+<span class="tag">Logistics Solution Provider</span>          <span class="tag soon">
+            Closes tomorrow</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict neutral">NEUTRAL</span>
+        <div class="score">score +0.06 ·
+          confidence 100%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>131.00 - 138.00</b></span>
+      <span>Lot <b>100</b></span>
+      <span>Min <b>₹13,800</b></span>
+      <span>Size <b>₹582.80 Cr</b></span>
+      <span>Closes <b>2026-08-27</b></span>
+      <span>Lists <b>1st Sep 2026</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:29.018750000000004%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.58</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:22.5%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.45</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:16.231684981684978%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.32</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:15.498611111111114%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.31</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:8.25%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.17</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+    <h2 style="margin:16px 0 8px">Demand</h2>
+    <div class="subs">
+      <div class="subrow">
+        <span class="lbl">QIB (institutions)</span>
+        <span class="track"><span class="fill weak"
+              style="width:14.7%"></span></span>
+        <span class="val">0.49x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">NII (wealthy individuals)</span>
+        <span class="track"><span class="fill strong"
+              style="width:88.76346331619388%"></span></span>
+        <span class="val">6.91x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">Retail</span>
+        <span class="track"><span class="fill strong"
+              style="width:89.02629446686066%"></span></span>
+        <span class="val">6.97x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">Total</span>
+        <span class="track"><span class="fill strong"
+              style="width:79.58946300942989%"></span></span>
+        <span class="val">5.11x</span>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin:8px 0 0">
+      A one-lot retail application has roughly a
+      <b style="color:var(--ink)">14%</b>
+      chance of allotment, since retail is
+      oversubscribed and allotment becomes a lottery.
+    </p>
+
+    <!-- grey market -->
+    <div class="gmpbox">
+      <div>
+        <div class="big" style="color:var(--up)">
+          +30.4%</div>
+        <div style="font-size:12px;color:var(--muted)">grey market premium</div>
+      </div>
+<svg class="gmpspark" viewBox="0 0 200 40" width="200" height="40" preserveAspectRatio="none" aria-hidden="true"><polyline points="3.0,3.0 35.3,11.1 67.7,24.0 100.0,32.1 132.3,32.1 164.7,37.0 197.0,16.0" fill="none" stroke="var(--down)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="197.0" cy="16.0" r="2.6" fill="var(--down)"/></svg>      <div class="gmpnote">
+Implies a listing near
+          <b style="color:var(--ink)">₹180</b>.          Premium is <b style="color:var(--ink)">rising</b>
+          (+7.2pp over
+          3 days).
+        Unofficial and unregulated — treat as sentiment, not a forecast.
+      </div>
+    </div>
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Grey market premium is 30.4%, implying a listing near 180 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days</span>
+        <span class="wt">+0.76</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Overall subscription is 5.1x on day 3 - solid demand across the book</span>
+        <span class="wt">+0.51</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>68% of the issue is fresh capital going into the business rather than to selling shareholders</span>
+        <span class="wt">+0.50</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Net profit margin is 2.1%, down from 2.3% - a very thin margin leaves almost no cushion if costs rise or pricing weakens</span>
+        <span class="wt">-0.47</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Demand accelerated from 2.46x to 5.11x since the previous session</span>
+        <span class="wt">+0.44</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>The premium has risen from 23.2% to 30.4% over the last 3 day(s) - unofficial demand is building into the close</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Promoters retain 56.8% after the issue (from 79.1%), keeping their interests aligned with yours</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>EPS falls from 5.46 to 4.37 post-issue (-20%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline</span>
+        <span class="wt">-0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Debt-to-equity is 1.42 - meaningful leverage, which amplifies both good and bad years</span>
+        <span class="wt">-0.28</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Return on net worth is 15.8%, improved from 12.3% - comfortably above the ~12% that marks a business earning more than its cost of capital</span>
+        <span class="wt">+0.26</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Priced at 31.6x post-issue earnings - full. The business has to keep growing just to justify the issue price</span>
+        <span class="wt">-0.25</span>
+      </li>
+      <li>
+        <span class="ico i-neu">
+          •</span>
+        <span>Institutional (QIB) book is 0.49x, but QIB bids almost always arrive on the final day, so this figure carries little information yet</span>
+        <span class="wt">-0.03</span>
+      </li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+    <div class="nonotes">
+      No news research recorded for this issue today. The verdict above rests
+      on published figures alone — run <code>/ipo</code> in Claude Code to add
+      the news and context layer.
+    </div>
+
+    <!-- everything we hold -->
+    <details open>
+      <summary>All data on Skyways Air Services Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>11/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">131.00 - 138.00</dd>
+            <dt>Face value</dt>
+            <dd class="">10.00</dd>
+            <dt>Lot size</dt>
+            <dd class="">100 shares</dd>
+            <dt>Minimum investment</dt>
+            <dd class="">₹13,800</dd>
+            <dt>Total issue size</dt>
+            <dd class="">₹582.80 Cr</dd>
+            <dt>Fresh issue</dt>
+            <dd class="">₹398.80 Cr</dd>
+            <dt>Offer for sale</dt>
+            <dd class="">₹184.00 Cr</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="">32%</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="">Bigshare Services Pvt.Ltd.</dd>
+            <dt>Sector</dt>
+            <dd class="">Logistics Solution Provider</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>7/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="">100 shares (1 lot)</dd>
+            <dt>Retail maximum</dt>
+            <dd class="">1500 shares (15 lots)</dd>
+            <dt>Small HNI from</dt>
+            <dd class="">1500 shares (15 lots)</dd>
+            <dt>Big HNI from</dt>
+            <dd class="">7300 shares (73 lots)</dd>
+            <dt>Retail reservation</dt>
+            <dd class="">Not less than 35% of the Offer</dd>
+            <dt>QIB reservation</dt>
+            <dd class="">Not more than 50% of the Offer</dd>
+            <dt>NII reservation</dt>
+            <dd class="">Not less than 15% of the Offer</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>6/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="">0.49x</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="">6.91x</dd>
+            <dt>Retail</dt>
+            <dd class="">6.97x</dd>
+            <dt>Total</dt>
+            <dd class="">5.11x</dd>
+            <dt>Last updated</dt>
+            <dd class="">26th Aug 2026 18:56</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="">~14% chance of 1 lot</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>6/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="">₹42</dd>
+            <dt>Premium %</dt>
+            <dd class="">30.4%</dd>
+            <dt>Implied listing price</dt>
+            <dd class="">₹180</dd>
+            <dt>Direction</dt>
+            <dd class="">rising (+7.2pp over 3d)</dd>
+            <dt>Quotes on record</dt>
+            <dd class="">7 days</dd>
+            <dt>Last updated</dt>
+            <dd class="">Aug 26th 2026 09:32 PM</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>13/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="">2026-03-31</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="">5.46</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="">4.37</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="">25.27x</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="">31.58x</dd>
+            <dt>Return on net worth</dt>
+            <dd class="">15.8%</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="">12.3%</dd>
+            <dt>Net profit margin</dt>
+            <dd class="">2.1%</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="">2.3%</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="">3.9%</dd>
+            <dt>Debt to equity</dt>
+            <dd class="">1.42</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="">79.1%</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="">56.8%</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>6/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-24</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-08-27</dd>
+            <dt>Allotment</dt>
+            <dd class="">28th Aug 2026</dd>
+            <dt>Refunds start</dt>
+            <dd class="">31st Aug 2026</dd>
+            <dt>Shares in demat</dt>
+            <dd class="">31st Aug 2026</dd>
+            <dt>Listing</dt>
+            <dd class="">1st Sep 2026</dd>
+          </dl>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">
+        Source detail page: https://www.investorgain.com/ipo/skyways-air-ipo/1820</p>
+    </details>
+
+
+  </div>
+  <div class="card v-neutral">
+
+    <div class="head">
+      <div>
+        <p class="name">Symbiotec Pharmalab Limited</p>
+        <div class="tags">
+          <span class="tag ">MainBoard</span>
+<span class="tag">Pharmaceuticals</span>          <span class="tag soon">
+            Closes tomorrow</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict neutral">NEUTRAL</span>
+        <div class="score">score -0.11 ·
+          confidence 100%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>938.00 - 988.00</b></span>
+      <span>Lot <b>15</b></span>
+      <span>Min <b>₹14,820</b></span>
+      <span>Size <b>₹1757.00 Cr</b></span>
+      <span>Closes <b>2026-08-27</b></span>
+      <span>Lists <b>1st Sep 2026</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:40.0%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.80</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:32.5%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.65</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:19.50277777777778%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.39</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:13.816666666666668%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.28</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:6.793750000000001%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.14</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+    <h2 style="margin:16px 0 8px">Demand</h2>
+    <div class="subs">
+      <div class="subrow">
+        <span class="lbl">QIB (institutions)</span>
+        <span class="track"><span class="fill weak"
+              style="width:18.6%"></span></span>
+        <span class="val">0.62x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">NII (wealthy individuals)</span>
+        <span class="track"><span class="fill strong"
+              style="width:100.0%"></span></span>
+        <span class="val">12.86x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">Retail</span>
+        <span class="track"><span class="fill strong"
+              style="width:81.15475929664724%"></span></span>
+        <span class="val">5.38x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">Total</span>
+        <span class="track"><span class="fill strong"
+              style="width:82.48154208983428%"></span></span>
+        <span class="val">5.62x</span>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin:8px 0 0">
+      A one-lot retail application has roughly a
+      <b style="color:var(--ink)">19%</b>
+      chance of allotment, since retail is
+      oversubscribed and allotment becomes a lottery.
+    </p>
+
+    <!-- grey market -->
+    <div class="gmpbox">
+      <div>
+        <div class="big" style="color:var(--up)">
+          +30.9%</div>
+        <div style="font-size:12px;color:var(--muted)">grey market premium</div>
+      </div>
+<svg class="gmpspark" viewBox="0 0 200 40" width="200" height="40" preserveAspectRatio="none" aria-hidden="true"><polyline points="3.0,37.0 35.3,23.1 67.7,3.0 100.0,3.3 132.3,26.2 164.7,20.9 197.0,35.4" fill="none" stroke="var(--up)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="197.0" cy="35.4" r="2.6" fill="var(--up)"/></svg>      <div class="gmpnote">
+Implies a listing near
+          <b style="color:var(--ink)">₹1,293</b>.          Premium is <b style="color:var(--ink)">falling</b>
+          (-10.5pp over
+          3 days).
+        Unofficial and unregulated — treat as sentiment, not a forecast.
+      </div>
+    </div>
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Promoter holding goes from 34.5% to 0.0% - the promoters are exiting entirely. Whatever the stated rationale, nobody knows the business better, and they are choosing not to own it</span>
+        <span class="wt">-0.90</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Grey market premium is 30.9%, implying a listing near 1,293 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days</span>
+        <span class="wt">+0.77</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>91% of the issue is an offer for sale - most of the money you pay goes to existing shareholders cashing out, not into the business</span>
+        <span class="wt">-0.70</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Priced at 56.8x post-issue earnings - expensive. At this multiple most of the next few years of growth is already in the price</span>
+        <span class="wt">-0.65</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Demand accelerated from 1.95x to 5.62x since the previous session</span>
+        <span class="wt">+0.61</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Overall subscription is 5.6x on day 3 - solid demand across the book</span>
+        <span class="wt">+0.58</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Net profit margin is 12.8%, up from 12.6%</span>
+        <span class="wt">+0.57</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>The premium has fallen from 41.4% to 30.9% over the last 3 day(s) - sentiment is draining out of the issue as the close approaches, which matters more than the level itself</span>
+        <span class="wt">-0.50</span>
+      </li>
+      <li>
+        <span class="ico i-neu">
+          •</span>
+        <span>Institutional (QIB) book is 0.62x, but QIB bids almost always arrive on the final day, so this figure carries little information yet</span>
+        <span class="wt">-0.02</span>
+      </li>
+      <li>
+        <span class="ico i-neu">
+          •</span>
+        <span>Return on net worth is 11.8%, improved from 9.5% - modest returns on the capital employed</span>
+        <span class="wt">-0.01</span>
+      </li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+    <div class="nonotes">
+      No news research recorded for this issue today. The verdict above rests
+      on published figures alone — run <code>/ipo</code> in Claude Code to add
+      the news and context layer.
+    </div>
+
+    <!-- everything we hold -->
+    <details open>
+      <summary>All data on Symbiotec Pharmalab Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>11/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">938.00 - 988.00</dd>
+            <dt>Face value</dt>
+            <dd class="">2.00</dd>
+            <dt>Lot size</dt>
+            <dd class="">15 shares</dd>
+            <dt>Minimum investment</dt>
+            <dd class="">₹14,820</dd>
+            <dt>Total issue size</dt>
+            <dd class="">₹1757.00 Cr</dd>
+            <dt>Fresh issue</dt>
+            <dd class="">₹150.00 Cr</dd>
+            <dt>Offer for sale</dt>
+            <dd class="">₹1,607.00 Cr</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="">91%</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="">MUFG Intime India Pvt.Ltd.</dd>
+            <dt>Sector</dt>
+            <dd class="">Pharmaceuticals</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>7/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="">15 shares (1 lot)</dd>
+            <dt>Retail maximum</dt>
+            <dd class="">210 shares (14 lots)</dd>
+            <dt>Small HNI from</dt>
+            <dd class="">210 shares (14 lots)</dd>
+            <dt>Big HNI from</dt>
+            <dd class="">1020 shares (68 lots)</dd>
+            <dt>Retail reservation</dt>
+            <dd class="">Not less than 35.00% of the Net Offer</dd>
+            <dt>QIB reservation</dt>
+            <dd class="">Not more than 50% of the Net Offer</dd>
+            <dt>NII reservation</dt>
+            <dd class="">Not less than 15% of the Net Offer</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>6/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="">0.62x</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="">12.86x</dd>
+            <dt>Retail</dt>
+            <dd class="">5.38x</dd>
+            <dt>Total</dt>
+            <dd class="">5.62x</dd>
+            <dt>Last updated</dt>
+            <dd class="">26th Aug 2026 18:56</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="">~19% chance of 1 lot</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>6/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="">₹305</dd>
+            <dt>Premium %</dt>
+            <dd class="">30.9%</dd>
+            <dt>Implied listing price</dt>
+            <dd class="">₹1,293</dd>
+            <dt>Direction</dt>
+            <dd class="">falling (-10.5pp over 3d)</dd>
+            <dt>Quotes on record</dt>
+            <dd class="">7 days</dd>
+            <dt>Last updated</dt>
+            <dd class="">Aug 26th 2026 09:37 PM</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>12/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="">2026-03-31</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="">17.82</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="">17.39</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="">55.44x</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="">56.81x</dd>
+            <dt>Return on net worth</dt>
+            <dd class="">11.8%</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="">9.5%</dd>
+            <dt>Net profit margin</dt>
+            <dd class="">12.8%</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="">12.6%</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="">27.3%</dd>
+            <dt>Debt to equity</dt>
+            <dd class="na">—</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="">34.5%</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="">0.0%</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>6/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-24</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-08-27</dd>
+            <dt>Allotment</dt>
+            <dd class="">28th Aug 2026</dd>
+            <dt>Refunds start</dt>
+            <dd class="">31st Aug 2026</dd>
+            <dt>Shares in demat</dt>
+            <dd class="">31st Aug 2026</dd>
+            <dt>Listing</dt>
+            <dd class="">1st Sep 2026</dd>
+          </dl>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">
+        Source detail page: https://www.investorgain.com/ipo/symbiotec-pharmalab-ipo/2069</p>
+    </details>
+
+    <div class="gaps">
+      <b>Not available:</b>
+      debt/equity.
+      These were excluded from the score rather than estimated.
+    </div>
+
+  </div>
+  <div class="card v-neutral">
+
+    <div class="head">
+      <div>
+        <p class="name">Annu Projects Limited</p>
+        <div class="tags">
+          <span class="tag ">MainBoard</span>
+<span class="tag">Civil Construction</span>          <span class="tag ">
+            2 days left</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict neutral">NEUTRAL</span>
+        <div class="score">score +0.07 ·
+          confidence 100%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>94.00 - 99.00</b></span>
+      <span>Lot <b>151</b></span>
+      <span>Min <b>₹14,949</b></span>
+      <span>Size <b>₹175.06 Cr</b></span>
+      <span>Closes <b>2026-08-28</b></span>
+      <span>Lists <b>2nd Sep 2026</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:22.5%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.45</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:16.877777777777776%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.34</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:8.325000000000001%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.17</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:6.03111432706223%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.12</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:2.5250000000000004%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.05</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+    <h2 style="margin:16px 0 8px">Demand</h2>
+    <div class="subs">
+      <div class="subrow">
+        <span class="lbl">QIB (institutions)</span>
+        <span class="track"><span class="fill weak"
+              style="width:17.4%"></span></span>
+        <span class="val">0.58x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">NII (wealthy individuals)</span>
+        <span class="track"><span class="fill weak"
+              style="width:11.700000000000001%"></span></span>
+        <span class="val">0.39x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">Retail</span>
+        <span class="track"><span class="fill weak"
+              style="width:15.3%"></span></span>
+        <span class="val">0.51x</span>
+      </div>
+      <div class="subrow">
+        <span class="lbl">Total</span>
+        <span class="track"><span class="fill weak"
+              style="width:14.1%"></span></span>
+        <span class="val">0.47x</span>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin:8px 0 0">
+      A one-lot retail application has roughly a
+      <b style="color:var(--ink)">100%</b>
+      chance of allotment.
+    </p>
+
+    <!-- grey market -->
+    <div class="gmpbox">
+      <div>
+        <div class="big" style="color:var(--up)">
+          +4.0%</div>
+        <div style="font-size:12px;color:var(--muted)">grey market premium</div>
+      </div>
+<svg class="gmpspark" viewBox="0 0 200 40" width="200" height="40" preserveAspectRatio="none" aria-hidden="true"><polyline points="3.0,37.0 35.3,3.0 67.7,3.0 100.0,3.0 132.3,37.0 164.7,37.0 197.0,3.0" fill="none" stroke="var(--up)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="197.0" cy="3.0" r="2.6" fill="var(--up)"/></svg>      <div class="gmpnote">
+Implies a listing near
+          <b style="color:var(--ink)">₹103</b>.          Premium is <b style="color:var(--ink)">flat</b>
+          (+0.0pp over
+          3 days).
+        Unofficial and unregulated — treat as sentiment, not a forecast.
+      </div>
+    </div>
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>EPS falls from 6.91 to 5.04 post-issue (-27%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline</span>
+        <span class="wt">-0.54</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Debt-to-equity is 0.20 - a conservatively financed balance sheet</span>
+        <span class="wt">+0.53</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>100% of the issue is fresh capital going into the business rather than to selling shareholders</span>
+        <span class="wt">+0.50</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Promoters retain 65.0% after the issue (from 89.1%), keeping their interests aligned with yours</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Net profit margin is 11.7%, down from 13.7%</span>
+        <span class="wt">+0.33</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Overall subscription is 0.47x on day 2 - the issue is not yet fully spoken for, so there is no allotment scarcity and listing demand looks soft</span>
+        <span class="wt">-0.31</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Priced at 19.6x post-issue earnings - a reasonable, mid-range multiple</span>
+        <span class="wt">+0.30</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Return on net worth is 17.3%, declined from 21.3% - comfortably above the ~12% that marks a business earning more than its cost of capital</span>
+        <span class="wt">+0.15</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Grey market premium is 4.0% - a slim expected listing gain, easily erased by a weak market on listing day</span>
+        <span class="wt">+0.10</span>
+      </li>
+      <li>
+        <span class="ico i-neu">
+          •</span>
+        <span>Institutional (QIB) book is 0.58x, but QIB bids almost always arrive on the final day, so this figure carries little information yet</span>
+        <span class="wt">-0.02</span>
+      </li>
+      <li>
+        <span class="ico i-neu">
+          •</span>
+        <span>The premium has held roughly flat near 4.0% across 7 days of quotes - stable, if unexciting, sentiment</span>
+        <span class="wt">+0.00</span>
+      </li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+    <div class="nonotes">
+      No news research recorded for this issue today. The verdict above rests
+      on published figures alone — run <code>/ipo</code> in Claude Code to add
+      the news and context layer.
+    </div>
+
+    <!-- everything we hold -->
+    <details >
+      <summary>All data on Annu Projects Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>11/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">94.00 - 99.00</dd>
+            <dt>Face value</dt>
+            <dd class="">10.00</dd>
+            <dt>Lot size</dt>
+            <dd class="">151 shares</dd>
+            <dt>Minimum investment</dt>
+            <dd class="">₹14,949</dd>
+            <dt>Total issue size</dt>
+            <dd class="">₹175.06 Cr</dd>
+            <dt>Fresh issue</dt>
+            <dd class="">₹175.06 Cr</dd>
+            <dt>Offer for sale</dt>
+            <dd class="">₹0.00 Cr</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="">0%</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="">Kfin Technologies Ltd.</dd>
+            <dt>Sector</dt>
+            <dd class="">Civil Construction</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>7/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="">151 shares (1 lot)</dd>
+            <dt>Retail maximum</dt>
+            <dd class="">2114 shares (14 lots)</dd>
+            <dt>Small HNI from</dt>
+            <dd class="">2114 shares (14 lots)</dd>
+            <dt>Big HNI from</dt>
+            <dd class="">10117 shares (67 lots)</dd>
+            <dt>Retail reservation</dt>
+            <dd class="">Not less than 50% of the Issue</dd>
+            <dt>QIB reservation</dt>
+            <dd class="">Not more than 10% of the Issue</dd>
+            <dt>NII reservation</dt>
+            <dd class="">Not less than 40% of the Issue</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>6/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="">0.58x</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="">0.39x</dd>
+            <dt>Retail</dt>
+            <dd class="">0.51x</dd>
+            <dt>Total</dt>
+            <dd class="">0.47x</dd>
+            <dt>Last updated</dt>
+            <dd class="">26th Aug 2026 18:56</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="">~100% chance of 1 lot</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>6/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="">₹4</dd>
+            <dt>Premium %</dt>
+            <dd class="">4.0%</dd>
+            <dt>Implied listing price</dt>
+            <dd class="">₹103</dd>
+            <dt>Direction</dt>
+            <dd class="">flat (+0.0pp over 3d)</dd>
+            <dt>Quotes on record</dt>
+            <dd class="">7 days</dd>
+            <dt>Last updated</dt>
+            <dd class="">Aug 26th 2026 09:29 PM</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>13/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="">2026-03-31</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="">6.91</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="">5.04</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="">14.33x</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="">19.64x</dd>
+            <dt>Return on net worth</dt>
+            <dd class="">17.3%</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="">21.3%</dd>
+            <dt>Net profit margin</dt>
+            <dd class="">11.7%</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="">13.7%</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="">17.9%</dd>
+            <dt>Debt to equity</dt>
+            <dd class="">0.20</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="">89.1%</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="">65.0%</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>6/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-25</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-08-28</dd>
+            <dt>Allotment</dt>
+            <dd class="">31st Aug 2026</dd>
+            <dt>Refunds start</dt>
+            <dd class="">31st Aug 2026</dd>
+            <dt>Shares in demat</dt>
+            <dd class="">1st Sep 2026</dd>
+            <dt>Listing</dt>
+            <dd class="">2nd Sep 2026</dd>
+          </dl>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">
+        Source detail page: https://www.investorgain.com/ipo/annu-projects-ipo/1815</p>
+    </details>
+
+
+  </div>
+  <div class="card v-apply">
+
+    <div class="head">
+      <div>
+        <p class="name">Paluck Technologies Limited</p>
+        <div class="tags">
+          <span class="tag sme">SME</span>
+<span class="tag">IT Enabled Services</span>          <span class="tag ">
+            Opens in 2 days</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict apply">APPLY</span>
+        <div class="score">score +0.48 ·
+          confidence 80%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>46.00 - 48.00</b></span>
+      <span>Lot <b>3000</b></span>
+      <span>Min <b>₹1,44,000</b></span>
+      <span>Size <b>₹33.00 Cr</b></span>
+      <span>Closes <b>2026-09-01</b></span>
+      <span>Lists <b>4th Sep 2026</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:35.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.70</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:35.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.70</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:22.5%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.45</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:20.513888888888886%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.41</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+
+    <!-- grey market -->
+    <div class="gmpbox">
+      <div>
+        <div class="big" style="color:var(--up)">
+          +52.1%</div>
+        <div style="font-size:12px;color:var(--muted)">grey market premium</div>
+      </div>
+<svg class="gmpspark" viewBox="0 0 200 40" width="200" height="40" preserveAspectRatio="none" aria-hidden="true"><polyline points="3.0,37.0 100.0,18.9 197.0,3.0" fill="none" stroke="var(--up)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="197.0" cy="3.0" r="2.6" fill="var(--up)"/></svg>      <div class="gmpnote">
+Implies a listing near
+          <b style="color:var(--ink)">₹73</b>.          Premium is <b style="color:var(--ink)">rising</b>
+          (+31.2pp over
+          2 days).
+        Unofficial and unregulated — treat as sentiment, not a forecast.
+      </div>
+    </div>
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Grey market premium is 52.1%, implying a listing near 73 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days</span>
+        <span class="wt">+1.00</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Return on net worth is 30.3%, declined from 30.3% - comfortably above the ~12% that marks a business earning more than its cost of capital</span>
+        <span class="wt">+0.80</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Priced at 6.6x post-issue earnings - undemanding for a listed peer group</span>
+        <span class="wt">+0.70</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>100% of the issue is fresh capital going into the business rather than to selling shareholders</span>
+        <span class="wt">+0.50</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>The premium has risen from 20.8% to 52.1% over the last 2 day(s) - unofficial demand is building into the close</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Promoters retain 58.0% after the issue (from 86.5%), keeping their interests aligned with yours</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Debt-to-equity is 0.55 - meaningful leverage, which amplifies both good and bad years</span>
+        <span class="wt">+0.30</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Net profit margin is 9.4%, down from 13.2%</span>
+        <span class="wt">+0.13</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>This is an SME issue. SME listings trade in large lot sizes with far thinner liquidity and lighter disclosure than mainboard stocks, so the score carries a 0.10 risk penalty and exiting can be genuinely difficult</span>
+        <span class="wt">-0.10</span>
+      </li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+
+    <!-- everything we hold -->
+    <details >
+      <summary>All data on Paluck Technologies Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>11/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">46.00 - 48.00</dd>
+            <dt>Face value</dt>
+            <dd class="">10.00</dd>
+            <dt>Lot size</dt>
+            <dd class="">3000 shares</dd>
+            <dt>Minimum investment</dt>
+            <dd class="">₹1,44,000</dd>
+            <dt>Total issue size</dt>
+            <dd class="">₹33.00 Cr</dd>
+            <dt>Fresh issue</dt>
+            <dd class="">₹31.35 Cr</dd>
+            <dt>Offer for sale</dt>
+            <dd class="">₹0.00 Cr</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="">0%</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="">Bigshare Services Pvt.Ltd.</dd>
+            <dt>Sector</dt>
+            <dd class="">IT Enabled Services</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>7/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="">6000 shares (2 lots)</dd>
+            <dt>Retail maximum</dt>
+            <dd class="">6000 shares (2 lots)</dd>
+            <dt>Small HNI from</dt>
+            <dd class="">9000 shares (3 lots)</dd>
+            <dt>Big HNI from</dt>
+            <dd class="">9000 shares (3 lots)</dd>
+            <dt>Retail reservation</dt>
+            <dd class="">Not less than 35% of the Net Issue</dd>
+            <dt>QIB reservation</dt>
+            <dd class="">Not more than 50% of the Net Issue</dd>
+            <dt>NII reservation</dt>
+            <dd class="">Not less than 15% of the Net Issue</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>0/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="na">—</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="na">—</dd>
+            <dt>Retail</dt>
+            <dd class="na">—</dd>
+            <dt>Total</dt>
+            <dd class="na">—</dd>
+            <dt>Last updated</dt>
+            <dd class="na">—</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>6/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="">₹25</dd>
+            <dt>Premium %</dt>
+            <dd class="">52.1%</dd>
+            <dt>Implied listing price</dt>
+            <dd class="">₹73</dd>
+            <dt>Direction</dt>
+            <dd class="">rising (+31.2pp over 2d)</dd>
+            <dt>Quotes on record</dt>
+            <dd class="">3 days</dd>
+            <dt>Last updated</dt>
+            <dd class="">Aug 26th 2026 09:37 PM</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>13/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="">2026-02-28</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="">6.91</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="">7.25</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="">6.95x</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="">6.62x</dd>
+            <dt>Return on net worth</dt>
+            <dd class="">30.3%</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="">30.3%</dd>
+            <dt>Net profit margin</dt>
+            <dd class="">9.4%</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="">13.2%</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="">18.5%</dd>
+            <dt>Debt to equity</dt>
+            <dd class="">0.55</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="">86.5%</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="">58.0%</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>6/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-28</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-09-01</dd>
+            <dt>Allotment</dt>
+            <dd class="">2nd Sep 2026</dd>
+            <dt>Refunds start</dt>
+            <dd class="">3rd Sep 2026</dd>
+            <dt>Shares in demat</dt>
+            <dd class="">3rd Sep 2026</dd>
+            <dt>Listing</dt>
+            <dd class="">4th Sep 2026</dd>
+          </dl>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">
+        Source detail page: https://www.investorgain.com/ipo/paluck-technologies-ipo/1963</p>
+    </details>
+
+    <div class="gaps">
+      <b>Not available:</b>
+      subscription figures not yet published; subscription figures not published yet.
+      These were excluded from the score rather than estimated.
+    </div>
+
+  </div>
+  <div class="card v-consider">
+
+    <div class="head">
+      <div>
+        <p class="name">Kwick Forensic Solutions Limited</p>
+        <div class="tags">
+          <span class="tag sme">SME</span>
+<span class="tag">Diversified</span>          <span class="tag ">
+            Opens tomorrow</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict consider">CONSIDER</span>
+        <div class="score">score +0.35 ·
+          confidence 80%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>85.00 - 90.00</b></span>
+      <span>Lot <b>1600</b></span>
+      <span>Min <b>₹1,44,000</b></span>
+      <span>Size <b>₹50.77 Cr</b></span>
+      <span>Closes <b>2026-08-31</b></span>
+      <span>Lists <b>3rd Sep 2026</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:35.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.70</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:33.05555555555556%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.66</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:22.5%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.45</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:6.874999999999998%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.14</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+
+    <!-- grey market -->
+    <div class="gmpbox">
+      <div>
+        <div class="big" style="color:var(--up)">
+          +71.1%</div>
+        <div style="font-size:12px;color:var(--muted)">grey market premium</div>
+      </div>
+<svg class="gmpspark" viewBox="0 0 200 40" width="200" height="40" preserveAspectRatio="none" aria-hidden="true"><polyline points="3.0,37.0 35.3,37.0 67.7,9.9 100.0,4.6 132.3,3.0 164.7,3.0 197.0,3.0" fill="none" stroke="var(--up)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="197.0" cy="3.0" r="2.6" fill="var(--up)"/></svg>      <div class="gmpnote">
+Implies a listing near
+          <b style="color:var(--ink)">₹154</b>.          Premium is <b style="color:var(--ink)">rising</b>
+          (+3.3pp over
+          3 days).
+        Unofficial and unregulated — treat as sentiment, not a forecast.
+      </div>
+    </div>
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Grey market premium is 71.1%, implying a listing near 154 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days</span>
+        <span class="wt">+1.00</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Return on net worth is 30.7%, declined from 32.6% - comfortably above the ~12% that marks a business earning more than its cost of capital</span>
+        <span class="wt">+0.80</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Priced at 14.3x post-issue earnings - undemanding for a listed peer group</span>
+        <span class="wt">+0.70</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Net profit margin is 13.2%, up from 12.8%</span>
+        <span class="wt">+0.60</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Debt-to-equity is 0.12 - a conservatively financed balance sheet</span>
+        <span class="wt">+0.59</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>80% of the issue is fresh capital going into the business rather than to selling shareholders</span>
+        <span class="wt">+0.50</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>EPS falls from 8.00 to 6.30 post-issue (-21%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline</span>
+        <span class="wt">-0.43</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>The premium has risen from 67.8% to 71.1% over the last 3 day(s) - unofficial demand is building into the close</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Promoters retain 64.7% after the issue (from 88.5%), keeping their interests aligned with yours</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>This is an SME issue. SME listings trade in large lot sizes with far thinner liquidity and lighter disclosure than mainboard stocks, so the score carries a 0.10 risk penalty and exiting can be genuinely difficult</span>
+        <span class="wt">-0.10</span>
+      </li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+
+    <!-- everything we hold -->
+    <details >
+      <summary>All data on Kwick Forensic Solutions Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>11/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">85.00 - 90.00</dd>
+            <dt>Face value</dt>
+            <dd class="">10.00</dd>
+            <dt>Lot size</dt>
+            <dd class="">1600 shares</dd>
+            <dt>Minimum investment</dt>
+            <dd class="">₹1,44,000</dd>
+            <dt>Total issue size</dt>
+            <dd class="">₹50.77 Cr</dd>
+            <dt>Fresh issue</dt>
+            <dd class="">₹38.51 Cr</dd>
+            <dt>Offer for sale</dt>
+            <dd class="">₹9.72 Cr</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="">20%</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="">Bigshare Services Pvt.Ltd.</dd>
+            <dt>Sector</dt>
+            <dd class="">Diversified</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>7/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="">3200 shares (2 lots)</dd>
+            <dt>Retail maximum</dt>
+            <dd class="">3200 shares (2 lots)</dd>
+            <dt>Small HNI from</dt>
+            <dd class="">4800 shares (3 lots)</dd>
+            <dt>Big HNI from</dt>
+            <dd class="">4800 shares (3 lots)</dd>
+            <dt>Retail reservation</dt>
+            <dd class="">Not less than 35% of the Net offer</dd>
+            <dt>QIB reservation</dt>
+            <dd class="">Not more than 50% of the Net Offer</dd>
+            <dt>NII reservation</dt>
+            <dd class="">Not less than 15% of the Net offer</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>0/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="na">—</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="na">—</dd>
+            <dt>Retail</dt>
+            <dd class="na">—</dd>
+            <dt>Total</dt>
+            <dd class="na">—</dd>
+            <dt>Last updated</dt>
+            <dd class="na">—</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>6/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="">₹64</dd>
+            <dt>Premium %</dt>
+            <dd class="">71.1%</dd>
+            <dt>Implied listing price</dt>
+            <dd class="">₹154</dd>
+            <dt>Direction</dt>
+            <dd class="">rising (+3.3pp over 3d)</dd>
+            <dt>Quotes on record</dt>
+            <dd class="">7 days</dd>
+            <dt>Last updated</dt>
+            <dd class="">Aug 26th 2026 09:29 PM</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>13/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="">2026-03-31</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="">8.00</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="">6.30</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="">11.25x</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="">14.29x</dd>
+            <dt>Return on net worth</dt>
+            <dd class="">30.7%</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="">32.6%</dd>
+            <dt>Net profit margin</dt>
+            <dd class="">13.2%</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="">12.8%</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="">18.8%</dd>
+            <dt>Debt to equity</dt>
+            <dd class="">0.12</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="">88.5%</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="">64.7%</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>6/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-27</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-08-31</dd>
+            <dt>Allotment</dt>
+            <dd class="">1st Sep 2026</dd>
+            <dt>Refunds start</dt>
+            <dd class="">2nd Sep 2026</dd>
+            <dt>Shares in demat</dt>
+            <dd class="">2nd Sep 2026</dd>
+            <dt>Listing</dt>
+            <dd class="">3rd Sep 2026</dd>
+          </dl>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">
+        Source detail page: https://www.investorgain.com/ipo/kwick-forensic-solutions-ipo/2013</p>
+    </details>
+
+    <div class="gaps">
+      <b>Not available:</b>
+      subscription figures not yet published; subscription figures not published yet.
+      These were excluded from the score rather than estimated.
+    </div>
+
+  </div>
+  <div class="card v-consider">
+
+    <div class="head">
+      <div>
+        <p class="name">Lumino Industries Limited</p>
+        <div class="tags">
+          <span class="tag ">MainBoard</span>
+<span class="tag">Cables - Electricals</span>          <span class="tag ">
+            Opens tomorrow</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict consider">CONSIDER</span>
+        <div class="score">score +0.24 ·
+          confidence 80%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>78.00 - 82.00</b></span>
+      <span>Lot <b>182</b></span>
+      <span>Min <b>₹14,924</b></span>
+      <span>Size <b>₹700.00 Cr</b></span>
+      <span>Closes <b>2026-08-31</b></span>
+      <span>Lists <b>3rd Sep 2026</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:35.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.70</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:22.5%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.45</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:11.633333333333335%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.23</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:2.5456621004566236%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.05</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+
+    <!-- grey market -->
+    <div class="gmpbox">
+      <div>
+        <div class="big" style="color:var(--up)">
+          +61.0%</div>
+        <div style="font-size:12px;color:var(--muted)">grey market premium</div>
+      </div>
+<svg class="gmpspark" viewBox="0 0 200 40" width="200" height="40" preserveAspectRatio="none" aria-hidden="true"><polyline points="3.0,37.0 41.8,3.0 80.6,20.0 119.4,31.3 158.2,37.0 197.0,14.3" fill="none" stroke="var(--up)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="197.0" cy="14.3" r="2.6" fill="var(--up)"/></svg>      <div class="gmpnote">
+Implies a listing near
+          <b style="color:var(--ink)">₹132</b>.          Premium is <b style="color:var(--ink)">rising</b>
+          (+1.2pp over
+          3 days).
+        Unofficial and unregulated — treat as sentiment, not a forecast.
+      </div>
+    </div>
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Grey market premium is 61.0%, implying a listing near 132 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days</span>
+        <span class="wt">+1.00</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Return on net worth is 24.5%, declined from 24.6% - comfortably above the ~12% that marks a business earning more than its cost of capital</span>
+        <span class="wt">+0.63</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>71% of the issue is fresh capital going into the business rather than to selling shareholders</span>
+        <span class="wt">+0.50</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>EPS falls from 6.57 to 5.25 post-issue (-20%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline</span>
+        <span class="wt">-0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>The premium has risen from 59.8% to 61.0% over the last 3 day(s) - unofficial demand is building into the close</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Promoters retain 72.0% after the issue (from 100.0%), keeping their interests aligned with yours</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Priced at 15.6x post-issue earnings - a reasonable, mid-range multiple</span>
+        <span class="wt">+0.30</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Debt-to-equity is 0.73 - meaningful leverage, which amplifies both good and bad years</span>
+        <span class="wt">+0.18</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Net profit margin is 6.4%, down from 7.7%</span>
+        <span class="wt">-0.12</span>
+      </li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+
+    <!-- everything we hold -->
+    <details >
+      <summary>All data on Lumino Industries Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>11/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">78.00 - 82.00</dd>
+            <dt>Face value</dt>
+            <dd class="">5.00</dd>
+            <dt>Lot size</dt>
+            <dd class="">182 shares</dd>
+            <dt>Minimum investment</dt>
+            <dd class="">₹14,924</dd>
+            <dt>Total issue size</dt>
+            <dd class="">₹700.00 Cr</dd>
+            <dt>Fresh issue</dt>
+            <dd class="">₹500.00 Cr</dd>
+            <dt>Offer for sale</dt>
+            <dd class="">₹200.00 Cr</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="">29%</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="">Bigshare Services Pvt.Ltd.</dd>
+            <dt>Sector</dt>
+            <dd class="">Cables - Electricals</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>7/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="">182 shares (1 lot)</dd>
+            <dt>Retail maximum</dt>
+            <dd class="">2548 shares (14 lots)</dd>
+            <dt>Small HNI from</dt>
+            <dd class="">2548 shares (14 lots)</dd>
+            <dt>Big HNI from</dt>
+            <dd class="">12376 shares (68 lots)</dd>
+            <dt>Retail reservation</dt>
+            <dd class="">Not less than 35% of the Net Offer</dd>
+            <dt>QIB reservation</dt>
+            <dd class="">Not more than 50% of the Net Offer</dd>
+            <dt>NII reservation</dt>
+            <dd class="">Not less than 15% of the Net Offer</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>0/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="na">—</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="na">—</dd>
+            <dt>Retail</dt>
+            <dd class="na">—</dd>
+            <dt>Total</dt>
+            <dd class="na">—</dd>
+            <dt>Last updated</dt>
+            <dd class="na">—</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>6/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="">₹50</dd>
+            <dt>Premium %</dt>
+            <dd class="">61.0%</dd>
+            <dt>Implied listing price</dt>
+            <dd class="">₹132</dd>
+            <dt>Direction</dt>
+            <dd class="">rising (+1.2pp over 3d)</dd>
+            <dt>Quotes on record</dt>
+            <dd class="">6 days</dd>
+            <dt>Last updated</dt>
+            <dd class="">Aug 26th 2026 09:34 PM</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>13/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="">2026-03-31</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="">6.57</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="">5.25</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="">12.48x</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="">15.62x</dd>
+            <dt>Return on net worth</dt>
+            <dd class="">24.5%</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="">24.6%</dd>
+            <dt>Net profit margin</dt>
+            <dd class="">6.4%</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="">7.7%</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="">11.6%</dd>
+            <dt>Debt to equity</dt>
+            <dd class="">0.73</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="">100.0%</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="">72.0%</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>6/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-27</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-08-31</dd>
+            <dt>Allotment</dt>
+            <dd class="">1st Sep 2026</dd>
+            <dt>Refunds start</dt>
+            <dd class="">2nd Sep 2026</dd>
+            <dt>Shares in demat</dt>
+            <dd class="">2nd Sep 2026</dd>
+            <dt>Listing</dt>
+            <dd class="">3rd Sep 2026</dd>
+          </dl>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">
+        Source detail page: https://www.investorgain.com/ipo/lumino-industries-ipo/1619</p>
+    </details>
+
+    <div class="gaps">
+      <b>Not available:</b>
+      subscription figures not yet published; subscription figures not published yet.
+      These were excluded from the score rather than estimated.
+    </div>
+
+  </div>
+  <div class="card v-consider">
+
+    <div class="head">
+      <div>
+        <p class="name">Priority Jewels Limited</p>
+        <div class="tags">
+          <span class="tag ">MainBoard</span>
+<span class="tag">Gems, Jewellery And Watches</span>          <span class="tag ">
+            Opens in 2 days</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict consider">CONSIDER</span>
+        <div class="score">score +0.20 ·
+          confidence 80%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>190.00 - 200.00</b></span>
+      <span>Lot <b>75</b></span>
+      <span>Min <b>₹15,000</b></span>
+      <span>Size <b>₹91.50 Cr</b></span>
+      <span>Closes <b>2026-09-01</b></span>
+      <span>Lists <b>4th Sep 2026</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:35.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.70</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:10.0%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.20</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:6.25%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.12</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:2.591666666666666%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.05</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+
+    <!-- grey market -->
+    <div class="gmpbox">
+      <div>
+        <div class="big" style="color:var(--up)">
+          +10.0%</div>
+        <div style="font-size:12px;color:var(--muted)">grey market premium</div>
+      </div>
+<svg class="gmpspark" viewBox="0 0 200 40" width="200" height="40" preserveAspectRatio="none" aria-hidden="true"><polyline points="3.0,9.8 100.0,3.0 197.0,37.0" fill="none" stroke="var(--down)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="197.0" cy="37.0" r="2.6" fill="var(--down)"/></svg>      <div class="gmpnote">
+Implies a listing near
+          <b style="color:var(--ink)">₹220</b>.          Premium is <b style="color:var(--ink)">falling</b>
+          (-4.0pp over
+          2 days).
+        Unofficial and unregulated — treat as sentiment, not a forecast.
+      </div>
+    </div>
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Promoter holding goes from 93.8% to 0.0% - the promoters are exiting entirely. Whatever the stated rationale, nobody knows the business better, and they are choosing not to own it</span>
+        <span class="wt">-0.90</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Priced at 13.9x post-issue earnings - undemanding for a listed peer group</span>
+        <span class="wt">+0.70</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>The premium has fallen from 14.0% to 10.0% over the last 2 day(s) - sentiment is draining out of the issue as the close approaches, which matters more than the level itself</span>
+        <span class="wt">-0.50</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>100% of the issue is fresh capital going into the business rather than to selling shareholders</span>
+        <span class="wt">+0.50</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Net profit margin is 3.3%, down from 4.4%</span>
+        <span class="wt">-0.38</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Grey market premium is 10.0%, implying a listing near 220</span>
+        <span class="wt">+0.25</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Debt-to-equity is 0.74 - meaningful leverage, which amplifies both good and bad years</span>
+        <span class="wt">+0.17</span>
+      </li>
+      <li>
+        <span class="ico i-neu">
+          •</span>
+        <span>Return on net worth is 12.7%, improved from 4.4% - modest returns on the capital employed</span>
+        <span class="wt">+0.05</span>
+      </li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+
+    <!-- everything we hold -->
+    <details >
+      <summary>All data on Priority Jewels Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>11/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">190.00 - 200.00</dd>
+            <dt>Face value</dt>
+            <dd class="">10.00</dd>
+            <dt>Lot size</dt>
+            <dd class="">75 shares</dd>
+            <dt>Minimum investment</dt>
+            <dd class="">₹15,000</dd>
+            <dt>Total issue size</dt>
+            <dd class="">₹91.50 Cr</dd>
+            <dt>Fresh issue</dt>
+            <dd class="">₹91.50 Cr</dd>
+            <dt>Offer for sale</dt>
+            <dd class="">₹0.00 Cr</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="">0%</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="">MUFG Intime India Pvt.Ltd.</dd>
+            <dt>Sector</dt>
+            <dd class="">Gems, Jewellery And Watches</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>7/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="">75 shares (1 lot)</dd>
+            <dt>Retail maximum</dt>
+            <dd class="">1050 shares (14 lots)</dd>
+            <dt>Small HNI from</dt>
+            <dd class="">1050 shares (14 lots)</dd>
+            <dt>Big HNI from</dt>
+            <dd class="">5025 shares (67 lots)</dd>
+            <dt>Retail reservation</dt>
+            <dd class="">Not less than 35% of the Offer</dd>
+            <dt>QIB reservation</dt>
+            <dd class="">Not more than 50% of the Offer</dd>
+            <dt>NII reservation</dt>
+            <dd class="">Not less than 15% of the Offer</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>0/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="na">—</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="na">—</dd>
+            <dt>Retail</dt>
+            <dd class="na">—</dd>
+            <dt>Total</dt>
+            <dd class="na">—</dd>
+            <dt>Last updated</dt>
+            <dd class="na">—</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>6/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="">₹20</dd>
+            <dt>Premium %</dt>
+            <dd class="">10.0%</dd>
+            <dt>Implied listing price</dt>
+            <dd class="">₹220</dd>
+            <dt>Direction</dt>
+            <dd class="">falling (-4.0pp over 2d)</dd>
+            <dt>Quotes on record</dt>
+            <dd class="">3 days</dd>
+            <dt>Last updated</dt>
+            <dd class="">Aug 26th 2026 09:36 PM</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>13/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="">2026-06-30</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="">13.15</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="">14.39</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="">15.21x</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="">13.90x</dd>
+            <dt>Return on net worth</dt>
+            <dd class="">12.7%</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="">4.4%</dd>
+            <dt>Net profit margin</dt>
+            <dd class="">3.3%</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="">4.4%</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="">6.2%</dd>
+            <dt>Debt to equity</dt>
+            <dd class="">0.74</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="">93.8%</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="">0.0%</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>6/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-28</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-09-01</dd>
+            <dt>Allotment</dt>
+            <dd class="">2nd Sep 2026</dd>
+            <dt>Refunds start</dt>
+            <dd class="">3rd Sep 2026</dd>
+            <dt>Shares in demat</dt>
+            <dd class="">3rd Sep 2026</dd>
+            <dt>Listing</dt>
+            <dd class="">4th Sep 2026</dd>
+          </dl>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">
+        Source detail page: https://www.investorgain.com/ipo/priority-jewels-ipo/1783</p>
+    </details>
+
+    <div class="gaps">
+      <b>Not available:</b>
+      subscription figures not yet published; subscription figures not published yet.
+      These were excluded from the score rather than estimated.
+    </div>
+
+  </div>
+  <div class="card v-neutral">
+
+    <div class="head">
+      <div>
+        <p class="name">Esds Software Solution Limited</p>
+        <div class="tags">
+          <span class="tag ">MainBoard</span>
+<span class="tag">Software Products</span>          <span class="tag ">
+            Opens in 2 days</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict neutral">NEUTRAL</span>
+        <div class="score">score +0.08 ·
+          confidence 80%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>408.00 - 429.00</b></span>
+      <span>Lot <b>34</b></span>
+      <span>Min <b>₹14,586</b></span>
+      <span>Size <b>₹720.00 Cr</b></span>
+      <span>Closes <b>2026-09-01</b></span>
+      <span>Lists <b>4th Sep 2026</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:35.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.70</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:23.398794679966745%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.47</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:18.55277777777778%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.37</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:5.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.10</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+
+    <!-- grey market -->
+    <div class="gmpbox">
+      <div>
+        <div class="big" style="color:var(--up)">
+          +85.1%</div>
+        <div style="font-size:12px;color:var(--muted)">grey market premium</div>
+      </div>
+<svg class="gmpspark" viewBox="0 0 200 40" width="200" height="40" preserveAspectRatio="none" aria-hidden="true"><polyline points="3.0,37.0 197.0,3.0" fill="none" stroke="var(--up)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="197.0" cy="3.0" r="2.6" fill="var(--up)"/></svg>      <div class="gmpnote">
+Implies a listing near
+          <b style="color:var(--ink)">₹794</b>.          Premium is <b style="color:var(--ink)">rising</b>
+          (+21.0pp over
+          1 day).
+        Unofficial and unregulated — treat as sentiment, not a forecast.
+      </div>
+    </div>
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Grey market premium is 85.1%, implying a listing near 794 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days</span>
+        <span class="wt">+1.00</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Priced at 41.6x post-issue earnings - expensive. At this multiple most of the next few years of growth is already in the price</span>
+        <span class="wt">-0.65</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Net profit margin is 15.4%, down from 25.6%</span>
+        <span class="wt">+0.63</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Debt-to-equity is 0.15 - a conservatively financed balance sheet</span>
+        <span class="wt">+0.57</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>100% of the issue is fresh capital going into the business rather than to selling shareholders</span>
+        <span class="wt">+0.50</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>The premium has risen from 64.1% to 85.1% over the last 1 day(s) - unofficial demand is building into the close</span>
+        <span class="wt">+0.40</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Promoter holding falls from 46.1% to 39.5%, leaving limited skin in the game</span>
+        <span class="wt">-0.30</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>EPS falls from 12.03 to 10.31 post-issue (-14%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline</span>
+        <span class="wt">-0.29</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Return on net worth is 13.7%, declined from 22.9% - modest returns on the capital employed</span>
+        <span class="wt">-0.09</span>
+      </li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+
+    <!-- everything we hold -->
+    <details >
+      <summary>All data on Esds Software Solution Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>11/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">408.00 - 429.00</dd>
+            <dt>Face value</dt>
+            <dd class="">1.00</dd>
+            <dt>Lot size</dt>
+            <dd class="">34 shares</dd>
+            <dt>Minimum investment</dt>
+            <dd class="">₹14,586</dd>
+            <dt>Total issue size</dt>
+            <dd class="">₹720.00 Cr</dd>
+            <dt>Fresh issue</dt>
+            <dd class="">₹720.00 Cr</dd>
+            <dt>Offer for sale</dt>
+            <dd class="">₹0.00 Cr</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="">0%</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="">MUFG Intime India Pvt.Ltd.</dd>
+            <dt>Sector</dt>
+            <dd class="">Software Products</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>7/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="">34 shares (1 lot)</dd>
+            <dt>Retail maximum</dt>
+            <dd class="">476 shares (14 lots)</dd>
+            <dt>Small HNI from</dt>
+            <dd class="">476 shares (14 lots)</dd>
+            <dt>Big HNI from</dt>
+            <dd class="">2346 shares (69 lots)</dd>
+            <dt>Retail reservation</dt>
+            <dd class="">Not less than 35% of the Net Issue</dd>
+            <dt>QIB reservation</dt>
+            <dd class="">Not more than 50% of the Offer</dd>
+            <dt>NII reservation</dt>
+            <dd class="">Not more than 15% of the Issue or the Issue</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>0/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="na">—</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="na">—</dd>
+            <dt>Retail</dt>
+            <dd class="na">—</dd>
+            <dt>Total</dt>
+            <dd class="na">—</dd>
+            <dt>Last updated</dt>
+            <dd class="na">—</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>6/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="">₹365</dd>
+            <dt>Premium %</dt>
+            <dd class="">85.1%</dd>
+            <dt>Implied listing price</dt>
+            <dd class="">₹794</dd>
+            <dt>Direction</dt>
+            <dd class="">rising (+21.0pp over 1d)</dd>
+            <dt>Quotes on record</dt>
+            <dd class="">2 days</dd>
+            <dt>Last updated</dt>
+            <dd class="">Aug 26th 2026 09:29 PM</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>13/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="">2026-03-31</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="">12.03</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="">10.31</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="">35.66x</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="">41.61x</dd>
+            <dt>Return on net worth</dt>
+            <dd class="">13.7%</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="">22.9%</dd>
+            <dt>Net profit margin</dt>
+            <dd class="">15.4%</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="">25.6%</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="">42.9%</dd>
+            <dt>Debt to equity</dt>
+            <dd class="">0.15</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="">46.1%</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="">39.5%</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>6/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-28</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-09-01</dd>
+            <dt>Allotment</dt>
+            <dd class="">2nd Sep 2026</dd>
+            <dt>Refunds start</dt>
+            <dd class="">3rd Sep 2026</dd>
+            <dt>Shares in demat</dt>
+            <dd class="">3rd Sep 2026</dd>
+            <dt>Listing</dt>
+            <dd class="">4th Sep 2026</dd>
+          </dl>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">
+        Source detail page: https://www.investorgain.com/ipo/esds-software-ipo/1607</p>
+    </details>
+
+    <div class="gaps">
+      <b>Not available:</b>
+      subscription figures not yet published; subscription figures not published yet.
+      These were excluded from the score rather than estimated.
+    </div>
+
+  </div>
+  <div class="card v-neutral">
+
+    <div class="head">
+      <div>
+        <p class="name">Complete Sports And Management India Limited</p>
+        <div class="tags">
+          <span class="tag sme">SME</span>
+<span class="tag">Other Consumer Services</span>          <span class="tag ">
+            Opens in 2 days</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict neutral">NEUTRAL</span>
+        <div class="score">score +0.07 ·
+          confidence 80%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>128.00 - 135.00</b></span>
+      <span>Lot <b>1000</b></span>
+      <span>Min <b>₹1,35,000</b></span>
+      <span>Size <b>₹74.93 Cr</b></span>
+      <span>Closes <b>2026-09-01</b></span>
+      <span>Lists <b>4th Sep 2026</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:39.06944444444444%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.78</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:10.0%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.20</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+right:50%;width:6.001238645747316%;background:var(--down);"></span>
+        </span>
+        <span class="val">-0.12</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+
+    <!-- grey market -->
+    <div class="gmpbox">
+      <div>
+        <div class="big" style="color:var(--muted)">
+          +0.0%</div>
+        <div style="font-size:12px;color:var(--muted)">grey market premium</div>
+      </div>
+<svg class="gmpspark" viewBox="0 0 200 40" width="200" height="40" preserveAspectRatio="none" aria-hidden="true"><polyline points="3.0,37.0 67.7,37.0 132.3,37.0 197.0,37.0" fill="none" stroke="var(--up)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="197.0" cy="37.0" r="2.6" fill="var(--up)"/></svg>      <div class="gmpnote">
+Implies a listing near
+          <b style="color:var(--ink)">₹135</b>.          Premium is <b style="color:var(--ink)">flat</b>
+          (+0.0pp over
+          3 days).
+        Unofficial and unregulated — treat as sentiment, not a forecast.
+      </div>
+    </div>
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Return on net worth is 42.3% - comfortably above the ~12% that marks a business earning more than its cost of capital</span>
+        <span class="wt">+1.00</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>Promoter holding goes from 96.8% to 0.0% - the promoters are exiting entirely. Whatever the stated rationale, nobody knows the business better, and they are choosing not to own it</span>
+        <span class="wt">-0.90</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Net profit margin is 15.8%</span>
+        <span class="wt">+0.82</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>EPS falls from 12.11 to 8.84 post-issue (-27%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline</span>
+        <span class="wt">-0.54</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Debt-to-equity is 0.21 - a conservatively financed balance sheet</span>
+        <span class="wt">+0.53</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>100% of the issue is fresh capital going into the business rather than to selling shareholders</span>
+        <span class="wt">+0.50</span>
+      </li>
+      <li>
+        <span class="ico i-bull">
+          ▲</span>
+        <span>Priced at 15.3x post-issue earnings - a reasonable, mid-range multiple</span>
+        <span class="wt">+0.30</span>
+      </li>
+      <li>
+        <span class="ico i-bear">
+          ▼</span>
+        <span>This is an SME issue. SME listings trade in large lot sizes with far thinner liquidity and lighter disclosure than mainboard stocks, so the score carries a 0.10 risk penalty and exiting can be genuinely difficult</span>
+        <span class="wt">-0.10</span>
+      </li>
+      <li>
+        <span class="ico i-neu">
+          •</span>
+        <span>Grey market premium is 0.0% - the unofficial market expects a flat-to-negative listing</span>
+        <span class="wt">+0.00</span>
+      </li>
+      <li>
+        <span class="ico i-neu">
+          •</span>
+        <span>The premium has held roughly flat near 0.0% across 4 days of quotes - stable, if unexciting, sentiment</span>
+        <span class="wt">+0.00</span>
+      </li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+
+    <!-- everything we hold -->
+    <details >
+      <summary>All data on Complete Sports And Management India Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>11/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">128.00 - 135.00</dd>
+            <dt>Face value</dt>
+            <dd class="">10.00</dd>
+            <dt>Lot size</dt>
+            <dd class="">1000 shares</dd>
+            <dt>Minimum investment</dt>
+            <dd class="">₹1,35,000</dd>
+            <dt>Total issue size</dt>
+            <dd class="">₹74.93 Cr</dd>
+            <dt>Fresh issue</dt>
+            <dd class="">₹71.14 Cr</dd>
+            <dt>Offer for sale</dt>
+            <dd class="">₹0.00 Cr</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="">0%</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="">Bigshare Services Pvt.Ltd.</dd>
+            <dt>Sector</dt>
+            <dd class="">Other Consumer Services</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>7/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="">2000 shares (2 lots)</dd>
+            <dt>Retail maximum</dt>
+            <dd class="">2000 shares (2 lots)</dd>
+            <dt>Small HNI from</dt>
+            <dd class="">3000 shares (3 lots)</dd>
+            <dt>Big HNI from</dt>
+            <dd class="">3000 shares (3 lots)</dd>
+            <dt>Retail reservation</dt>
+            <dd class="">Not less than 35% of the Net Issue</dd>
+            <dt>QIB reservation</dt>
+            <dd class="">Not more than 50% of the Net Issue</dd>
+            <dt>NII reservation</dt>
+            <dd class="">Not less than 15% of the Net Issue</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>0/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="na">—</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="na">—</dd>
+            <dt>Retail</dt>
+            <dd class="na">—</dd>
+            <dt>Total</dt>
+            <dd class="na">—</dd>
+            <dt>Last updated</dt>
+            <dd class="na">—</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>6/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="">₹0</dd>
+            <dt>Premium %</dt>
+            <dd class="">0.0%</dd>
+            <dt>Implied listing price</dt>
+            <dd class="">₹135</dd>
+            <dt>Direction</dt>
+            <dd class="">flat (+0.0pp over 3d)</dd>
+            <dt>Quotes on record</dt>
+            <dd class="">4 days</dd>
+            <dt>Last updated</dt>
+            <dd class="">Aug 26th 2026 09:36 PM</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>11/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="">2026-03-31</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="">12.11</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="">8.84</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="">11.15x</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="">15.27x</dd>
+            <dt>Return on net worth</dt>
+            <dd class="">42.3%</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="na">—</dd>
+            <dt>Net profit margin</dt>
+            <dd class="">15.8%</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="na">—</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="">13.4%</dd>
+            <dt>Debt to equity</dt>
+            <dd class="">0.21</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="">96.8%</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="">0.0%</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>6/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-28</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-09-01</dd>
+            <dt>Allotment</dt>
+            <dd class="">2nd Sep 2026</dd>
+            <dt>Refunds start</dt>
+            <dd class="">3rd Sep 2026</dd>
+            <dt>Shares in demat</dt>
+            <dd class="">3rd Sep 2026</dd>
+            <dt>Listing</dt>
+            <dd class="">4th Sep 2026</dd>
+          </dl>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">
+        Source detail page: https://www.investorgain.com/ipo/complete-sports-and-management-ipo/2339</p>
+    </details>
+
+    <div class="gaps">
+      <b>Not available:</b>
+      subscription figures not yet published; subscription figures not published yet.
+      These were excluded from the score rather than estimated.
+    </div>
+
+  </div>
+  <div class="card v-nodata">
+
+    <div class="head">
+      <div>
+        <p class="name">Purple Style Labs Limited</p>
+        <div class="tags">
+          <span class="tag ">MainBoard</span>
+          <span class="tag ">
+            Opens in 5 days</span>
+        </div>
+      </div>
+      <div>
+        <span class="verdict nodata">NO DATA</span>
+        <div class="score">score +0.00 ·
+          confidence 0%</div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span>Band <b>546.00 - 575.00</b></span>
+      <span>Lot <b>—</b></span>
+      <span>Min <b>—</b></span>
+      <span>Size <b>—</b></span>
+      <span>Closes <b>2026-09-02</b></span>
+      <span>Lists <b>—</b></span>
+    </div>
+
+    <!-- score breakdown -->
+    <div class="axes">
+      <div class="axis">
+        <span class="lbl">Demand</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Valuation</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Financials</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Grey market</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+      <div class="axis">
+        <span class="lbl">Structure</span>
+        <span class="track"><span class="mid"></span>
+          <span class="fill" style="
+left:50%;width:0.0%;background:var(--up);
+"></span>
+        </span>
+        <span class="val">+0.00</span>
+      </div>
+    </div>
+
+    <!-- demand -->
+
+    <!-- grey market -->
+
+    <!-- every reason -->
+    <h2 style="margin:18px 0 6px">Why — every reason behind this verdict</h2>
+    <ul class="reasons">
+      <li><span class="ico i-neu">•</span><span>Nothing has been published for
+        this issue yet — no price band, demand, premium or financials.</span></li>
+    </ul>
+
+    <!-- research layer: what the numbers cannot see -->
+
+    <!-- everything we hold -->
+    <details >
+      <summary>All data on Purple Style Labs Limited</summary>
+      <div class="datagrid">
+        <div class="dgroup">
+          <h4>The issue <span>3/11</span></h4>
+          <dl>
+            <dt>Price band</dt>
+            <dd class="">546.00 - 575.00</dd>
+            <dt>Face value</dt>
+            <dd class="">10.00</dd>
+            <dt>Lot size</dt>
+            <dd class="na">—</dd>
+            <dt>Minimum investment</dt>
+            <dd class="na">—</dd>
+            <dt>Total issue size</dt>
+            <dd class="na">—</dd>
+            <dt>Fresh issue</dt>
+            <dd class="na">—</dd>
+            <dt>Offer for sale</dt>
+            <dd class="na">—</dd>
+            <dt>OFS share of issue</dt>
+            <dd class="na">—</dd>
+            <dt>Listing on</dt>
+            <dd class="">BSE</dd>
+            <dt>Registrar</dt>
+            <dd class="na">—</dd>
+            <dt>Sector</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>How much you can apply for <span>0/7</span></h4>
+          <dl>
+            <dt>Retail minimum</dt>
+            <dd class="na">—</dd>
+            <dt>Retail maximum</dt>
+            <dd class="na">—</dd>
+            <dt>Small HNI from</dt>
+            <dd class="na">—</dd>
+            <dt>Big HNI from</dt>
+            <dd class="na">—</dd>
+            <dt>Retail reservation</dt>
+            <dd class="na">—</dd>
+            <dt>QIB reservation</dt>
+            <dd class="na">—</dd>
+            <dt>NII reservation</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Demand so far <span>0/6</span></h4>
+          <dl>
+            <dt>QIB (institutions)</dt>
+            <dd class="na">—</dd>
+            <dt>NII (wealthy individuals)</dt>
+            <dd class="na">—</dd>
+            <dt>Retail</dt>
+            <dd class="na">—</dd>
+            <dt>Total</dt>
+            <dd class="na">—</dd>
+            <dt>Last updated</dt>
+            <dd class="na">—</dd>
+            <dt>Retail allotment odds</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Grey market <span>0/6</span></h4>
+          <dl>
+            <dt>Premium</dt>
+            <dd class="na">—</dd>
+            <dt>Premium %</dt>
+            <dd class="na">—</dd>
+            <dt>Implied listing price</dt>
+            <dd class="na">—</dd>
+            <dt>Direction</dt>
+            <dd class="na">—</dd>
+            <dt>Quotes on record</dt>
+            <dd class="na">—</dd>
+            <dt>Last updated</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Financials <span>0/13</span></h4>
+          <dl>
+            <dt>As reported for</dt>
+            <dd class="na">—</dd>
+            <dt>EPS (pre-issue)</dt>
+            <dd class="na">—</dd>
+            <dt>EPS (post-issue)</dt>
+            <dd class="na">—</dd>
+            <dt>P/E (pre-issue)</dt>
+            <dd class="na">—</dd>
+            <dt>P/E (post-issue)</dt>
+            <dd class="na">—</dd>
+            <dt>Return on net worth</dt>
+            <dd class="na">—</dd>
+            <dt>RoNW, prior year</dt>
+            <dd class="na">—</dd>
+            <dt>Net profit margin</dt>
+            <dd class="na">—</dd>
+            <dt>Margin, prior year</dt>
+            <dd class="na">—</dd>
+            <dt>EBITDA margin</dt>
+            <dd class="na">—</dd>
+            <dt>Debt to equity</dt>
+            <dd class="na">—</dd>
+            <dt>Promoter holding, pre</dt>
+            <dd class="na">—</dd>
+            <dt>Promoter holding, post</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+        <div class="dgroup">
+          <h4>Dates <span>2/6</span></h4>
+          <dl>
+            <dt>Opens</dt>
+            <dd class="">2026-08-31</dd>
+            <dt>Closes</dt>
+            <dd class="">2026-09-02</dd>
+            <dt>Allotment</dt>
+            <dd class="na">—</dd>
+            <dt>Refunds start</dt>
+            <dd class="na">—</dd>
+            <dt>Shares in demat</dt>
+            <dd class="na">—</dd>
+            <dt>Listing</dt>
+            <dd class="na">—</dd>
+          </dl>
+        </div>
+      </div>
+    </details>
+
+    <div class="gaps">
+      <b>Not available:</b>
+      debt/equity; fresh-issue vs offer-for-sale split; grey market premium; price/earnings ratio; profit margin; promoter shareholding; return on net worth; subscription figures not yet published; no matching InvestorGain record - lot size, subscription, GMP and financials unavailable.
+      These were excluded from the score rather than estimated.
+    </div>
+
+  </div>
+
+  <footer>
+    Issue lists and dates from BSE; lot size, demand, grey market premium and
+    financials from InvestorGain. Generated locally — nothing about you was
+    sent anywhere.
+    <br><br>
+    <strong>This is decision support, not financial advice.</strong> IPO
+    pricing reflects what the seller wants, and a strong grey market premium
+    has never been a guarantee of anything. Read the prospectus risk factors
+    before applying — this tool cannot read them for you.
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+{
+  "generated": "2026-08-27 research pass",
+  "by": "claude-code",
+  "method": "Web research per issue on broker views, prospectus risk factors, related-party disclosures and peer valuation. Deliberately excludes subscription and grey market figures, which move hourly and are shown live on the dashboard instead.",
+  "notes": {
+    "Hy Tech Engineers Limited": {
+      "final_call": "APPLY",
+      "summary": "The strongest open issue on fundamentals: growing, profitable, and priced below listed peers. What holds it back from an outright APPLY is concentration risk on both ends of the business, and the fact that at 69x subscribed you are unlikely to be allotted anything anyway.",
+      "items": [
+        {
+          "text": "Revenue rose from Rs 137.71 cr (FY24) to Rs 189.40 cr (FY26) and net profit nearly doubled to Rs 22.59 cr, with EBITDA margin around 22%.",
+          "direction": "bullish",
+          "source": "IndMoney / TradingView IPO coverage"
+        },
+        {
+          "text": "At roughly 22x post-issue earnings it is priced below listed peers while carrying the highest RoE in that peer set - the valuation argument is comparative, not merely absolute.",
+          "direction": "bullish",
+          "source": "IndMoney review"
+        },
+        {
+          "text": "Customer concentration and supplier concentration are both flagged prospectus risks, and the company depends materially on Hy-Tech USA Inc. One lost relationship would move the earnings base.",
+          "direction": "bearish",
+          "source": "Prospectus risk factors via IPO reviews"
+        },
+        {
+          "text": "Expansion depends on machinery orders still pending, so the growth plan is not yet de-risked.",
+          "direction": "bearish",
+          "source": "IPO review coverage"
+        },
+        {
+          "text": "Heavily oversubscribed at the close, so allotment is a lottery and the realistic outcome for a single retail application is no allotment at all. Size the expectation accordingly.",
+          "direction": "neutral",
+          "source": "Final subscription data"
+        }
+      ],
+      "adjustment_reason": "The engine moved to APPLY once the final book was in, and I agree. The valuation is genuinely below peers, returns are strong and institutions committed at the close. The concentration risk on customers, suppliers and the US affiliate is the reason to size any application modestly rather than the reason to skip it."
+    },
+    "Symbiotec Pharmalab Limited": {
+      "final_call": "AVOID",
+      "summary": "A genuine global leader in two APIs wrapped in a deal structure that repeatedly favours the sellers over the buyer. Institutional demand at the close was heavy, which is a real counterweight - but it does not touch any of the governance concerns below.",
+      "items": [
+        {
+          "text": "Of the Rs 1,757 cr issue, Rs 1,607 cr is offer-for-sale and only Rs 150 cr is fresh capital. The company itself receives nothing from the OFS portion.",
+          "direction": "bearish",
+          "source": "Value Research / Swastika"
+        },
+        {
+          "text": "CONFLICT OF INTEREST: 82,98,243 promoter shares (13.22% of pre-offer capital) are pledged to Beacon Trusteeship against a Rs 197 cr debenture facility. The debenture holder, Nomura Capital (India), is a direct affiliate of Nomura Financial Advisory - a book running lead manager on this IPO.",
+          "direction": "bearish",
+          "source": "Prospectus / IPO Central"
+        },
+        {
+          "text": "A second lead manager, Motilal Oswal Investment Advisors, is an associate of India Business Excellence Fund III - itself a selling shareholder in the OFS.",
+          "direction": "bearish",
+          "source": "Prospectus disclosures"
+        },
+        {
+          "text": "Promoter holding falls from 34.5% to zero. Sellers include promoter Satwani Holdings LLP alongside Rosewood Investments and India Business Excellence Fund III - a coordinated exit, not a routine trim.",
+          "direction": "bearish",
+          "source": "Prospectus"
+        },
+        {
+          "text": "The grey market premium has fallen from about 41% to 29% across the bidding window even as the book filled - sentiment weakening into the close.",
+          "direction": "bearish",
+          "source": "Grey market history, fetched today"
+        },
+        {
+          "text": "Institutions bid heavily at the close, so the demand signal is genuinely strong. Read it for what it is: institutional appetite for a listing, not an endorsement of the governance structure.",
+          "direction": "bullish",
+          "source": "Final subscription data"
+        }
+      ],
+      "adjustment_reason": "I am keeping AVOID even though the engine has moved to NEUTRAL on the strength of the final book. The disagreement is deliberate and I want it visible: none of the reasons to avoid this issue changed during the afternoon. 91.5% of the money still goes to exiting shareholders, the promoter still leaves entirely, 13.22% of pre-offer capital is still pledged, and two lead managers still have interests on the other side of the table. Heavy institutional bidding on the last afternoon is a bet on the listing, not a verdict on the company you would be left holding."
+    },
+    "Skyways Air Services Limited": {
+      "final_call": "NEUTRAL",
+      "summary": "Reasonable logistics business, but you are paying a growth multiple for a wafer-thin margin in a trade the company does not control the economics of.",
+      "items": [
+        {
+          "text": "Post-issue P/E works out near 31.6x on diluted EPS - expensive for a logistics business running a 2.26% net margin.",
+          "direction": "bearish",
+          "source": "Business Standard IPO review"
+        },
+        {
+          "text": "Skyways does not own or control the aircraft and ships carrying its cargo. If capacity tightens or freight rates spike it either absorbs the cost or loses the customer.",
+          "direction": "bearish",
+          "source": "Business Standard / prospectus risks"
+        },
+        {
+          "text": "Exposed to global trade cycles, freight-rate volatility and heavy working capital needs, against far larger competitors.",
+          "direction": "bearish",
+          "source": "Prospectus risk factors"
+        },
+        {
+          "text": "Broker positioning is split: Swastika and Ventura say Subscribe, SBI Securities is Neutral - no consensus to lean on.",
+          "direction": "neutral",
+          "source": "Broker notes"
+        },
+        {
+          "text": "Diversified service portfolio, long operating history and established customer relationships are genuine strengths, and 68% of the issue is fresh capital.",
+          "direction": "bullish",
+          "source": "Business Standard"
+        }
+      ],
+      "adjustment_reason": "The engine moved to CONSIDER on the final book and I will not argue with the demand, but my own call stays NEUTRAL. A 2.1% net margin business at roughly 31.6x earnings has no margin of safety if freight rates move against it, and heavy last-day bidding does not change that arithmetic."
+    },
+    "Annu Projects Limited": {
+      "final_call": "NEUTRAL",
+      "summary": "The inverse of every other issue here: clean structure, real growth, no promoter cash-out - and almost no demand. Worth understanding why before treating cheap allotment as an opportunity.",
+      "items": [
+        {
+          "text": "Revenue rose from Rs 182.35 cr to Rs 244.59 cr and profit from Rs 21.10 cr to Rs 33.03 cr year on year - roughly 57% profit growth.",
+          "direction": "bullish",
+          "source": "IPO Watch / m.Stock"
+        },
+        {
+          "text": "The entire Rs 175 cr is a fresh issue. No promoter or investor sells a single share, so all proceeds go into the business.",
+          "direction": "bullish",
+          "source": "Chittorgarh / IPO Watch"
+        },
+        {
+          "text": "Still only 0.50x subscribed with one day left. Retail is undersubscribed, so applicants should receive full allotment rather than a lottery slice.",
+          "direction": "neutral",
+          "source": "Subscription data fetched today"
+        },
+        {
+          "text": "The grey market premium has sat near 4% all week while other open issues run at 30-80%. The market is consistently declining an issue whose reported numbers look sound, and that gap deserves an explanation before you supply your own.",
+          "direction": "bearish",
+          "source": "Grey market history, fetched today"
+        }
+      ],
+      "adjustment_reason": "NEUTRAL stands. This is the one issue where you would get essentially the full allotment you ask for - which cuts both ways. Full allotment of something the market is avoiding is not a bargain by itself."
+    },
+    "Lumino Industries Limited": {
+      "final_call": "CONSIDER",
+      "summary": "The best-priced mainboard issue currently open: about 15.6x post-issue earnings against a materially more expensive peer group, with real compounding behind it. The catch is that more than half its revenue depends on government and PSU tenders.",
+      "items": [
+        {
+          "text": "At the upper band of Rs 82 the issue is valued at about 15.6x FY26 post-issue earnings - materially below its listed peer group.",
+          "direction": "bullish",
+          "source": "Business Standard / Business Today"
+        },
+        {
+          "text": "Revenue, EBITDA and PAT compounded at 20.4%, 28.3% and 35.9% respectively over FY24-FY26.",
+          "direction": "bullish",
+          "source": "Business Standard"
+        },
+        {
+          "text": "Rs 337 cr of the proceeds repays borrowings, which directly cuts interest cost and strengthens the balance sheet.",
+          "direction": "bullish",
+          "source": "Business Today"
+        },
+        {
+          "text": "Government and PSU clients account for 53-86% of revenue. That makes cash flows tender-driven and lumpy, and ties the business to the public capex cycle.",
+          "direction": "bearish",
+          "source": "Business Standard risk summary"
+        },
+        {
+          "text": "Manufacturing is concentrated in one region, and margins are exposed to aluminium and other raw-material prices, on top of ordinary EPC execution risk.",
+          "direction": "bearish",
+          "source": "Broker risk notes"
+        },
+        {
+          "text": "Brokerages are broadly positive with 'subscribe' recommendations, citing reasonable valuation, integrated operations and capital efficiency.",
+          "direction": "bullish",
+          "source": "Business Standard / Business Today"
+        }
+      ],
+      "adjustment_reason": "This one exposed a real bug rather than a judgement call. The engine originally scored it NEUTRAL because the book stood at 0.22x - but bidding had opened that morning, and the rule could not tell 'nobody wants it' from 'it opened an hour ago'. Subscription scoring is now window-aware, and the engine independently reaches CONSIDER. The customer concentration on government and PSU clients remains the real risk, so size any application modestly and re-check the book on the final day."
+    },
+    "Kwick Forensic Solutions Limited": {
+      "final_call": "CONSIDER",
+      "summary": "Fast-growing niche forensics supplier with strong reported numbers, but it is an SME issue needing about Rs 1.44 lakh for a single lot, with heavy customer concentration and the thin post-listing liquidity that comes with the SME platform.",
+      "items": [
+        {
+          "text": "Revenue rose from Rs 65.08 cr to Rs 105.80 cr and profit from Rs 8.56 cr to Rs 13.51 cr year on year - roughly 63% and 58% growth.",
+          "direction": "bullish",
+          "source": "IPO Watch / StockGro"
+        },
+        {
+          "text": "EBITDA margin remains healthy near 18%, though it moderated slightly from FY25.",
+          "direction": "neutral",
+          "source": "IPO Watch"
+        },
+        {
+          "text": "Top ten customers account for 77.64% of revenue and government business for 55.22%. That is severe concentration - losing one or two relationships would reshape the company.",
+          "direction": "bearish",
+          "source": "Prospectus risk factors via IPO Watch"
+        },
+        {
+          "text": "The minimum application is 1600 shares at up to Rs 90, roughly Rs 1.44 lakh. That is a single large, undiversified position, and SME shares typically trade in very low volume after listing, so exiting can be genuinely difficult.",
+          "direction": "bearish",
+          "source": "Issue terms, fetched today"
+        },
+        {
+          "text": "IPO Watch rates it suitable for well-informed investors willing to hold medium to long term, rather than as a listing-gain trade.",
+          "direction": "neutral",
+          "source": "IPO Watch review"
+        },
+        {
+          "text": "One source reported the issue at Rs 31.42 cr when announced against about Rs 51 cr now - the size appears to have been revised, so verify the final figure in the RHP before applying.",
+          "direction": "neutral",
+          "source": "ScanX vs current issue terms"
+        }
+      ],
+      "adjustment_reason": "CONSIDER matches the computed verdict, but the SME caveat does most of the work here. The growth is real; the risk is that Rs 1.44 lakh buys an illiquid position in a company where three-quarters of revenue sits with ten customers. Only sensible if that sum is genuinely discretionary for you."
+    }
+  }
+}

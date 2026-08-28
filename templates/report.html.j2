@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BSE Morning Analysis — {{ report.run_at.strftime('%d %b %Y') }}</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --surface:#ffffff; --surface-2:#f0f2f5;
+    --ink:#14181f; --ink-2:#4a5462; --muted:#8b95a3; --line:#e2e6ec;
+    --up:#0a7d4f; --up-bg:#e6f5ee; --down:#c22b3d; --down-bg:#fdebed;
+    --warn:#9a6300; --warn-bg:#fdf3e0; --accent:#1f5fbf; --accent-bg:#e9f0fc;
+    --radius:12px;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:'SF Mono',ui-monospace,'Cascadia Mono','Consolas',monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0e1116; --surface:#161b22; --surface-2:#1c222b;
+      --ink:#e8edf4; --ink-2:#a9b4c2; --muted:#6e7a8a; --line:#262d38;
+      --up:#3fb984; --up-bg:#0f2a20; --down:#f2687c; --down-bg:#2c1418;
+      --warn:#e0a33a; --warn-bg:#2a2115; --accent:#5b9bf5; --accent-bg:#13233d;
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans);
+    font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px; margin:0 auto; padding:32px 20px 72px}
+  h1{font-size:26px; letter-spacing:-.02em; margin:0 0 4px}
+  h2{font-size:13px; text-transform:uppercase; letter-spacing:.09em;
+     color:var(--muted); margin:38px 0 14px; font-weight:600}
+  .sub{color:var(--ink-2); font-size:14px; margin:0}
+  .card{background:var(--surface); border:1px solid var(--line);
+        border-radius:var(--radius); padding:18px 20px; margin-bottom:14px}
+
+  /* summary */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px}
+  .stat{background:var(--surface); border:1px solid var(--line);
+        border-radius:var(--radius); padding:14px 16px}
+  .stat .label{font-size:11px; text-transform:uppercase; letter-spacing:.07em;
+               color:var(--muted); font-weight:600}
+  .stat .value{font-size:20px; font-weight:650; margin-top:3px;
+               font-variant-numeric:tabular-nums; letter-spacing:-.01em}
+  .up{color:var(--up)} .down{color:var(--down)}
+
+  /* market */
+  .market{display:flex; gap:20px; align-items:center; flex-wrap:wrap}
+  .market .lvl{font-size:28px; font-weight:680; font-variant-numeric:tabular-nums}
+  .market p{margin:8px 0 0; color:var(--ink-2); font-size:14px; flex:1 1 320px}
+
+  /* table */
+  .tablewrap{overflow-x:auto; border:1px solid var(--line);
+             border-radius:var(--radius); background:var(--surface)}
+  table{border-collapse:collapse; width:100%; font-size:14px}
+  th{font-size:11px; text-transform:uppercase; letter-spacing:.06em;
+     color:var(--muted); font-weight:600; text-align:right;
+     padding:11px 14px; border-bottom:1px solid var(--line); white-space:nowrap}
+  th:first-child{text-align:left}
+  td{padding:11px 14px; border-bottom:1px solid var(--line); text-align:right;
+     font-variant-numeric:tabular-nums; white-space:nowrap}
+  td:first-child{text-align:left; font-weight:600}
+  tr:last-child td{border-bottom:none}
+
+  /* badges */
+  .badge{display:inline-block; padding:3px 9px; border-radius:6px;
+         font-size:11px; font-weight:700; letter-spacing:.04em; white-space:nowrap}
+  .b-strongbuy{background:var(--up); color:#fff}
+  .b-accumulate{background:var(--up-bg); color:var(--up)}
+  .b-hold{background:var(--surface-2); color:var(--ink-2)}
+  .b-trim{background:var(--warn-bg); color:var(--warn)}
+  .b-exit{background:var(--down); color:#fff}
+  .b-apply{background:var(--up); color:#fff}
+  .b-consider{background:var(--warn-bg); color:var(--warn)}
+  .b-avoid{background:var(--down); color:#fff}
+  .b-neutral{background:var(--surface-2); color:var(--ink-2)}
+
+  /* holding cards */
+  .holding{background:var(--surface); border:1px solid var(--line);
+           border-radius:var(--radius); padding:18px 20px; margin-bottom:12px}
+  .holding.act-exit{border-left:3px solid var(--down)}
+  .holding.act-trim{border-left:3px solid var(--warn)}
+  .holding.act-strongbuy,.holding.act-accumulate{border-left:3px solid var(--up)}
+  .hhead{display:flex; justify-content:space-between; align-items:flex-start;
+         gap:16px; flex-wrap:wrap}
+  .sym{font-size:17px; font-weight:680; letter-spacing:-.01em}
+  .co{color:var(--muted); font-size:13px; font-weight:400}
+  .spark{display:block; margin:10px 0 4px; max-width:100%}
+  .metrics{display:flex; gap:18px; flex-wrap:wrap; margin:10px 0 2px;
+           font-size:13px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+  .metrics b{color:var(--ink); font-weight:620}
+
+  ul.ev{list-style:none; padding:0; margin:12px 0 0}
+  ul.ev li{display:flex; gap:9px; padding:5px 0; font-size:14px;
+           color:var(--ink-2); align-items:flex-start}
+  .ico{flex:0 0 auto; font-size:11px; line-height:1.7; width:12px}
+  .i-bull{color:var(--up)} .i-bear{color:var(--down)} .i-neu{color:var(--muted)}
+  .adj{background:var(--warn-bg); border-radius:8px; padding:9px 12px;
+       margin-top:10px; font-size:13.5px; color:var(--warn)}
+  .note{background:var(--accent-bg); border-radius:8px; padding:9px 12px;
+        margin-top:8px; font-size:13.5px; color:var(--accent)}
+  .changed{font-size:12.5px; color:var(--muted); font-style:italic; margin-top:6px}
+  .gaps{font-size:12.5px; color:var(--muted); margin-top:9px}
+  .warnbox{background:var(--warn-bg); border:1px solid var(--warn);
+           border-radius:var(--radius); padding:14px 18px; color:var(--warn)}
+  .errbox{background:var(--down-bg); border:1px solid var(--down);
+          border-radius:var(--radius); padding:14px 18px; color:var(--down)}
+  .warnbox ul,.errbox ul{margin:6px 0 0; padding-left:18px}
+  footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line);
+         color:var(--muted); font-size:12.5px}
+  code{font-family:var(--mono); font-size:12.5px; background:var(--surface-2);
+       padding:1px 5px; border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>BSE Morning Analysis</h1>
+  <p class="sub">
+    {{ report.run_at.strftime('%A %d %B %Y, %H:%M') }} IST
+    {% if report.session_date %} · data as of session {{ report.session_date }}{% endif %}
+  </p>
+
+  {% if report.load_errors %}
+    <div class="errbox" style="margin-top:20px">
+      <strong>Portfolio could not be loaded</strong>
+      <ul>{% for e in report.load_errors %}<li>{{ e }}</li>{% endfor %}</ul>
+    </div>
+  {% else %}
+
+  {% if report.market.level %}
+  <h2>Market backdrop</h2>
+  <div class="card market">
+    <div>
+      <div class="lvl">{{ '{:,.2f}'.format(report.market.level) }}</div>
+      <div class="{{ 'up' if (report.market.change_pct or 0) >= 0 else 'down' }}"
+           style="font-weight:600">
+        {{ report.market.benchmark_name }}
+        {{ '{:+.2f}'.format(report.market.change_pct or 0) }}%
+      </div>
+    </div>
+    {% if market_chart %}{{ market_chart|safe }}{% endif %}
+    <p>{{ report.market.trend_note }}</p>
+  </div>
+  {% endif %}
+
+  {% if report.portfolio %}
+  <h2>Portfolio</h2>
+  <div class="grid">
+    <div class="stat"><div class="label">Value</div>
+      <div class="value">{{ report.portfolio.total_value|rupees }}</div></div>
+    <div class="stat"><div class="label">Invested</div>
+      <div class="value">{{ report.portfolio.total_invested|rupees }}</div></div>
+    <div class="stat"><div class="label">Unrealised P&amp;L</div>
+      <div class="value {{ 'up' if report.portfolio.total_pnl >= 0 else 'down' }}">
+        {{ report.portfolio.total_pnl|rupees }}
+        <span style="font-size:14px">({{ report.portfolio.total_pnl_pct|pct }})</span>
+      </div></div>
+    <div class="stat"><div class="label">Holdings</div>
+      <div class="value">{{ report.positions|length }}</div></div>
+  </div>
+  {% endif %}
+
+  {% if report.positions %}
+  <h2>Holdings</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr>
+        <th>Symbol</th><th>Price</th><th>Avg cost</th><th>P&amp;L</th>
+        <th>Weight</th><th>Score</th><th>Conf.</th><th>Action</th>
+      </tr></thead>
+      <tbody>
+      {% for a in positions %}
+        <tr>
+          <td>{{ a.position.symbol }}</td>
+          <td>{{ '{:,.2f}'.format(a.current_price) }}</td>
+          <td>{{ '{:,.2f}'.format(a.position.avg_buy_price) }}</td>
+          <td class="{{ 'up' if a.pnl >= 0 else 'down' }}">
+            {{ '{:+,.0f}'.format(a.pnl) }} ({{ a.pnl_pct|pct }})</td>
+          <td>{{ a.weight|pct_plain }}</td>
+          <td>{{ '{:+.2f}'.format(a.signal.composite) }}</td>
+          <td>{{ a.signal.confidence|pct_plain }}</td>
+          <td><span class="badge b-{{ a.final_action|lower|replace(' ','') }}">
+            {{ a.final_action }}</span></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Reasoning</h2>
+  {% for a in positions %}
+  <div class="holding act-{{ a.final_action|lower|replace(' ','') }}">
+    <div class="hhead">
+      <div>
+        <div class="sym">{{ a.position.symbol }}
+          <span class="co">{{ a.company_name or '' }}{% if a.sector %} · {{ a.sector }}{% endif %}</span>
+        </div>
+      </div>
+      <span class="badge b-{{ a.final_action|lower|replace(' ','') }}">{{ a.final_action }}</span>
+    </div>
+
+    {% set c = charts.get(a.position.symbol) %}
+    {% if c and c.svg %}{{ c.svg|safe }}{% endif %}
+
+    <div class="metrics">
+      <span>Price <b>{{ '{:,.2f}'.format(a.current_price) }}</b></span>
+      <span>Holding <b>{{ '{:g}'.format(a.position.quantity) }}</b> @
+        <b>{{ '{:,.2f}'.format(a.position.avg_buy_price) }}</b></span>
+      <span>Value <b>{{ a.market_value|rupees }}</b></span>
+      {% if a.suggested_stop %}
+      <span>Stop <b>{{ '{:,.2f}'.format(a.suggested_stop) }}</b></span>
+      {% endif %}
+      {% if a.pe %}<span>P/E <b>{{ '{:.1f}'.format(a.pe) }}</b></span>{% endif %}
+      {% if a.is_long_term %}<span>Long-term</span>
+      {% elif a.days_to_ltcg is not none %}
+      <span><b>{{ a.days_to_ltcg }}</b>d to long-term</span>{% endif %}
+    </div>
+
+    {% if a.action_changed %}
+    <div class="changed">The chart alone pointed to {{ a.signal.action }};
+      position context changed it to {{ a.final_action }}.</div>
+    {% endif %}
+
+    <ul class="ev">
+      {% for e in a.signal.evidence[:6] %}
+      <li><span class="ico {{ 'i-bull' if e.direction=='bullish' else ('i-bear' if e.direction=='bearish' else 'i-neu') }}">
+        {{ '▲' if e.direction=='bullish' else ('▼' if e.direction=='bearish' else '•') }}</span>
+        <span>{{ e.statement }}</span></li>
+      {% endfor %}
+    </ul>
+
+    {% for adj in a.adjustments %}
+    <div class="adj">{{ adj.statement }}</div>
+    {% endfor %}
+    {% for note in a.notes %}
+    <div class="note">{{ note }}</div>
+    {% endfor %}
+
+    {% if a.signal.missing_axes %}
+    <div class="gaps">Data gaps: {{ a.signal.missing_axes|join(', ') }} —
+      excluded from the score, which is why confidence is
+      {{ a.signal.confidence|pct_plain }}.</div>
+    {% endif %}
+    {% if a.signal.data_note %}<div class="gaps">{{ a.signal.data_note }}</div>{% endif %}
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  <h2>IPOs</h2>
+  {% if report.ipos %}
+    {% for ipo in report.ipos %}
+    <div class="holding act-{{ ipo.verdict|lower }}">
+      <div class="hhead">
+        <div class="sym">{{ ipo.name }}
+          <span class="co">{{ ipo.ipo_type }}</span></div>
+        <span class="badge b-{{ ipo.verdict|lower }}">{{ ipo.verdict }}</span>
+      </div>
+      <div class="metrics">
+        {% if ipo.price_band %}<span>Band <b>{{ ipo.price_band }}</b></span>{% endif %}
+        {% if ipo.lot_size %}<span>Lot <b>{{ ipo.lot_size }}</b></span>{% endif %}
+        {% if ipo.min_investment %}<span>Min <b>{{ ipo.min_investment|rupees }}</b></span>{% endif %}
+        {% if ipo.close_date %}<span>Closes <b>{{ ipo.close_date }}</b></span>{% endif %}
+        {% if ipo.issue_size %}<span>Size <b>{{ ipo.issue_size }}</b></span>{% endif %}
+      </div>
+      <ul class="ev">
+        {% for e in ipo.evidence %}
+        <li><span class="ico {{ 'i-bull' if e.direction=='bullish' else ('i-bear' if e.direction=='bearish' else 'i-neu') }}">
+          {{ '▲' if e.direction=='bullish' else ('▼' if e.direction=='bearish' else '•') }}</span>
+          <span>{{ e.statement }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="card" style="color:var(--muted)">No IPOs open for subscription today.</div>
+  {% endif %}
+
+  {% if report.portfolio and report.portfolio.warnings %}
+  <h2>Risk warnings</h2>
+  <div class="warnbox">
+    <ul>{% for w in report.portfolio.warnings %}<li>{{ w }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+
+  {% if report.unresolved %}
+  <h2>Holdings not analysed</h2>
+  <div class="errbox">
+    <ul>
+    {% for u in report.unresolved %}
+      <li><strong>{{ u.symbol }}</strong> — {{ u.reason }}
+        {% if u.suggestions %}<ul>
+          {% for s in u.suggestions[:3] %}
+          <li>did you mean <code>{{ s.symbol }}</code> ({{ s.scrip_code }}) — {{ s.name }}?</li>
+          {% endfor %}
+        </ul>{% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% if report.data_issues %}
+  <h2>Data quality notes</h2>
+  <div class="card" style="color:var(--ink-2); font-size:13.5px">
+    <ul style="margin:0; padding-left:18px">
+      {% for d in report.data_issues %}<li>{{ d }}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% endif %}
+
+  <footer>
+    Generated by your local BSE morning analyser in
+    {{ report.timings.get('total_s','?') }}s. Prices and fundamentals from BSE;
+    indicator history from Yahoo Finance.
+    <br><br>
+    <strong>This is decision support, not financial advice.</strong> Every score
+    here is derived from past prices and published figures. It cannot see news,
+    management quality, regulatory action, or anything that has not happened
+    yet. Markets are not predictable, and no indicator changes that.
+  </footer>
+</div>
+</body>
+</html>

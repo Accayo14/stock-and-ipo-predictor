@@ -1,0 +1,2015 @@
+{
+  "generated": "2026-08-28T19:54:45.103967",
+  "date": "2026-08-28",
+  "count": 10,
+  "ipos": [
+    {
+      "name": "Annu Projects Limited",
+      "type": "MainBoard",
+      "verdict": "NEUTRAL",
+      "score": 0.129,
+      "confidence": 1.0,
+      "open_date": "2026-08-25",
+      "close_date": "2026-08-28",
+      "days_left": 0,
+      "price_band": "94.00 - 99.00",
+      "lot_size": 151,
+      "min_investment": 14949.0,
+      "issue_size": "\u20b9175.06 Cr",
+      "ofs_share": 0.0,
+      "subscription": {
+        "qib": 1.72,
+        "nii": 3.55,
+        "rii": 2.68,
+        "total": 2.93
+      },
+      "subscription_history": [
+        {
+          "bid_date": "25th Aug 2026 17:09",
+          "qib": 0.57,
+          "nii": 0.36,
+          "rii": 0.28,
+          "total": 0.34,
+          "total_bid_amt_cr": 59.74
+        },
+        {
+          "bid_date": "26th Aug 2026 18:56",
+          "qib": 0.58,
+          "nii": 0.39,
+          "rii": 0.51,
+          "total": 0.47,
+          "total_bid_amt_cr": 82.24
+        },
+        {
+          "bid_date": "27th Aug 2026 17:11",
+          "qib": 1.16,
+          "nii": 0.9,
+          "rii": 0.81,
+          "total": 0.88,
+          "total_bid_amt_cr": 153.82
+        },
+        {
+          "bid_date": "28th Aug 2026 18:55",
+          "qib": 1.72,
+          "nii": 3.55,
+          "rii": 2.68,
+          "total": 2.93,
+          "total_bid_amt_cr": 513.26
+        }
+      ],
+      "subscription_momentum": {
+        "from": 0.88,
+        "to": 2.93,
+        "delta": 2.0500000000000003,
+        "snapshots": 4
+      },
+      "retail_allotment_odds": 0.3731,
+      "gmp": {
+        "value": 1.0,
+        "pct": 1.01,
+        "estimated_listing": 100.0,
+        "updated": "Aug 28th 2026 07:34 PM"
+      },
+      "gmp_trend": {
+        "direction": "rising",
+        "change_pp": 1.01,
+        "latest": 1.01,
+        "earlier": 0.0,
+        "days": 3,
+        "points": 7
+      },
+      "gmp_history": [
+        {
+          "date": "28-08-2026",
+          "gmp": 1.0,
+          "pct": 1.01,
+          "estimated_listing": 100.0
+        },
+        {
+          "date": "27-08-2026",
+          "gmp": 7.0,
+          "pct": 7.07,
+          "estimated_listing": 106.0
+        },
+        {
+          "date": "26-08-2026",
+          "gmp": 4.0,
+          "pct": 4.04,
+          "estimated_listing": 103.0
+        },
+        {
+          "date": "25-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 99.0
+        },
+        {
+          "date": "24-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 99.0
+        },
+        {
+          "date": "23-08-2026",
+          "gmp": 4.0,
+          "pct": 4.04,
+          "estimated_listing": 103.0
+        },
+        {
+          "date": "22-08-2026",
+          "gmp": 4.0,
+          "pct": 4.04,
+          "estimated_listing": 103.0
+        }
+      ],
+      "timetable": {
+        "allotment": "31st Aug 2026",
+        "refund": "31st Aug 2026",
+        "credit": "1st Sep 2026",
+        "listing": "2nd Sep 2026"
+      },
+      "application_tiers": {
+        "min": "151 shares (1 lot)",
+        "retail_max": "2114 shares (14 lots)",
+        "shni_min": "2114 shares (14 lots)",
+        "bhni_min": "10117 shares (67 lots)"
+      },
+      "reservation": {
+        "retail": "Not less than 50% of the Issue",
+        "qib": "Not more than 10% of the Issue",
+        "nii": "Not less than 40% of the Issue"
+      },
+      "registrar": "Kfin Technologies Ltd.",
+      "anchor": {
+        "participated": 0,
+        "shares": null,
+        "note": "no anchor investors",
+        "url": null
+      },
+      "is_upcoming": false,
+      "closes_today": true,
+      "financials": {
+        "eps": 6.91,
+        "eps_post_issue": 5.04,
+        "pe": 14.33,
+        "post_issue_pe": 19.64,
+        "ronw": 17.29,
+        "ronw_prev": 21.27,
+        "debt_equity": 0.2,
+        "pat_margin": 11.72,
+        "pat_margin_prev": 13.69,
+        "promoter_pre": 89.11,
+        "promoter_post": 65.05,
+        "as_of": "2026-03-31"
+      },
+      "axis_scores": {
+        "subscription": 0.193,
+        "valuation": -0.121,
+        "financials": 0.338,
+        "gmp": 0.213,
+        "qualitative": 0.1
+      },
+      "evidence": [
+        {
+          "axis": "qualitative",
+          "statement": "No anchor investors took part. Anchors commit a day before bidding opens after seeing the prospectus and meeting management, so an empty anchor book means informed institutional money declined this price before retail was ever asked",
+          "direction": "bearish",
+          "score": -0.6
+        },
+        {
+          "axis": "valuation",
+          "statement": "EPS falls from 6.91 to 5.04 post-issue (-27%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline",
+          "direction": "bearish",
+          "score": -0.541
+        },
+        {
+          "axis": "financials",
+          "statement": "Debt-to-equity is 0.20 - a conservatively financed balance sheet",
+          "direction": "bullish",
+          "score": 0.533
+        },
+        {
+          "axis": "qualitative",
+          "statement": "100% of the issue is fresh capital going into the business rather than to selling shareholders",
+          "direction": "bullish",
+          "score": 0.5
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has risen from 0.0% to 1.0% over the last 3 day(s) - unofficial demand is building into the close",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "qualitative",
+          "statement": "Promoters retain 65.0% after the issue (from 89.1%), keeping their interests aligned with yours",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "financials",
+          "statement": "Net profit margin is 11.7%, down from 13.7%",
+          "direction": "bullish",
+          "score": 0.327
+        },
+        {
+          "axis": "valuation",
+          "statement": "Priced at 19.6x post-issue earnings - a reasonable, mid-range multiple",
+          "direction": "bullish",
+          "score": 0.3
+        },
+        {
+          "axis": "subscription",
+          "statement": "Overall subscription is 2.93x on the close - covered, but without the heavy oversubscription that usually precedes a strong listing",
+          "direction": "bullish",
+          "score": 0.241
+        },
+        {
+          "axis": "financials",
+          "statement": "Return on net worth is 17.3%, declined from 21.3% - comfortably above the ~12% that marks a business earning more than its cost of capital",
+          "direction": "bullish",
+          "score": 0.153
+        },
+        {
+          "axis": "subscription",
+          "statement": "Institutional (QIB) book is 1.72x at the close - institutions who did the diligence committed capital",
+          "direction": "bullish",
+          "score": 0.144
+        },
+        {
+          "axis": "gmp",
+          "statement": "Grey market premium is 1.0% - a slim expected listing gain, easily erased by a weak market on listing day",
+          "direction": "neutral",
+          "score": 0.025
+        }
+      ],
+      "unavailable": [],
+      "detail_url": "https://www.investorgain.com/ipo/annu-projects-ipo/1815"
+    },
+    {
+      "name": "Lumino Industries Limited",
+      "type": "MainBoard",
+      "verdict": "CONSIDER",
+      "score": 0.237,
+      "confidence": 1.0,
+      "open_date": "2026-08-27",
+      "close_date": "2026-08-31",
+      "days_left": 3,
+      "price_band": "78.00 - 82.00",
+      "lot_size": 182,
+      "min_investment": 14924.0,
+      "issue_size": "\u20b9700.00 Cr",
+      "ofs_share": 0.286,
+      "subscription": {
+        "qib": 0.06,
+        "nii": 8.18,
+        "rii": 6.87,
+        "total": 5.14
+      },
+      "subscription_history": [
+        {
+          "bid_date": "27th Aug 2026 17:11",
+          "qib": 0.04,
+          "nii": 2.2,
+          "rii": 2.08,
+          "total": 1.51,
+          "total_bid_amt_cr": 742.44
+        },
+        {
+          "bid_date": "28th Aug 2026 17:07",
+          "qib": 0.06,
+          "nii": 8.18,
+          "rii": 6.87,
+          "total": 5.14,
+          "total_bid_amt_cr": 2532.34
+        }
+      ],
+      "subscription_momentum": {
+        "from": 1.51,
+        "to": 5.14,
+        "delta": 3.63,
+        "snapshots": 2
+      },
+      "retail_allotment_odds": 0.1456,
+      "gmp": {
+        "value": 59.0,
+        "pct": 71.95,
+        "estimated_listing": 141.0,
+        "updated": "Aug 28th 2026 07:29 PM"
+      },
+      "gmp_trend": {
+        "direction": "rising",
+        "change_pp": 15.850000000000001,
+        "latest": 71.95,
+        "earlier": 56.1,
+        "days": 3,
+        "points": 7
+      },
+      "gmp_history": [
+        {
+          "date": "28-08-2026",
+          "gmp": 59.0,
+          "pct": 71.95,
+          "estimated_listing": 141.0
+        },
+        {
+          "date": "27-08-2026",
+          "gmp": 56.0,
+          "pct": 68.29,
+          "estimated_listing": 138.0
+        },
+        {
+          "date": "26-08-2026",
+          "gmp": 50.0,
+          "pct": 60.98,
+          "estimated_listing": 132.0
+        },
+        {
+          "date": "25-08-2026",
+          "gmp": 46.0,
+          "pct": 56.1,
+          "estimated_listing": 128.0
+        },
+        {
+          "date": "24-08-2026",
+          "gmp": 47.0,
+          "pct": 57.32,
+          "estimated_listing": 129.0
+        },
+        {
+          "date": "23-08-2026",
+          "gmp": 49.0,
+          "pct": 59.76,
+          "estimated_listing": 131.0
+        },
+        {
+          "date": "22-08-2026",
+          "gmp": 52.0,
+          "pct": 63.41,
+          "estimated_listing": 134.0
+        }
+      ],
+      "timetable": {
+        "allotment": "1st Sep 2026",
+        "refund": "2nd Sep 2026",
+        "credit": "2nd Sep 2026",
+        "listing": "3rd Sep 2026"
+      },
+      "application_tiers": {
+        "min": "182 shares (1 lot)",
+        "retail_max": "2548 shares (14 lots)",
+        "shni_min": "2548 shares (14 lots)",
+        "bhni_min": "12376 shares (68 lots)"
+      },
+      "reservation": {
+        "retail": "Not less than 35% of the Net Offer",
+        "qib": "Not more than 50% of the Net Offer",
+        "nii": "Not less than 15% of the Net Offer"
+      },
+      "registrar": "Bigshare Services Pvt.Ltd.",
+      "anchor": {
+        "participated": 1,
+        "shares": 25243901,
+        "note": "25,243,901 shares placed with anchor investors",
+        "url": "https://www.chittorgarh.net/reports/anchor-investor/lumino-industries-ipo-anchor-allocation-report.pdf"
+      },
+      "is_upcoming": false,
+      "closes_today": false,
+      "financials": {
+        "eps": 6.57,
+        "eps_post_issue": 5.25,
+        "pe": 12.48,
+        "post_issue_pe": 15.62,
+        "ronw": 24.52,
+        "ronw_prev": 24.62,
+        "debt_equity": 0.73,
+        "pat_margin": 6.4,
+        "pat_margin_prev": 7.66,
+        "promoter_pre": 100.0,
+        "promoter_post": 71.97,
+        "as_of": "2026-03-31"
+      },
+      "axis_scores": {
+        "subscription": 0.235,
+        "valuation": -0.051,
+        "financials": 0.233,
+        "gmp": 0.7,
+        "qualitative": 0.417
+      },
+      "evidence": [
+        {
+          "axis": "gmp",
+          "statement": "Grey market premium is 72.0%, implying a listing near 141 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
+          "direction": "bullish",
+          "score": 1.0
+        },
+        {
+          "axis": "financials",
+          "statement": "Return on net worth is 24.5%, declined from 24.6% - comfortably above the ~12% that marks a business earning more than its cost of capital",
+          "direction": "bullish",
+          "score": 0.635
+        },
+        {
+          "axis": "subscription",
+          "statement": "Overall subscription is 5.1x on day 2 - solid demand across the book",
+          "direction": "bullish",
+          "score": 0.517
+        },
+        {
+          "axis": "qualitative",
+          "statement": "71% of the issue is fresh capital going into the business rather than to selling shareholders",
+          "direction": "bullish",
+          "score": 0.5
+        },
+        {
+          "axis": "valuation",
+          "statement": "EPS falls from 6.57 to 5.25 post-issue (-20%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline",
+          "direction": "bearish",
+          "score": -0.402
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has risen from 56.1% to 72.0% over the last 3 day(s) - unofficial demand is building into the close",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "qualitative",
+          "statement": "Promoters retain 72.0% after the issue (from 100.0%), keeping their interests aligned with yours",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "qualitative",
+          "statement": "25,243,901 shares were placed with anchor investors ahead of the issue, so institutions committed capital after seeing the prospectus",
+          "direction": "bullish",
+          "score": 0.35
+        },
+        {
+          "axis": "valuation",
+          "statement": "Priced at 15.6x post-issue earnings - a reasonable, mid-range multiple",
+          "direction": "bullish",
+          "score": 0.3
+        },
+        {
+          "axis": "financials",
+          "statement": "Debt-to-equity is 0.73 - meaningful leverage, which amplifies both good and bad years",
+          "direction": "bullish",
+          "score": 0.18
+        },
+        {
+          "axis": "financials",
+          "statement": "Net profit margin is 6.4%, down from 7.7%",
+          "direction": "bearish",
+          "score": -0.117
+        },
+        {
+          "axis": "subscription",
+          "statement": "Institutional (QIB) book is 0.06x, but QIB bids almost always arrive on the final day, so this figure carries little information yet",
+          "direction": "neutral",
+          "score": -0.047
+        }
+      ],
+      "unavailable": [],
+      "detail_url": "https://www.investorgain.com/ipo/lumino-industries-ipo/1619"
+    },
+    {
+      "name": "Kwick Forensic Solutions Limited",
+      "type": "SME",
+      "verdict": "CONSIDER",
+      "score": 0.318,
+      "confidence": 1.0,
+      "open_date": "2026-08-27",
+      "close_date": "2026-08-31",
+      "days_left": 3,
+      "price_band": "85.00 - 90.00",
+      "lot_size": 1600,
+      "min_investment": 144000.0,
+      "issue_size": "\u20b950.77 Cr",
+      "ofs_share": 0.202,
+      "subscription": {
+        "qib": 0.0,
+        "nii": 11.88,
+        "rii": 36.23,
+        "total": 20.67
+      },
+      "subscription_history": [
+        {
+          "bid_date": "27th Aug 2026 17:08",
+          "qib": 0.0,
+          "nii": 4.29,
+          "rii": 13.17,
+          "total": 7.51,
+          "total_bid_amt_cr": 253.81
+        },
+        {
+          "bid_date": "28th Aug 2026 17:07",
+          "qib": 0.0,
+          "nii": 11.88,
+          "rii": 36.23,
+          "total": 20.67,
+          "total_bid_amt_cr": 698.63
+        }
+      ],
+      "subscription_momentum": {
+        "from": 7.51,
+        "to": 20.67,
+        "delta": 13.160000000000002,
+        "snapshots": 2
+      },
+      "retail_allotment_odds": 0.0276,
+      "gmp": {
+        "value": 64.0,
+        "pct": 71.11,
+        "estimated_listing": 154.0,
+        "updated": "Aug 28th 2026 07:33 PM"
+      },
+      "gmp_trend": {
+        "direction": "flat",
+        "change_pp": 0.0,
+        "latest": 71.11,
+        "earlier": 71.11,
+        "days": 3,
+        "points": 7
+      },
+      "gmp_history": [
+        {
+          "date": "28-08-2026",
+          "gmp": 64.0,
+          "pct": 71.11,
+          "estimated_listing": 154.0
+        },
+        {
+          "date": "27-08-2026",
+          "gmp": 64.0,
+          "pct": 71.11,
+          "estimated_listing": 154.0
+        },
+        {
+          "date": "26-08-2026",
+          "gmp": 64.0,
+          "pct": 71.11,
+          "estimated_listing": 154.0
+        },
+        {
+          "date": "25-08-2026",
+          "gmp": 64.0,
+          "pct": 71.11,
+          "estimated_listing": 154.0
+        },
+        {
+          "date": "24-08-2026",
+          "gmp": 64.0,
+          "pct": 71.11,
+          "estimated_listing": 154.0
+        },
+        {
+          "date": "23-08-2026",
+          "gmp": 61.0,
+          "pct": 67.78,
+          "estimated_listing": 151.0
+        },
+        {
+          "date": "22-08-2026",
+          "gmp": 51.0,
+          "pct": 56.67,
+          "estimated_listing": 141.0
+        }
+      ],
+      "timetable": {
+        "allotment": "1st Sep 2026",
+        "refund": "2nd Sep 2026",
+        "credit": "2nd Sep 2026",
+        "listing": "3rd Sep 2026"
+      },
+      "application_tiers": {
+        "min": "3200 shares (2 lots)",
+        "retail_max": "3200 shares (2 lots)",
+        "shni_min": "4800 shares (3 lots)",
+        "bhni_min": "4800 shares (3 lots)"
+      },
+      "reservation": {
+        "retail": "Not less than 35% of the Net offer",
+        "qib": "Not more than 50% of the Net Offer",
+        "nii": "Not less than 15% of the Net offer"
+      },
+      "registrar": "Bigshare Services Pvt.Ltd.",
+      "anchor": {
+        "participated": 1,
+        "shares": 1603200,
+        "note": "1,603,200 shares placed with anchor investors",
+        "url": "https://www.chittorgarh.net/reports/anchor-investor/kwick-forensic-ipo-anchor-allocation-letter.pdf"
+      },
+      "is_upcoming": false,
+      "closes_today": false,
+      "financials": {
+        "eps": 8.0,
+        "eps_post_issue": 6.3,
+        "pe": 11.25,
+        "post_issue_pe": 14.29,
+        "ronw": 30.68,
+        "ronw_prev": 32.62,
+        "debt_equity": 0.12,
+        "pat_margin": 13.16,
+        "pat_margin_prev": 12.78,
+        "promoter_pre": 88.54,
+        "promoter_post": 64.65,
+        "as_of": "2026-03-31"
+      },
+      "axis_scores": {
+        "subscription": 0.475,
+        "valuation": 0.137,
+        "financials": 0.661,
+        "gmp": 0.5,
+        "qualitative": 0.417
+      },
+      "evidence": [
+        {
+          "axis": "subscription",
+          "statement": "Overall subscription is 20.7x on day 2 - very heavy demand, though it also means allotment odds are thin",
+          "direction": "bullish",
+          "score": 1.0
+        },
+        {
+          "axis": "gmp",
+          "statement": "Grey market premium is 71.1%, implying a listing near 154 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
+          "direction": "bullish",
+          "score": 1.0
+        },
+        {
+          "axis": "financials",
+          "statement": "Return on net worth is 30.7%, declined from 32.6% - comfortably above the ~12% that marks a business earning more than its cost of capital",
+          "direction": "bullish",
+          "score": 0.8
+        },
+        {
+          "axis": "valuation",
+          "statement": "Priced at 14.3x post-issue earnings - undemanding for a listed peer group",
+          "direction": "bullish",
+          "score": 0.7
+        },
+        {
+          "axis": "financials",
+          "statement": "Net profit margin is 13.2%, up from 12.8%",
+          "direction": "bullish",
+          "score": 0.597
+        },
+        {
+          "axis": "financials",
+          "statement": "Debt-to-equity is 0.12 - a conservatively financed balance sheet",
+          "direction": "bullish",
+          "score": 0.587
+        },
+        {
+          "axis": "qualitative",
+          "statement": "80% of the issue is fresh capital going into the business rather than to selling shareholders",
+          "direction": "bullish",
+          "score": 0.5
+        },
+        {
+          "axis": "valuation",
+          "statement": "EPS falls from 8.00 to 6.30 post-issue (-21%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline",
+          "direction": "bearish",
+          "score": -0.425
+        },
+        {
+          "axis": "qualitative",
+          "statement": "Promoters retain 64.7% after the issue (from 88.5%), keeping their interests aligned with yours",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "qualitative",
+          "statement": "1,603,200 shares were placed with anchor investors ahead of the issue, so institutions committed capital after seeing the prospectus",
+          "direction": "bullish",
+          "score": 0.35
+        },
+        {
+          "axis": "qualitative",
+          "statement": "This is an SME issue. SME listings trade in large lot sizes with far thinner liquidity and lighter disclosure than mainboard stocks, so the score carries a 0.10 risk penalty and exiting can be genuinely difficult",
+          "direction": "bearish",
+          "score": -0.1
+        },
+        {
+          "axis": "subscription",
+          "statement": "Institutional (QIB) book is 0.00x, but QIB bids almost always arrive on the final day, so this figure carries little information yet",
+          "direction": "neutral",
+          "score": -0.05
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has held roughly flat near 71.1% across 7 days of quotes - stable, if unexciting, sentiment",
+          "direction": "neutral",
+          "score": 0.0
+        }
+      ],
+      "unavailable": [],
+      "detail_url": "https://www.investorgain.com/ipo/kwick-forensic-solutions-ipo/2013"
+    },
+    {
+      "name": "Priority Jewels Limited",
+      "type": "MainBoard",
+      "verdict": "CONSIDER",
+      "score": 0.276,
+      "confidence": 1.0,
+      "open_date": "2026-08-28",
+      "close_date": "2026-09-01",
+      "days_left": 4,
+      "price_band": "190.00 - 200.00",
+      "lot_size": 75,
+      "min_investment": 15000.0,
+      "issue_size": "\u20b991.50 Cr",
+      "ofs_share": 0.0,
+      "subscription": {
+        "qib": 0.44,
+        "nii": 1.24,
+        "rii": 3.07,
+        "total": 1.93
+      },
+      "subscription_history": [
+        {
+          "bid_date": "28th Aug 2026 17:08",
+          "qib": 0.44,
+          "nii": 1.24,
+          "rii": 3.07,
+          "total": 1.93,
+          "total_bid_amt_cr": 123.68
+        }
+      ],
+      "subscription_momentum": null,
+      "retail_allotment_odds": 0.3257,
+      "gmp": {
+        "value": 45.0,
+        "pct": 22.5,
+        "estimated_listing": 245.0,
+        "updated": "Aug 28th 2026 07:28 PM"
+      },
+      "gmp_trend": {
+        "direction": "rising",
+        "change_pp": 7.5,
+        "latest": 22.5,
+        "earlier": 15.0,
+        "days": 3,
+        "points": 5
+      },
+      "gmp_history": [
+        {
+          "date": "28-08-2026",
+          "gmp": 45.0,
+          "pct": 22.5,
+          "estimated_listing": 245.0
+        },
+        {
+          "date": "27-08-2026",
+          "gmp": 37.0,
+          "pct": 18.5,
+          "estimated_listing": 237.0
+        },
+        {
+          "date": "26-08-2026",
+          "gmp": 20.0,
+          "pct": 10.0,
+          "estimated_listing": 220.0
+        },
+        {
+          "date": "25-08-2026",
+          "gmp": 30.0,
+          "pct": 15.0,
+          "estimated_listing": 230.0
+        },
+        {
+          "date": "24-08-2026",
+          "gmp": 28.0,
+          "pct": 14.0,
+          "estimated_listing": 228.0
+        }
+      ],
+      "timetable": {
+        "allotment": "2nd Sep 2026",
+        "refund": "3rd Sep 2026",
+        "credit": "3rd Sep 2026",
+        "listing": "4th Sep 2026"
+      },
+      "application_tiers": {
+        "min": "75 shares (1 lot)",
+        "retail_max": "1050 shares (14 lots)",
+        "shni_min": "1050 shares (14 lots)",
+        "bhni_min": "5025 shares (67 lots)"
+      },
+      "reservation": {
+        "retail": "Not less than 35% of the Offer",
+        "qib": "Not more than 50% of the Offer",
+        "nii": "Not less than 15% of the Offer"
+      },
+      "registrar": "MUFG Intime India Pvt.Ltd.",
+      "anchor": {
+        "participated": 1,
+        "shares": 1372500,
+        "note": "1,372,500 shares placed with anchor investors",
+        "url": "https://www.chittorgarh.net/reports/anchor-investor/priority-jewels-ipo-anchor-allocation-letter.pdf"
+      },
+      "is_upcoming": false,
+      "closes_today": false,
+      "financials": {
+        "eps": 13.15,
+        "eps_post_issue": 14.39,
+        "pe": 15.21,
+        "post_issue_pe": 13.9,
+        "ronw": 12.73,
+        "ronw_prev": 4.44,
+        "debt_equity": 0.74,
+        "pat_margin": 3.27,
+        "pat_margin_prev": 4.39,
+        "promoter_pre": 93.85,
+        "promoter_post": 0.0,
+        "as_of": "2026-06-30"
+      },
+      "axis_scores": {
+        "subscription": 0.044,
+        "valuation": 0.7,
+        "financials": -0.052,
+        "gmp": 0.481,
+        "qualitative": -0.017
+      },
+      "evidence": [
+        {
+          "axis": "qualitative",
+          "statement": "Promoter holding goes from 93.8% to 0.0% - the promoters are exiting entirely. Whatever the stated rationale, nobody knows the business better, and they are choosing not to own it",
+          "direction": "bearish",
+          "score": -0.9
+        },
+        {
+          "axis": "valuation",
+          "statement": "Priced at 13.9x post-issue earnings - undemanding for a listed peer group",
+          "direction": "bullish",
+          "score": 0.7
+        },
+        {
+          "axis": "gmp",
+          "statement": "Grey market premium is 22.5%, implying a listing near 245",
+          "direction": "bullish",
+          "score": 0.562
+        },
+        {
+          "axis": "qualitative",
+          "statement": "100% of the issue is fresh capital going into the business rather than to selling shareholders",
+          "direction": "bullish",
+          "score": 0.5
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has risen from 15.0% to 22.5% over the last 3 day(s) - unofficial demand is building into the close",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "financials",
+          "statement": "Net profit margin is 3.3%, down from 4.4%",
+          "direction": "bearish",
+          "score": -0.378
+        },
+        {
+          "axis": "qualitative",
+          "statement": "1,372,500 shares were placed with anchor investors ahead of the issue, so institutions committed capital after seeing the prospectus",
+          "direction": "bullish",
+          "score": 0.35
+        },
+        {
+          "axis": "financials",
+          "statement": "Debt-to-equity is 0.74 - meaningful leverage, which amplifies both good and bad years",
+          "direction": "bullish",
+          "score": 0.173
+        },
+        {
+          "axis": "subscription",
+          "statement": "Overall subscription is 1.93x on day 1 - covered, but without the heavy oversubscription that usually precedes a strong listing",
+          "direction": "bullish",
+          "score": 0.116
+        },
+        {
+          "axis": "financials",
+          "statement": "Return on net worth is 12.7%, improved from 4.4% - modest returns on the capital employed",
+          "direction": "neutral",
+          "score": 0.049
+        },
+        {
+          "axis": "subscription",
+          "statement": "Institutional (QIB) book is 0.44x, but QIB bids almost always arrive on the final day, so this figure carries little information yet",
+          "direction": "neutral",
+          "score": -0.028
+        }
+      ],
+      "unavailable": [],
+      "detail_url": "https://www.investorgain.com/ipo/priority-jewels-ipo/1783"
+    },
+    {
+      "name": "Esds Software Solution Limited",
+      "type": "MainBoard",
+      "verdict": "NEUTRAL",
+      "score": 0.086,
+      "confidence": 1.0,
+      "open_date": "2026-08-28",
+      "close_date": "2026-09-01",
+      "days_left": 4,
+      "price_band": "408.00 - 429.00",
+      "lot_size": 34,
+      "min_investment": 14586.0,
+      "issue_size": "\u20b9720.00 Cr",
+      "ofs_share": 0.0,
+      "subscription": {
+        "qib": 0.01,
+        "nii": 3.7,
+        "rii": 2.84,
+        "total": 2.21
+      },
+      "subscription_history": [
+        {
+          "bid_date": "28th Aug 2026 17:08",
+          "qib": 0.01,
+          "nii": 3.7,
+          "rii": 2.84,
+          "total": 2.21,
+          "total_bid_amt_cr": 1115.77
+        }
+      ],
+      "subscription_momentum": null,
+      "retail_allotment_odds": 0.3521,
+      "gmp": {
+        "value": 370.0,
+        "pct": 86.25,
+        "estimated_listing": 799.0,
+        "updated": "Aug 28th 2026 07:37 PM"
+      },
+      "gmp_trend": {
+        "direction": "rising",
+        "change_pp": 22.150000000000006,
+        "latest": 86.25,
+        "earlier": 64.1,
+        "days": 3,
+        "points": 4
+      },
+      "gmp_history": [
+        {
+          "date": "28-08-2026",
+          "gmp": 370.0,
+          "pct": 86.25,
+          "estimated_listing": 799.0
+        },
+        {
+          "date": "27-08-2026",
+          "gmp": 325.0,
+          "pct": 75.76,
+          "estimated_listing": 754.0
+        },
+        {
+          "date": "26-08-2026",
+          "gmp": 365.0,
+          "pct": 85.08,
+          "estimated_listing": 794.0
+        },
+        {
+          "date": "25-08-2026",
+          "gmp": 275.0,
+          "pct": 64.1,
+          "estimated_listing": 704.0
+        }
+      ],
+      "timetable": {
+        "allotment": "2nd Sep 2026",
+        "refund": "3rd Sep 2026",
+        "credit": "3rd Sep 2026",
+        "listing": "4th Sep 2026"
+      },
+      "application_tiers": {
+        "min": "34 shares (1 lot)",
+        "retail_max": "476 shares (14 lots)",
+        "shni_min": "476 shares (14 lots)",
+        "bhni_min": "2346 shares (69 lots)"
+      },
+      "reservation": {
+        "retail": "Not less than 35% of the Net Issue",
+        "qib": "Not more than 50% of the Offer",
+        "nii": "Not more than 15% of the Issue"
+      },
+      "registrar": "MUFG Intime India Pvt.Ltd.",
+      "anchor": {
+        "participated": 1,
+        "shares": 5034964,
+        "note": "5,034,964 shares placed with anchor investors",
+        "url": "https://www.chittorgarh.net/reports/anchor-investor/esds-software-ipo-anchor-allocation-letter.pdf"
+      },
+      "is_upcoming": false,
+      "closes_today": false,
+      "financials": {
+        "eps": 12.03,
+        "eps_post_issue": 10.31,
+        "pe": 35.66,
+        "post_issue_pe": 41.61,
+        "ronw": 13.71,
+        "ronw_prev": 22.85,
+        "debt_equity": 0.15,
+        "pat_margin": 15.39,
+        "pat_margin_prev": 25.59,
+        "promoter_pre": 46.06,
+        "promoter_post": 39.47,
+        "as_of": "2026-03-31"
+      },
+      "axis_scores": {
+        "subscription": 0.051,
+        "valuation": -0.468,
+        "financials": 0.371,
+        "gmp": 0.7,
+        "qualitative": 0.183
+      },
+      "evidence": [
+        {
+          "axis": "gmp",
+          "statement": "Grey market premium is 86.2%, implying a listing near 799 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
+          "direction": "bullish",
+          "score": 1.0
+        },
+        {
+          "axis": "valuation",
+          "statement": "Priced at 41.6x post-issue earnings - expensive. At this multiple most of the next few years of growth is already in the price",
+          "direction": "bearish",
+          "score": -0.65
+        },
+        {
+          "axis": "financials",
+          "statement": "Net profit margin is 15.4%, down from 25.6%",
+          "direction": "bullish",
+          "score": 0.633
+        },
+        {
+          "axis": "financials",
+          "statement": "Debt-to-equity is 0.15 - a conservatively financed balance sheet",
+          "direction": "bullish",
+          "score": 0.567
+        },
+        {
+          "axis": "qualitative",
+          "statement": "100% of the issue is fresh capital going into the business rather than to selling shareholders",
+          "direction": "bullish",
+          "score": 0.5
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has risen from 64.1% to 86.2% over the last 3 day(s) - unofficial demand is building into the close",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "qualitative",
+          "statement": "5,034,964 shares were placed with anchor investors ahead of the issue, so institutions committed capital after seeing the prospectus",
+          "direction": "bullish",
+          "score": 0.35
+        },
+        {
+          "axis": "qualitative",
+          "statement": "Promoter holding falls from 46.1% to 39.5%, leaving limited skin in the game",
+          "direction": "bearish",
+          "score": -0.3
+        },
+        {
+          "axis": "valuation",
+          "statement": "EPS falls from 12.03 to 10.31 post-issue (-14%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline",
+          "direction": "bearish",
+          "score": -0.286
+        },
+        {
+          "axis": "subscription",
+          "statement": "Overall subscription is 2.21x on day 1 - covered, but without the heavy oversubscription that usually precedes a strong listing",
+          "direction": "bullish",
+          "score": 0.151
+        },
+        {
+          "axis": "financials",
+          "statement": "Return on net worth is 13.7%, declined from 22.9% - modest returns on the capital employed",
+          "direction": "bearish",
+          "score": -0.086
+        },
+        {
+          "axis": "subscription",
+          "statement": "Institutional (QIB) book is 0.01x, but QIB bids almost always arrive on the final day, so this figure carries little information yet",
+          "direction": "neutral",
+          "score": -0.05
+        }
+      ],
+      "unavailable": [],
+      "detail_url": "https://www.investorgain.com/ipo/esds-software-ipo/1607"
+    },
+    {
+      "name": "Paluck Technologies Limited",
+      "type": "SME",
+      "verdict": "APPLY",
+      "score": 0.489,
+      "confidence": 1.0,
+      "open_date": "2026-08-28",
+      "close_date": "2026-09-01",
+      "days_left": 4,
+      "price_band": "46.00 - 48.00",
+      "lot_size": 3000,
+      "min_investment": 144000.0,
+      "issue_size": "\u20b933.00 Cr",
+      "ofs_share": 0.0,
+      "subscription": {
+        "qib": 10.49,
+        "nii": 1.93,
+        "rii": 5.7,
+        "total": 18.18
+      },
+      "subscription_history": [
+        {
+          "bid_date": "28th Aug 2026 17:08",
+          "qib": 10.49,
+          "nii": 1.93,
+          "rii": 5.7,
+          "total": 18.18,
+          "total_bid_amt_cr": 137.46
+        }
+      ],
+      "subscription_momentum": null,
+      "retail_allotment_odds": 0.1754,
+      "gmp": {
+        "value": 25.0,
+        "pct": 52.08,
+        "estimated_listing": 73.0,
+        "updated": "Aug 28th 2026 07:29 PM"
+      },
+      "gmp_trend": {
+        "direction": "rising",
+        "change_pp": 14.579999999999998,
+        "latest": 52.08,
+        "earlier": 37.5,
+        "days": 3,
+        "points": 5
+      },
+      "gmp_history": [
+        {
+          "date": "28-08-2026",
+          "gmp": 25.0,
+          "pct": 52.08,
+          "estimated_listing": 73.0
+        },
+        {
+          "date": "27-08-2026",
+          "gmp": 25.0,
+          "pct": 52.08,
+          "estimated_listing": 73.0
+        },
+        {
+          "date": "26-08-2026",
+          "gmp": 25.0,
+          "pct": 52.08,
+          "estimated_listing": 73.0
+        },
+        {
+          "date": "25-08-2026",
+          "gmp": 18.0,
+          "pct": 37.5,
+          "estimated_listing": 66.0
+        },
+        {
+          "date": "24-08-2026",
+          "gmp": 10.0,
+          "pct": 20.83,
+          "estimated_listing": 58.0
+        }
+      ],
+      "timetable": {
+        "allotment": "2nd Sep 2026",
+        "refund": "3rd Sep 2026",
+        "credit": "3rd Sep 2026",
+        "listing": "4th Sep 2026"
+      },
+      "application_tiers": {
+        "min": "6000 shares (2 lots)",
+        "retail_max": "6000 shares (2 lots)",
+        "shni_min": "9000 shares (3 lots)",
+        "bhni_min": "9000 shares (3 lots)"
+      },
+      "reservation": {
+        "retail": "Not less than 35% of the Net Issue",
+        "qib": "Not more than 50% of the Net Issue",
+        "nii": "Not less than 15% of the Net Issue"
+      },
+      "registrar": "Bigshare Services Pvt.Ltd.",
+      "anchor": {
+        "participated": 1,
+        "shares": 1956000,
+        "note": "1,956,000 shares placed with anchor investors",
+        "url": "https://www.chittorgarh.net/reports/anchor-investor/paluck-technologies-ipo-anchor-allocation-letter.pdf"
+      },
+      "is_upcoming": false,
+      "closes_today": false,
+      "financials": {
+        "eps": 6.91,
+        "eps_post_issue": 7.25,
+        "pe": 6.95,
+        "post_issue_pe": 6.62,
+        "ronw": 30.28,
+        "ronw_prev": 30.31,
+        "debt_equity": 0.55,
+        "pat_margin": 9.37,
+        "pat_margin_prev": 13.18,
+        "promoter_pre": 86.55,
+        "promoter_post": 57.97,
+        "as_of": "2026-02-28"
+      },
+      "axis_scores": {
+        "subscription": 0.65,
+        "valuation": 0.7,
+        "financials": 0.41,
+        "gmp": 0.7,
+        "qualitative": 0.417
+      },
+      "evidence": [
+        {
+          "axis": "subscription",
+          "statement": "Overall subscription is 18.2x on day 1 - very heavy demand, though it also means allotment odds are thin",
+          "direction": "bullish",
+          "score": 1.0
+        },
+        {
+          "axis": "gmp",
+          "statement": "Grey market premium is 52.1%, implying a listing near 73 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
+          "direction": "bullish",
+          "score": 1.0
+        },
+        {
+          "axis": "financials",
+          "statement": "Return on net worth is 30.3%, declined from 30.3% - comfortably above the ~12% that marks a business earning more than its cost of capital",
+          "direction": "bullish",
+          "score": 0.8
+        },
+        {
+          "axis": "valuation",
+          "statement": "Priced at 6.6x post-issue earnings - undemanding for a listed peer group",
+          "direction": "bullish",
+          "score": 0.7
+        },
+        {
+          "axis": "qualitative",
+          "statement": "100% of the issue is fresh capital going into the business rather than to selling shareholders",
+          "direction": "bullish",
+          "score": 0.5
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has risen from 37.5% to 52.1% over the last 3 day(s) - unofficial demand is building into the close",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "qualitative",
+          "statement": "Promoters retain 58.0% after the issue (from 86.5%), keeping their interests aligned with yours",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "qualitative",
+          "statement": "1,956,000 shares were placed with anchor investors ahead of the issue, so institutions committed capital after seeing the prospectus",
+          "direction": "bullish",
+          "score": 0.35
+        },
+        {
+          "axis": "subscription",
+          "statement": "Institutional (QIB) book is 10.49x, but QIB bids almost always arrive on the final day, so this figure carries little information yet",
+          "direction": "bullish",
+          "score": 0.3
+        },
+        {
+          "axis": "financials",
+          "statement": "Debt-to-equity is 0.55 - meaningful leverage, which amplifies both good and bad years",
+          "direction": "bullish",
+          "score": 0.3
+        },
+        {
+          "axis": "financials",
+          "statement": "Net profit margin is 9.4%, down from 13.2%",
+          "direction": "bullish",
+          "score": 0.131
+        },
+        {
+          "axis": "qualitative",
+          "statement": "This is an SME issue. SME listings trade in large lot sizes with far thinner liquidity and lighter disclosure than mainboard stocks, so the score carries a 0.10 risk penalty and exiting can be genuinely difficult",
+          "direction": "bearish",
+          "score": -0.1
+        }
+      ],
+      "unavailable": [],
+      "detail_url": "https://www.investorgain.com/ipo/paluck-technologies-ipo/1963"
+    },
+    {
+      "name": "Complete Sports And Management India Limited",
+      "type": "SME",
+      "verdict": "NEUTRAL",
+      "score": 0.053,
+      "confidence": 1.0,
+      "open_date": "2026-08-28",
+      "close_date": "2026-09-01",
+      "days_left": 4,
+      "price_band": "128.00 - 135.00",
+      "lot_size": 1000,
+      "min_investment": 135000.0,
+      "issue_size": "\u20b974.93 Cr",
+      "ofs_share": 0.0,
+      "subscription": {
+        "qib": 0.0,
+        "nii": 0.52,
+        "rii": 0.04,
+        "total": 0.13
+      },
+      "subscription_history": [
+        {
+          "bid_date": "28th Aug 2026 17:08",
+          "qib": 0.0,
+          "nii": 0.52,
+          "rii": 0.04,
+          "total": 0.13,
+          "total_bid_amt_cr": 6.51
+        }
+      ],
+      "subscription_momentum": null,
+      "retail_allotment_odds": 1.0,
+      "gmp": {
+        "value": 0.0,
+        "pct": 0.0,
+        "estimated_listing": 135.0,
+        "updated": "Aug 28th 2026 07:36 PM"
+      },
+      "gmp_trend": {
+        "direction": "flat",
+        "change_pp": 0.0,
+        "latest": 0.0,
+        "earlier": 0.0,
+        "days": 3,
+        "points": 6
+      },
+      "gmp_history": [
+        {
+          "date": "28-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 135.0
+        },
+        {
+          "date": "27-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 135.0
+        },
+        {
+          "date": "26-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 135.0
+        },
+        {
+          "date": "25-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 135.0
+        },
+        {
+          "date": "24-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 135.0
+        },
+        {
+          "date": "23-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": null
+        }
+      ],
+      "timetable": {
+        "allotment": "2nd Sep 2026",
+        "refund": "3rd Sep 2026",
+        "credit": "3rd Sep 2026",
+        "listing": "4th Sep 2026"
+      },
+      "application_tiers": {
+        "min": "2000 shares (2 lots)",
+        "retail_max": "2000 shares (2 lots)",
+        "shni_min": "3000 shares (3 lots)",
+        "bhni_min": "3000 shares (3 lots)"
+      },
+      "reservation": {
+        "retail": "Not less than 35% of the Net Issue",
+        "qib": "Not more than 50% of the Net Issue",
+        "nii": "Not less than 15% of the Net Issue"
+      },
+      "registrar": "Bigshare Services Pvt.Ltd.",
+      "anchor": {
+        "participated": 1,
+        "shares": 1579000,
+        "note": "1,579,000 shares placed with anchor investors",
+        "url": "https://www.chittorgarh.net/reports/anchor-investor/complete-sports-ipo-anchor-allocation-letter.pdf"
+      },
+      "is_upcoming": false,
+      "closes_today": false,
+      "financials": {
+        "eps": 12.11,
+        "eps_post_issue": 8.84,
+        "pe": 11.15,
+        "post_issue_pe": 15.27,
+        "ronw": 42.27,
+        "ronw_prev": null,
+        "debt_equity": 0.21,
+        "pat_margin": 15.81,
+        "pat_margin_prev": null,
+        "promoter_pre": 96.8,
+        "promoter_post": 0.0,
+        "as_of": "2026-03-31"
+      },
+      "axis_scores": {
+        "subscription": -0.025,
+        "valuation": -0.12,
+        "financials": 0.781,
+        "gmp": 0.0,
+        "qualitative": -0.017
+      },
+      "evidence": [
+        {
+          "axis": "financials",
+          "statement": "Return on net worth is 42.3% - comfortably above the ~12% that marks a business earning more than its cost of capital",
+          "direction": "bullish",
+          "score": 1.0
+        },
+        {
+          "axis": "qualitative",
+          "statement": "Promoter holding goes from 96.8% to 0.0% - the promoters are exiting entirely. Whatever the stated rationale, nobody knows the business better, and they are choosing not to own it",
+          "direction": "bearish",
+          "score": -0.9
+        },
+        {
+          "axis": "financials",
+          "statement": "Net profit margin is 15.8%",
+          "direction": "bullish",
+          "score": 0.818
+        },
+        {
+          "axis": "valuation",
+          "statement": "EPS falls from 12.11 to 8.84 post-issue (-27%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline",
+          "direction": "bearish",
+          "score": -0.54
+        },
+        {
+          "axis": "financials",
+          "statement": "Debt-to-equity is 0.21 - a conservatively financed balance sheet",
+          "direction": "bullish",
+          "score": 0.527
+        },
+        {
+          "axis": "qualitative",
+          "statement": "100% of the issue is fresh capital going into the business rather than to selling shareholders",
+          "direction": "bullish",
+          "score": 0.5
+        },
+        {
+          "axis": "qualitative",
+          "statement": "1,579,000 shares were placed with anchor investors ahead of the issue, so institutions committed capital after seeing the prospectus",
+          "direction": "bullish",
+          "score": 0.35
+        },
+        {
+          "axis": "valuation",
+          "statement": "Priced at 15.3x post-issue earnings - a reasonable, mid-range multiple",
+          "direction": "bullish",
+          "score": 0.3
+        },
+        {
+          "axis": "qualitative",
+          "statement": "This is an SME issue. SME listings trade in large lot sizes with far thinner liquidity and lighter disclosure than mainboard stocks, so the score carries a 0.10 risk penalty and exiting can be genuinely difficult",
+          "direction": "bearish",
+          "score": -0.1
+        },
+        {
+          "axis": "subscription",
+          "statement": "Institutional (QIB) book is 0.00x, but QIB bids almost always arrive on the final day, so this figure carries little information yet",
+          "direction": "neutral",
+          "score": -0.05
+        },
+        {
+          "axis": "subscription",
+          "statement": "Overall subscription is 0.13x on day 1, but bidding has only just opened - books fill fastest on the final day, so this figure carries little information yet",
+          "direction": "neutral",
+          "score": -0.0
+        },
+        {
+          "axis": "gmp",
+          "statement": "Grey market premium is 0.0% - the unofficial market expects a flat-to-negative listing",
+          "direction": "neutral",
+          "score": 0.0
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has held roughly flat near 0.0% across 6 days of quotes - stable, if unexciting, sentiment",
+          "direction": "neutral",
+          "score": 0.0
+        }
+      ],
+      "unavailable": [],
+      "detail_url": "https://www.investorgain.com/ipo/complete-sports-and-management-ipo/2339"
+    },
+    {
+      "name": "Purple Style Labs Limited",
+      "type": "MainBoard",
+      "verdict": "AVOID",
+      "score": -0.508,
+      "confidence": 0.77,
+      "open_date": "2026-08-31",
+      "close_date": "2026-09-02",
+      "days_left": 5,
+      "price_band": "546.00 - 575.00",
+      "lot_size": 26,
+      "min_investment": 14950.0,
+      "issue_size": "\u20b9680.00 Cr",
+      "ofs_share": 0.0,
+      "subscription": {
+        "qib": null,
+        "nii": null,
+        "rii": null,
+        "total": null
+      },
+      "subscription_history": [],
+      "subscription_momentum": null,
+      "retail_allotment_odds": null,
+      "gmp": {
+        "value": 0.0,
+        "pct": 0.0,
+        "estimated_listing": 575.0,
+        "updated": "Aug 28th 2026 07:36 PM"
+      },
+      "gmp_trend": {
+        "direction": "flat",
+        "change_pp": 0.0,
+        "latest": 0.0,
+        "earlier": 0.0,
+        "days": 2,
+        "points": 3
+      },
+      "gmp_history": [
+        {
+          "date": "28-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 575.0
+        },
+        {
+          "date": "27-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 575.0
+        },
+        {
+          "date": "26-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 575.0
+        }
+      ],
+      "timetable": {
+        "allotment": "3rd Sep 2026",
+        "refund": "4th Sep 2026",
+        "credit": "4th Sep 2026",
+        "listing": "7th Sep 2026"
+      },
+      "application_tiers": {
+        "min": "26 shares (1 lot)",
+        "retail_max": "364 shares (14 lots)",
+        "shni_min": "364 shares (14 lots)",
+        "bhni_min": "1742 shares (67 lots)"
+      },
+      "reservation": {
+        "retail": "Not more than 10% of the Issue",
+        "qib": "Not less than 75% of the Issue",
+        "nii": "Not more than 15% of the Issue"
+      },
+      "registrar": "Kfin Technologies Ltd.",
+      "anchor": {
+        "participated": 1,
+        "shares": null,
+        "note": "anchor investors participated",
+        "url": null
+      },
+      "is_upcoming": true,
+      "closes_today": false,
+      "financials": {
+        "eps": -41.83,
+        "eps_post_issue": -35.37,
+        "pe": -13.75,
+        "post_issue_pe": -16.26,
+        "ronw": -160.33,
+        "ronw_prev": null,
+        "debt_equity": null,
+        "pat_margin": -38.45,
+        "pat_margin_prev": -51.16,
+        "promoter_pre": 26.34,
+        "promoter_post": 0.0,
+        "as_of": "2026-03-31"
+      },
+      "axis_scores": {
+        "subscription": 0.0,
+        "valuation": -0.454,
+        "financials": -1.0,
+        "gmp": 0.0,
+        "qualitative": -0.2
+      },
+      "evidence": [
+        {
+          "axis": "financials",
+          "statement": "Return on net worth is -160.3% - modest returns on the capital employed",
+          "direction": "bearish",
+          "score": -1.0
+        },
+        {
+          "axis": "financials",
+          "statement": "Net profit margin is -38.5%, up from -51.2% - a very thin margin leaves almost no cushion if costs rise or pricing weakens",
+          "direction": "bearish",
+          "score": -1.0
+        },
+        {
+          "axis": "qualitative",
+          "statement": "Promoter holding goes from 26.3% to 0.0% - the promoters are exiting entirely. Whatever the stated rationale, nobody knows the business better, and they are choosing not to own it",
+          "direction": "bearish",
+          "score": -0.9
+        },
+        {
+          "axis": "valuation",
+          "statement": "The company is loss-making, so no meaningful P/E can be computed - you are buying a story, not current earnings",
+          "direction": "bearish",
+          "score": -0.6
+        },
+        {
+          "axis": "qualitative",
+          "statement": "100% of the issue is fresh capital going into the business rather than to selling shareholders",
+          "direction": "bullish",
+          "score": 0.5
+        },
+        {
+          "axis": "valuation",
+          "statement": "EPS falls from -41.83 to -35.37 post-issue (-15%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline",
+          "direction": "bearish",
+          "score": -0.309
+        },
+        {
+          "axis": "gmp",
+          "statement": "Grey market premium is 0.0% - the unofficial market expects a flat-to-negative listing",
+          "direction": "neutral",
+          "score": 0.0
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has held roughly flat near 0.0% across 3 days of quotes - stable, if unexciting, sentiment",
+          "direction": "neutral",
+          "score": 0.0
+        }
+      ],
+      "unavailable": [
+        "debt/equity",
+        "subscription figures not yet published"
+      ],
+      "detail_url": "https://www.investorgain.com/ipo/purple-style-labs-ipo/1897"
+    },
+    {
+      "name": "Rays Of Belief Limited",
+      "type": "MainBoard",
+      "verdict": "NEUTRAL",
+      "score": 0.067,
+      "confidence": 0.78,
+      "open_date": "2026-09-01",
+      "close_date": "2026-09-03",
+      "days_left": 6,
+      "price_band": "227.00 - 239.00",
+      "lot_size": 62,
+      "min_investment": 14818.0,
+      "issue_size": "\u20b9125.00 Cr",
+      "ofs_share": 0.0,
+      "subscription": {
+        "qib": null,
+        "nii": null,
+        "rii": null,
+        "total": null
+      },
+      "subscription_history": [],
+      "subscription_momentum": null,
+      "retail_allotment_odds": null,
+      "gmp": {
+        "value": 29.0,
+        "pct": 12.13,
+        "estimated_listing": 268.0,
+        "updated": "Aug 28th 2026 07:32 PM"
+      },
+      "gmp_trend": {
+        "direction": "rising",
+        "change_pp": 12.13,
+        "latest": 12.13,
+        "earlier": 0.0,
+        "days": 3,
+        "points": 7
+      },
+      "gmp_history": [
+        {
+          "date": "28-08-2026",
+          "gmp": 29.0,
+          "pct": 12.13,
+          "estimated_listing": 268.0
+        },
+        {
+          "date": "27-08-2026",
+          "gmp": 10.0,
+          "pct": 4.18,
+          "estimated_listing": 249.0
+        },
+        {
+          "date": "26-08-2026",
+          "gmp": 18.0,
+          "pct": 7.53,
+          "estimated_listing": 257.0
+        },
+        {
+          "date": "25-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 239.0
+        },
+        {
+          "date": "24-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 239.0
+        },
+        {
+          "date": "23-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": null
+        },
+        {
+          "date": "22-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": null
+        }
+      ],
+      "timetable": {
+        "allotment": "4th Sep 2026",
+        "refund": "7th Sep 2026",
+        "credit": "7th Sep 2026",
+        "listing": "8th Sep 2026"
+      },
+      "application_tiers": {
+        "min": "62 shares (1 lot)",
+        "retail_max": "868 shares (14 lots)",
+        "shni_min": "868 shares (14 lots)",
+        "bhni_min": "4216 shares (68 lots)"
+      },
+      "reservation": {
+        "retail": "Not more than 10% of the Issue",
+        "qib": "Not less than 75% of the Issue size",
+        "nii": "Not more than 15% of the Issue"
+      },
+      "registrar": "Kfin Technologies Ltd.",
+      "anchor": {
+        "participated": 1,
+        "shares": null,
+        "note": "anchor investors participated",
+        "url": null
+      },
+      "is_upcoming": true,
+      "closes_today": false,
+      "financials": {
+        "eps": 3.16,
+        "eps_post_issue": 2.37,
+        "pe": 75.63,
+        "post_issue_pe": 100.84,
+        "ronw": 56.56,
+        "ronw_prev": 21.64,
+        "debt_equity": 0.29,
+        "pat_margin": 16.15,
+        "pat_margin_prev": 6.07,
+        "promoter_pre": 92.93,
+        "promoter_post": 0.0,
+        "as_of": "2026-03-31"
+      },
+      "axis_scores": {
+        "subscription": 0.0,
+        "valuation": -0.575,
+        "financials": 0.773,
+        "gmp": 0.352,
+        "qualitative": -0.2
+      },
+      "evidence": [
+        {
+          "axis": "financials",
+          "statement": "Return on net worth is 56.6%, improved from 21.6% - comfortably above the ~12% that marks a business earning more than its cost of capital",
+          "direction": "bullish",
+          "score": 1.0
+        },
+        {
+          "axis": "qualitative",
+          "statement": "Promoter holding goes from 92.9% to 0.0% - the promoters are exiting entirely. Whatever the stated rationale, nobody knows the business better, and they are choosing not to own it",
+          "direction": "bearish",
+          "score": -0.9
+        },
+        {
+          "axis": "financials",
+          "statement": "Net profit margin is 16.1%, up from 6.1%",
+          "direction": "bullish",
+          "score": 0.846
+        },
+        {
+          "axis": "valuation",
+          "statement": "Priced at 100.8x post-issue earnings - expensive. At this multiple most of the next few years of growth is already in the price",
+          "direction": "bearish",
+          "score": -0.65
+        },
+        {
+          "axis": "valuation",
+          "statement": "EPS falls from 3.16 to 2.37 post-issue (-25%) - the new shares dilute existing earnings, which is normal but means the effective multiple you pay is higher than the headline",
+          "direction": "bearish",
+          "score": -0.5
+        },
+        {
+          "axis": "qualitative",
+          "statement": "100% of the issue is fresh capital going into the business rather than to selling shareholders",
+          "direction": "bullish",
+          "score": 0.5
+        },
+        {
+          "axis": "financials",
+          "statement": "Debt-to-equity is 0.29 - a conservatively financed balance sheet",
+          "direction": "bullish",
+          "score": 0.473
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has risen from 0.0% to 12.1% over the last 3 day(s) - unofficial demand is building into the close",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "gmp",
+          "statement": "Grey market premium is 12.1%, implying a listing near 268",
+          "direction": "bullish",
+          "score": 0.303
+        }
+      ],
+      "unavailable": [
+        "subscription figures not yet published"
+      ],
+      "detail_url": "https://www.investorgain.com/ipo/rays-of-belief-ipo/2041"
+    },
+    {
+      "name": "Deepa Jewellers Limited",
+      "type": "MainBoard",
+      "verdict": "CONSIDER",
+      "score": 0.332,
+      "confidence": 0.48,
+      "open_date": "2026-09-01",
+      "close_date": "2026-09-03",
+      "days_left": 6,
+      "price_band": "168.00 - 177.00",
+      "lot_size": 84,
+      "min_investment": 14868.0,
+      "issue_size": "\u20b9459.72 Cr",
+      "ofs_share": 0.456,
+      "subscription": {
+        "qib": null,
+        "nii": null,
+        "rii": null,
+        "total": null
+      },
+      "subscription_history": [],
+      "subscription_momentum": null,
+      "retail_allotment_odds": null,
+      "gmp": {
+        "value": 47.0,
+        "pct": 26.55,
+        "estimated_listing": 224.0,
+        "updated": "Aug 28th 2026 07:29 PM"
+      },
+      "gmp_trend": {
+        "direction": "flat",
+        "change_pp": 0.0,
+        "latest": 26.55,
+        "earlier": 26.55,
+        "days": 1,
+        "points": 2
+      },
+      "gmp_history": [
+        {
+          "date": "28-08-2026",
+          "gmp": 47.0,
+          "pct": 26.55,
+          "estimated_listing": 224.0
+        },
+        {
+          "date": "27-08-2026",
+          "gmp": 47.0,
+          "pct": 26.55,
+          "estimated_listing": 224.0
+        }
+      ],
+      "timetable": {
+        "allotment": "4th Sep 2026",
+        "refund": "7th Sep 2026",
+        "credit": "7th Sep 2026",
+        "listing": "8th Sep 2026"
+      },
+      "application_tiers": {
+        "min": "84 shares (1 lot)",
+        "retail_max": "1176 shares (14 lots)",
+        "shni_min": "1176 shares (14 lots)",
+        "bhni_min": "5712 shares (68 lots)"
+      },
+      "reservation": {
+        "retail": "Not less than 35% of the Net Offer",
+        "qib": "Not more than 50% of the Net Offer",
+        "nii": "Not less than 15% of the Net Offer"
+      },
+      "registrar": "Bigshare Services Pvt.Ltd.",
+      "anchor": {
+        "participated": 1,
+        "shares": null,
+        "note": "anchor investors participated",
+        "url": null
+      },
+      "is_upcoming": true,
+      "closes_today": false,
+      "financials": {
+        "eps": 4.95,
+        "eps_post_issue": null,
+        "pe": null,
+        "post_issue_pe": null,
+        "ronw": 56.45,
+        "ronw_prev": null,
+        "debt_equity": 0.47,
+        "pat_margin": 5.44,
+        "pat_margin_prev": null,
+        "promoter_pre": 100.0,
+        "promoter_post": 72.98,
+        "as_of": "2025-09-30"
+      },
+      "axis_scores": {
+        "subscription": 0.0,
+        "valuation": 0.0,
+        "financials": 0.436,
+        "gmp": 0.332,
+        "qualitative": 0.075
+      },
+      "evidence": [
+        {
+          "axis": "financials",
+          "statement": "Return on net worth is 56.5% - comfortably above the ~12% that marks a business earning more than its cost of capital",
+          "direction": "bullish",
+          "score": 1.0
+        },
+        {
+          "axis": "gmp",
+          "statement": "Grey market premium is 26.6%, implying a listing near 224",
+          "direction": "bullish",
+          "score": 0.664
+        },
+        {
+          "axis": "qualitative",
+          "statement": "Promoters retain 73.0% after the issue (from 100.0%), keeping their interests aligned with yours",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
+          "axis": "financials",
+          "statement": "Debt-to-equity is 0.47 - a conservatively financed balance sheet",
+          "direction": "bullish",
+          "score": 0.353
+        },
+        {
+          "axis": "qualitative",
+          "statement": "46% of the issue is an offer for sale, so only 54% of the proceeds fund the company itself",
+          "direction": "bearish",
+          "score": -0.25
+        },
+        {
+          "axis": "financials",
+          "statement": "Net profit margin is 5.4%",
+          "direction": "neutral",
+          "score": -0.047
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has held roughly flat near 26.6% across 2 days of quotes - stable, if unexciting, sentiment",
+          "direction": "neutral",
+          "score": 0.0
+        }
+      ],
+      "unavailable": [
+        "price/earnings ratio",
+        "subscription figures not yet published"
+      ],
+      "detail_url": "https://www.investorgain.com/ipo/deepa-jewellers-ipo/2081"
+    }
+  ]
+}

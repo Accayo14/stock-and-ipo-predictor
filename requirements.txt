@@ -1,0 +1,13 @@
+# Core data + analysis
+requests>=2.31
+pandas>=2.2
+numpy>=1.26
+
+# Config & parsing
+PyYAML>=6.0
+beautifulsoup4>=4.12
+lxml>=5.0
+
+# Reporting
+Jinja2>=3.1
+rich>=13.7

@@ -1,0 +1,143 @@
+# ============================================================================
+# BSE Morning Analyser - configuration
+# ============================================================================
+# Everything that shapes a recommendation lives here, so you can tune the
+# system's behaviour without touching code. Every threshold below is applied
+# transparently and reported back to you as part of the reasoning.
+
+market:
+  exchange: BSE
+  benchmark: "^BSESN"          # Sensex, used for relative-strength scoring
+  timezone: Asia/Kolkata
+  # BSE trades 09:15-15:30 IST. The morning report is meant to be run before
+  # the open, so it reasons off the previous session's close.
+  open_time: "09:15"
+  close_time: "15:30"
+
+data:
+  # History depth pulled for indicator calculation.
+  history_days: 400
+  # Yahoo's BSE (.BO) history is unreliable for SOME symbols - verified:
+  # RELIANCE.BO returns only 29 usable bars while RELIANCE.NS returns 1240.
+  # NSE and BSE prices for the same scrip track within ~0.1%, so NSE history
+  # is a sound basis for indicators. We prefer whichever series is healthier
+  # and always record which one was actually used.
+  history_ticker_preference: ["NS", "BO"]
+  # A series must clear these bars or its indicators are suppressed rather
+  # than reported as a confident-looking but meaningless number.
+  min_bars_required: 60
+  max_staleness_days: 7        # last bar older than this => data considered stale
+  max_nan_ratio: 0.10
+  cache_hours: 12
+
+# ---------------------------------------------------------------------------
+# Signal engine
+# ---------------------------------------------------------------------------
+# Each analysis axis produces a score in [-1, +1] plus human-readable evidence.
+# The composite is the weighted mean of the axes that had sufficient data.
+signals:
+  weights:
+    trend: 0.28               # price vs SMA50/200, golden/death cross
+    momentum: 0.22            # RSI, MACD, rate of change
+    mean_reversion: 0.14      # Bollinger position, distance from 52w extremes
+    volume: 0.12              # OBV direction, volume confirmation
+    relative_strength: 0.24   # performance vs Sensex
+
+  # Composite score -> action. Ordered from most bullish to most bearish.
+  # These are deliberately asymmetric: the bar to sell something you already
+  # own is higher than the bar to not buy more, which reduces churn.
+  thresholds:
+    strong_buy: 0.45
+    accumulate: 0.18
+    hold_upper: 0.18
+    hold_lower: -0.18
+    trim: -0.35
+    exit: -0.55
+
+  indicators:
+    rsi_period: 14
+    rsi_overbought: 70
+    rsi_oversold: 30
+    macd_fast: 12
+    macd_slow: 26
+    macd_signal: 9
+    sma_short: 50
+    sma_long: 200
+    ema_short: 20
+    bollinger_period: 20
+    bollinger_std: 2.0
+    atr_period: 14
+    roc_period: 21
+    obv_slope_period: 20
+    relative_strength_period: 63   # ~3 months of trading days
+
+# ---------------------------------------------------------------------------
+# Risk management - applied on top of the raw signal
+# ---------------------------------------------------------------------------
+risk:
+  # Suggested stop loss = entry - (atr_multiplier * ATR). Chandelier style.
+  atr_stop_multiplier: 2.5
+  # Warn when a single holding exceeds this share of portfolio value.
+  max_position_weight: 0.20
+  # Warn when one sector exceeds this share of portfolio value.
+  max_sector_weight: 0.35
+  # Risk no more than this fraction of portfolio on a single new position.
+  risk_per_trade: 0.02
+  # Flag holdings sitting on a loss deeper than this for review.
+  review_drawdown: -0.15
+  # India: equity held < 12 months is short-term capital gains. Surface this
+  # so the tool does not casually suggest selling days before the LTCG date.
+  ltcg_days: 365
+  ltcg_warning_window_days: 45
+
+# ---------------------------------------------------------------------------
+# IPO analysis
+# ---------------------------------------------------------------------------
+ipo:
+  weights:
+    valuation: 0.30           # P/E vs listed peers, price band sanity
+    financials: 0.25          # revenue/profit growth, margins, debt, RoNW
+    subscription: 0.20        # QIB / NII / retail demand
+    gmp: 0.15                 # grey market premium (sentiment, not gospel)
+    qualitative: 0.10         # promoter holding, objects of issue, lock-ins
+  thresholds:
+    apply: 0.40
+    consider: 0.15
+    avoid: -0.15
+  # SME IPOs carry materially higher risk: thinner liquidity, larger lot
+  # sizes, weaker disclosure. Penalise their score unless clearly strong.
+  sme_score_penalty: 0.10
+  # GMP is unofficial and manipulable. It is capped as evidence so it can
+  # never single-handedly drive an "apply" call.
+  gmp_max_influence: 0.15
+
+# ---------------------------------------------------------------------------
+# Report delivery
+# ---------------------------------------------------------------------------
+report:
+  formats: [html, terminal, markdown]
+  html_path: data/reports
+  markdown_path: data/reports
+  archive_history: true
+  open_browser_after_run: false
+
+delivery:
+  telegram:
+    enabled: false            # set true after adding creds to secrets.env
+    # TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are read from config/secrets.env
+    send_full_report: false   # false = summary + link, true = full text
+  email:
+    enabled: false
+    # SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, EMAIL_TO from secrets.env
+    subject_prefix: "[BSE Morning]"
+
+# ---------------------------------------------------------------------------
+# Optional external providers
+# ---------------------------------------------------------------------------
+providers:
+  # Tapetide MCP (https://tapetide.com/mcp) - free tier is only ~50 tool
+  # calls/day, so it is NOT used for bulk price history. Reserve it for
+  # low-volume, high-value lookups: IPO details, analyst ratings, FII/DII.
+  tapetide:
+    enabled: false
+    use_for: [ipo, analyst_ratings, fii_dii]

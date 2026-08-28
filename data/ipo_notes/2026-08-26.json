@@ -1,0 +1,51 @@
+{
+  "generated": "2026-08-26 research pass",
+  "by": "claude-code",
+  "method": "Web research on each open issue, recording only what the computed pipeline structurally cannot see: prospectus risk factors, related-party conflicts, share pledges, analyst positioning and peer valuation context.",
+  "notes": {
+    "Hy Tech Engineers Limited": {
+      "summary": "Engineering firm making hydraulic fittings, 40+ years operating history. Growth is real and the valuation is genuinely below listed peers, but the business carries concentration risk on both customers and suppliers, plus a US-affiliate dependency the numbers do not show.",
+      "items": [
+        {"text": "Revenue grew from Rs 137.71 cr (FY24) to Rs 189.40 cr (FY26) and net profit nearly doubled to Rs 22.59 cr, with EBITDA margin around 22%.", "direction": "bullish", "source": "IndMoney / TradingView IPO coverage"},
+        {"text": "At roughly 22x post-issue earnings it is priced below listed peers while carrying the highest RoE in that peer set - the valuation case is comparative, not just absolute.", "direction": "bullish", "source": "IndMoney review"},
+        {"text": "Customer concentration and supplier concentration are both flagged prospectus risks, and the company depends materially on Hy-Tech USA Inc. A single lost relationship moves the earnings base.", "direction": "bearish", "source": "Prospectus risk factors via IPO reviews"},
+        {"text": "Expansion depends on machinery orders that are still pending, so the growth plan is not yet de-risked.", "direction": "bearish", "source": "IPO review coverage"},
+        {"text": "Issue price was finalised at the upper band of Rs 53.", "direction": "neutral", "source": "Chittorgarh / ipoji"}
+      ],
+      "adjustment_reason": "The computed CONSIDER looks right, and the news supports rather than contradicts it. The concentration risks are the reason this is not an APPLY despite very heavy demand and a strong grey market premium - they are exactly the kind of single-point failure a subscription multiple cannot price."
+    },
+    "Symbiotec Pharmalab Limited": {
+      "summary": "Genuine global leader in two APIs, but the deal structure carries red flags the numbers only partly capture - and one related-party conflict that they cannot capture at all.",
+      "items": [
+        {"text": "Of the Rs 1,757 cr issue, Rs 1,607 cr is offer-for-sale and only Rs 150 cr is fresh capital. The company receives nothing from the OFS portion.", "direction": "bearish", "source": "Value Research / Swastika"},
+        {"text": "CONFLICT OF INTEREST: 82,98,243 promoter shares (13.22% of pre-offer capital) are pledged to Beacon Trusteeship against a Rs 197 cr debenture facility. The debenture holder, Nomura Capital (India), is a direct affiliate of Nomura Financial Advisory - one of the book running lead managers on this very IPO.", "direction": "bearish", "source": "Prospectus / IPO Central"},
+        {"text": "A second lead manager, Motilal Oswal Investment Advisors, is an associate of India Business Excellence Fund III - which is itself one of the selling shareholders in the OFS.", "direction": "bearish", "source": "Prospectus disclosures"},
+        {"text": "Sellers include promoter Satwani Holdings LLP alongside financial investors Rosewood Investments and India Business Excellence Fund III - a coordinated exit, not a routine trim.", "direction": "bearish", "source": "Prospectus"},
+        {"text": "The underlying business is a global market leader in two APIs, which is a real and defensible moat.", "direction": "bullish", "source": "Value Research"},
+        {"text": "Analysts have flagged low promoter holding, the large OFS, slow revenue growth and relatively high debt.", "direction": "bearish", "source": "Zee Business / Value Research"}
+      ],
+      "adjustment_reason": "The computed NEUTRAL is too generous. The pipeline already caught the 91.5% OFS and the promoter going to zero, but it could not see the pledged shares or that two lead managers sit on both sides of this transaction. Those conflicts are material and undisclosed to a purely quantitative view. Treat this as AVOID rather than NEUTRAL, notwithstanding the 30%+ grey market premium and 5.6x subscription - and note the premium is already falling."
+    },
+    "Skyways Air Services Limited": {
+      "summary": "Asset-light freight forwarder with a long operating history, but priced at a premium multiple on a very thin margin, in a business it does not control the economics of.",
+      "items": [
+        {"text": "Post-issue P/E works out near 31.6x on diluted EPS - expensive for a logistics business running a 2.26% PAT margin.", "direction": "bearish", "source": "Business Standard IPO review"},
+        {"text": "Skyways does not own or control the aircraft and ships that carry its cargo. If capacity tightens or freight rates spike, it either absorbs the cost or loses the customer.", "direction": "bearish", "source": "Business Standard / prospectus risks"},
+        {"text": "Exposed to global trade cycles, freight-rate volatility and heavy working capital needs, competing against far larger logistics players.", "direction": "bearish", "source": "Prospectus risk factors"},
+        {"text": "Analyst positioning is split: Swastika and Ventura say Subscribe, SBI Securities is Neutral.", "direction": "neutral", "source": "Broker notes"},
+        {"text": "Diversified service portfolio, established customer relationships and a long operating history are the genuine positives.", "direction": "bullish", "source": "Business Standard"}
+      ],
+      "adjustment_reason": "Computed NEUTRAL is fair. The pipeline already flagged the 2.1% margin; the news adds that the 31.6x multiple is being paid for a business with structurally little pricing power. Nothing here argues for upgrading it."
+    },
+    "Annu Projects Limited": {
+      "summary": "The one open issue where the fundamentals read better than the demand. Strong growth, entirely fresh capital, no promoter cash-out - yet the book is barely half covered.",
+      "items": [
+        {"text": "Revenue rose from Rs 182.35 cr to Rs 244.59 cr and profit from Rs 21.10 cr to Rs 33.03 cr year on year - roughly 57% profit growth.", "direction": "bullish", "source": "IPO Watch / m.Stock"},
+        {"text": "The entire Rs 175 cr is a fresh issue. No promoter or investor is selling a single share into this offer.", "direction": "bullish", "source": "Chittorgarh / IPO Watch"},
+        {"text": "The book is undersubscribed, so retail applicants are likely to receive full allotment rather than a lottery slice.", "direction": "neutral", "source": "IPO Guru subscription tracker"},
+        {"text": "Weak demand despite good reported financials is itself the signal worth explaining - the market is declining an issue whose numbers look sound, and the grey market premium of ~4% has stayed flat all week.", "direction": "bearish", "source": "Subscription and GMP history"}
+      ],
+      "adjustment_reason": "Computed NEUTRAL is right but for an interesting reason. This is the mirror image of Hy-Tech: good structure, poor demand. Full allotment is likely, which cuts both ways - you get what you ask for, including the downside. Worth a decision on conviction, not on scarcity."
+    }
+  }
+}

@@ -1,0 +1,37 @@
+# ===========================================================================
+# THIS REPOSITORY IS PUBLIC. Anything not excluded here is visible to anyone.
+# ===========================================================================
+
+# --- Secrets. Never commit. ------------------------------------------------
+config/secrets.env
+.env
+*.pem
+*.key
+*token*
+*credential*
+
+# --- Personal financial data. Never commit. --------------------------------
+# Real holdings: quantities, prices, and what you own.
+config/portfolio.csv
+
+# The portfolio report renders those holdings, so it must never be published.
+data/reports/**/report.html
+data/reports/**/report.md
+data/reports/**/facts.json
+data/reports/**/smoke_facts.json
+
+# --- Generated / machine-local ---------------------------------------------
+data/cache/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Published site is generated; docs/ IS committed on purpose ------------
+# (docs/ is the GitHub Pages root and is deliberately NOT ignored)
