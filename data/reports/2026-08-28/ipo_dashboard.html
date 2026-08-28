@@ -67,7 +67,10 @@
                     border:1px solid var(--warn)}
   .verdict.neutral{background:var(--surface-2);color:var(--ink-2)}
   .verdict.avoid{background:var(--down);color:#fff}
-  .verdict.nodata{background:var(--surface-2);color:var(--muted)}
+  .verdict.nodata,.verdict.notrated{background:var(--surface-2);
+                                   color:var(--muted)}
+  .chip.notrated,.chip.nodata{background:var(--surface-2);
+                              color:var(--ink-2)}
   .score{font-size:12px;color:var(--muted);text-align:right;margin-top:5px;
          font-variant-numeric:tabular-nums}
 
@@ -172,6 +175,35 @@
   .empty{background:var(--surface);border:1px solid var(--line);
          border-radius:var(--radius);padding:26px;text-align:center;
          color:var(--muted)}
+
+  /* ---------- overview list ---------- */
+  .hint{color:var(--muted);font-size:13px;margin:22px 0 10px}
+  ul.ipolist{list-style:none;padding:0;margin:0}
+  ul.ipolist li{margin-bottom:10px}
+  .row{display:flex;justify-content:space-between;align-items:center;gap:16px;
+       flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);
+       border-radius:var(--radius);padding:15px 18px;text-decoration:none;
+       color:inherit;transition:border-color .12s,transform .12s}
+  .row:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .row.v-apply{border-left:4px solid var(--up)}
+  .row.v-consider{border-left:4px solid var(--warn)}
+  .row.v-avoid{border-left:4px solid var(--down)}
+  .row.v-notrated,.row.v-nodata{border-left:4px solid var(--muted)}
+  .col-name{display:flex;flex-direction:column;gap:7px;min-width:0;flex:1 1 320px}
+  .col-name .nm{font-size:17px;font-weight:680;letter-spacing:-.01em}
+  .tagrow{display:flex;gap:6px;flex-wrap:wrap}
+  .col-verdict{display:flex;align-items:center;gap:14px}
+  .col-verdict .more{font-size:12.5px;color:var(--accent);font-weight:600;
+                     white-space:nowrap}
+
+  /* ---------- detail view ---------- */
+  .back{display:inline-block;font-size:13px;color:var(--accent);
+        text-decoration:none;font-weight:600;margin-bottom:14px}
+  .back:hover{text-decoration:underline}
+  /* Without JS every section stays visible, so the page still works. */
+  body.js .detail{display:none}
+  body.js .detail.active{display:block}
+  body.js.detail-open #overview{display:none}
 </style>
 </head>
 <body>
@@ -179,7 +211,7 @@
 
   <h1>IPO Dashboard</h1>
   <p class="sub">
-    Friday 28 August 2026, 19:59 IST ·
+    Friday 28 August 2026, 20:03 IST ·
     7 open for subscription · 3 upcoming
   </p>
 
@@ -208,7 +240,204 @@
   </div>
 
 
-  <div class="card v-neutral">
+  <!-- ================= OVERVIEW: the landing view ================= -->
+  <div id="overview">
+    <p class="hint">Select an issue to see every figure behind its verdict.</p>
+    <ul class="ipolist">
+      <li>
+        <a class="row v-neutral"
+           href="#annu-projects-limited" data-slug="annu-projects-limited">
+          <span class="col-name">
+            <span class="nm">Annu Projects Limited</span>
+            <span class="tagrow">
+              <span class="tag ">MainBoard</span>
+              <span class="tag urgent">
+                Closes TODAY</span>
+              <span class="tag">min ₹14,949</span>
+              <span class="tag">2.9x subscribed</span>
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict neutral">NEUTRAL</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="row v-apply"
+           href="#paluck-technologies-limited" data-slug="paluck-technologies-limited">
+          <span class="col-name">
+            <span class="nm">Paluck Technologies Limited</span>
+            <span class="tagrow">
+              <span class="tag sme">SME</span>
+              <span class="tag ">
+                4 days left</span>
+              <span class="tag">min ₹1,44,000</span>
+              <span class="tag">18.2x subscribed</span>
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict apply">APPLY</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="row v-consider"
+           href="#kwick-forensic-solutions-limited" data-slug="kwick-forensic-solutions-limited">
+          <span class="col-name">
+            <span class="nm">Kwick Forensic Solutions Limited</span>
+            <span class="tagrow">
+              <span class="tag sme">SME</span>
+              <span class="tag ">
+                3 days left</span>
+              <span class="tag">min ₹1,44,000</span>
+              <span class="tag">20.7x subscribed</span>
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict consider">CONSIDER</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="row v-consider"
+           href="#priority-jewels-limited" data-slug="priority-jewels-limited">
+          <span class="col-name">
+            <span class="nm">Priority Jewels Limited</span>
+            <span class="tagrow">
+              <span class="tag ">MainBoard</span>
+              <span class="tag ">
+                4 days left</span>
+              <span class="tag">min ₹15,000</span>
+              <span class="tag">1.9x subscribed</span>
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict consider">CONSIDER</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="row v-consider"
+           href="#lumino-industries-limited" data-slug="lumino-industries-limited">
+          <span class="col-name">
+            <span class="nm">Lumino Industries Limited</span>
+            <span class="tagrow">
+              <span class="tag ">MainBoard</span>
+              <span class="tag ">
+                3 days left</span>
+              <span class="tag">min ₹14,924</span>
+              <span class="tag">5.1x subscribed</span>
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict consider">CONSIDER</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="row v-neutral"
+           href="#esds-software-solution-limited" data-slug="esds-software-solution-limited">
+          <span class="col-name">
+            <span class="nm">Esds Software Solution Limited</span>
+            <span class="tagrow">
+              <span class="tag ">MainBoard</span>
+              <span class="tag ">
+                4 days left</span>
+              <span class="tag">min ₹14,586</span>
+              <span class="tag">2.2x subscribed</span>
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict neutral">NEUTRAL</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="row v-neutral"
+           href="#complete-sports-and-management-india-limited" data-slug="complete-sports-and-management-india-limited">
+          <span class="col-name">
+            <span class="nm">Complete Sports And Management India Limited</span>
+            <span class="tagrow">
+              <span class="tag sme">SME</span>
+              <span class="tag ">
+                4 days left</span>
+              <span class="tag">min ₹1,35,000</span>
+              <span class="tag">0.1x subscribed</span>
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict neutral">NEUTRAL</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="row v-consider"
+           href="#deepa-jewellers-limited" data-slug="deepa-jewellers-limited">
+          <span class="col-name">
+            <span class="nm">Deepa Jewellers Limited</span>
+            <span class="tagrow">
+              <span class="tag ">MainBoard</span>
+              <span class="tag ">
+                Opens in 4 days</span>
+              <span class="tag">min ₹14,868</span>
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict consider">CONSIDER</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="row v-neutral"
+           href="#rays-of-belief-limited" data-slug="rays-of-belief-limited">
+          <span class="col-name">
+            <span class="nm">Rays Of Belief Limited</span>
+            <span class="tagrow">
+              <span class="tag ">MainBoard</span>
+              <span class="tag ">
+                Opens in 4 days</span>
+              <span class="tag">min ₹14,818</span>
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict neutral">NEUTRAL</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="row v-avoid"
+           href="#purple-style-labs-limited" data-slug="purple-style-labs-limited">
+          <span class="col-name">
+            <span class="nm">Purple Style Labs Limited</span>
+            <span class="tagrow">
+              <span class="tag ">MainBoard</span>
+              <span class="tag ">
+                Opens in 3 days</span>
+              <span class="tag">min ₹14,950</span>
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict avoid">AVOID</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ================= DETAIL: one section per issue ================= -->
+  <section class="detail card v-neutral"
+           id="annu-projects-limited" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -584,8 +813,10 @@ Implies a listing near
     </details>
 
 
-  </div>
-  <div class="card v-apply">
+  </section>
+  <section class="detail card v-apply"
+           id="paluck-technologies-limited" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -962,8 +1193,10 @@ Implies a listing near
     </details>
 
 
-  </div>
-  <div class="card v-consider">
+  </section>
+  <section class="detail card v-consider"
+           id="kwick-forensic-solutions-limited" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -1358,8 +1591,10 @@ Implies a listing near
     </details>
 
 
-  </div>
-  <div class="card v-consider">
+  </section>
+  <section class="detail card v-consider"
+           id="priority-jewels-limited" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -1703,8 +1938,10 @@ Implies a listing near
     </details>
 
 
-  </div>
-  <div class="card v-consider">
+  </section>
+  <section class="detail card v-consider"
+           id="lumino-industries-limited" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -2092,8 +2329,10 @@ Implies a listing near
     </details>
 
 
-  </div>
-  <div class="card v-neutral">
+  </section>
+  <section class="detail card v-neutral"
+           id="esds-software-solution-limited" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -2475,8 +2714,10 @@ Implies a listing near
     </details>
 
 
-  </div>
-  <div class="card v-neutral">
+  </section>
+  <section class="detail card v-neutral"
+           id="complete-sports-and-management-india-limited" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -2830,8 +3071,10 @@ Implies a listing near
     </details>
 
 
-  </div>
-  <div class="card v-consider">
+  </section>
+  <section class="detail card v-consider"
+           id="deepa-jewellers-limited" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -3120,8 +3363,10 @@ Implies a listing near
       These were excluded from the score rather than estimated.
     </div>
 
-  </div>
-  <div class="card v-neutral">
+  </section>
+  <section class="detail card v-neutral"
+           id="rays-of-belief-limited" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -3420,8 +3665,10 @@ Implies a listing near
       These were excluded from the score rather than estimated.
     </div>
 
-  </div>
-  <div class="card v-avoid">
+  </section>
+  <section class="detail card v-avoid"
+           id="purple-style-labs-limited" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -3713,7 +3960,7 @@ Implies a listing near
       These were excluded from the score rather than estimated.
     </div>
 
-  </div>
+  </section>
 
   <footer>
     Issue lists and dates from BSE; lot size, demand, grey market premium and
@@ -3726,5 +3973,34 @@ Implies a listing near
     before applying — this tool cannot read them for you.
   </footer>
 </div>
+
+<script>
+(function () {
+  var body = document.body;
+  body.classList.add('js');
+
+  function slugs() {
+    return Array.prototype.slice.call(document.querySelectorAll('[data-detail]'));
+  }
+
+  function render() {
+    var hash = (location.hash || '').replace(/^#/, '');
+    var target = hash ? document.getElementById(hash) : null;
+    var found = target && target.hasAttribute('data-detail');
+
+    slugs().forEach(function (el) {
+      el.classList.toggle('active', found && el.id === hash);
+    });
+    body.classList.toggle('detail-open', !!found);
+    // The browser performs its own jump to the anchor *after* this handler
+    // runs, which left the reader halfway down a long detail card. Defer to
+    // the next frame so our scroll is the one that sticks.
+    requestAnimationFrame(function () { window.scrollTo(0, 0); });
+  }
+
+  window.addEventListener('hashchange', render);
+  render();
+})();
+</script>
 </body>
 </html>

@@ -188,6 +188,13 @@ def build_data_rows(a) -> list[dict]:
     ]
 
 
+def slugify(name: str) -> str:
+    """URL-safe anchor for one issue, stable across redeploys."""
+    import re
+    s = re.sub(r"[^a-zA-Z0-9]+", "-", str(name).lower()).strip("-")
+    return s[:60] or "issue"
+
+
 def normalise_key(name: str) -> str:
     """Stable key for matching research notes to an issue."""
     import re
@@ -282,6 +289,7 @@ def render(
                 "total": sub_bar(a.data.sub_total),
             },
             "note": notes.get(normalise_key(a.name)),
+            "slug": slugify(a.name),
             "book_final": a.data.book_is_final,
             "sub_as_of": a.data.sub_as_of,
             "sub_age_h": a.data.sub_data_age_hours,

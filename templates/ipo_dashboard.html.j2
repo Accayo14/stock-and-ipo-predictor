@@ -67,7 +67,10 @@
                     border:1px solid var(--warn)}
   .verdict.neutral{background:var(--surface-2);color:var(--ink-2)}
   .verdict.avoid{background:var(--down);color:#fff}
-  .verdict.nodata{background:var(--surface-2);color:var(--muted)}
+  .verdict.nodata,.verdict.notrated{background:var(--surface-2);
+                                   color:var(--muted)}
+  .chip.notrated,.chip.nodata{background:var(--surface-2);
+                              color:var(--ink-2)}
   .score{font-size:12px;color:var(--muted);text-align:right;margin-top:5px;
          font-variant-numeric:tabular-nums}
 
@@ -172,6 +175,35 @@
   .empty{background:var(--surface);border:1px solid var(--line);
          border-radius:var(--radius);padding:26px;text-align:center;
          color:var(--muted)}
+
+  /* ---------- overview list ---------- */
+  .hint{color:var(--muted);font-size:13px;margin:22px 0 10px}
+  ul.ipolist{list-style:none;padding:0;margin:0}
+  ul.ipolist li{margin-bottom:10px}
+  .row{display:flex;justify-content:space-between;align-items:center;gap:16px;
+       flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);
+       border-radius:var(--radius);padding:15px 18px;text-decoration:none;
+       color:inherit;transition:border-color .12s,transform .12s}
+  .row:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .row.v-apply{border-left:4px solid var(--up)}
+  .row.v-consider{border-left:4px solid var(--warn)}
+  .row.v-avoid{border-left:4px solid var(--down)}
+  .row.v-notrated,.row.v-nodata{border-left:4px solid var(--muted)}
+  .col-name{display:flex;flex-direction:column;gap:7px;min-width:0;flex:1 1 320px}
+  .col-name .nm{font-size:17px;font-weight:680;letter-spacing:-.01em}
+  .tagrow{display:flex;gap:6px;flex-wrap:wrap}
+  .col-verdict{display:flex;align-items:center;gap:14px}
+  .col-verdict .more{font-size:12.5px;color:var(--accent);font-weight:600;
+                     white-space:nowrap}
+
+  /* ---------- detail view ---------- */
+  .back{display:inline-block;font-size:13px;color:var(--accent);
+        text-decoration:none;font-weight:600;margin-bottom:14px}
+  .back:hover{text-decoration:underline}
+  /* Without JS every section stays visible, so the page still works. */
+  body.js .detail{display:none}
+  body.js .detail.active{display:block}
+  body.js.detail-open #overview{display:none}
 </style>
 </head>
 <body>
@@ -222,9 +254,45 @@
   <div class="empty">No IPOs are open or upcoming right now.</div>
   {% endif %}
 
+  <!-- ================= OVERVIEW: the landing view ================= -->
+  <div id="overview">
+    <p class="hint">Select an issue to see every figure behind its verdict.</p>
+    <ul class="ipolist">
+    {% for c in cards %}
+    {% set a = c.a %}{% set d = a.data %}
+      <li>
+        <a class="row v-{{ a.verdict|lower|replace(' ','') }}"
+           href="#{{ c.slug }}" data-slug="{{ c.slug }}">
+          <span class="col-name">
+            <span class="nm">{{ a.name }}</span>
+            <span class="tagrow">
+              <span class="tag {{ 'sme' if a.ipo_type == 'SME' else '' }}">{{ a.ipo_type }}</span>
+              <span class="tag {{ 'urgent' if a.urgency == 'closes-today' else ('soon' if a.urgency == 'closes-tomorrow' else '') }}">
+                {{ a.urgency_label }}</span>
+              {% if d.min_investment %}
+              <span class="tag">min {{ d.min_investment|rupees }}</span>
+              {% endif %}
+              {% if d.sub_total is not none %}
+              <span class="tag">{{ '%.1fx'|format(d.sub_total) }} subscribed</span>
+              {% endif %}
+            </span>
+          </span>
+          <span class="col-verdict">
+            <span class="verdict {{ a.verdict|lower|replace(' ','') }}">{{ a.verdict }}</span>
+            <span class="more">Details &rarr;</span>
+          </span>
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+
+  <!-- ================= DETAIL: one section per issue ================= -->
   {% for c in cards %}
   {% set a = c.a %}{% set d = a.data %}
-  <div class="card v-{{ a.verdict|lower|replace(' ','') }}">
+  <section class="detail card v-{{ a.verdict|lower|replace(' ','') }}"
+           id="{{ c.slug }}" data-detail>
+    <a class="back" href="#">&larr; All IPOs</a>
 
     <div class="head">
       <div>
@@ -405,7 +473,7 @@
     </div>
     {% endif %}
 
-  </div>
+  </section>
   {% endfor %}
 
   <footer>
@@ -419,5 +487,34 @@
     before applying — this tool cannot read them for you.
   </footer>
 </div>
+
+<script>
+(function () {
+  var body = document.body;
+  body.classList.add('js');
+
+  function slugs() {
+    return Array.prototype.slice.call(document.querySelectorAll('[data-detail]'));
+  }
+
+  function render() {
+    var hash = (location.hash || '').replace(/^#/, '');
+    var target = hash ? document.getElementById(hash) : null;
+    var found = target && target.hasAttribute('data-detail');
+
+    slugs().forEach(function (el) {
+      el.classList.toggle('active', found && el.id === hash);
+    });
+    body.classList.toggle('detail-open', !!found);
+    // The browser performs its own jump to the anchor *after* this handler
+    // runs, which left the reader halfway down a long detail card. Defer to
+    // the next frame so our scroll is the one that sticks.
+    requestAnimationFrame(function () { window.scrollTo(0, 0); });
+  }
+
+  window.addEventListener('hashchange', render);
+  render();
+})();
+</script>
 </body>
 </html>
