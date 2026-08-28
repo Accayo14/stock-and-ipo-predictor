@@ -1,0 +1,167 @@
+{
+  "generated": "2026-08-28 research pass",
+  "by": "claude-code",
+  "method": "Web research per issue on broker views, prospectus risk factors and peer valuation. Excludes subscription and grey market figures, which move hourly and are shown live on the dashboard. Prospectus-level findings from 27 Aug are carried forward where still true.",
+  "notes": {
+    "Annu Projects Limited": {
+      "final_call": "NEUTRAL",
+      "summary": "The inverse of every other issue here: clean structure, real growth, no promoter cash-out - and almost no demand. Worth understanding why before treating cheap allotment as an opportunity.",
+      "items": [
+        {
+          "text": "Revenue rose from Rs 182.35 cr to Rs 244.59 cr and profit from Rs 21.10 cr to Rs 33.03 cr year on year - roughly 57% profit growth.",
+          "direction": "bullish",
+          "source": "IPO Watch / m.Stock"
+        },
+        {
+          "text": "The entire Rs 175 cr is a fresh issue. No promoter or investor sells a single share, so all proceeds go into the business.",
+          "direction": "bullish",
+          "source": "Chittorgarh / IPO Watch"
+        },
+        {
+          "text": "Still only 0.50x subscribed with one day left. Retail is undersubscribed, so applicants should receive full allotment rather than a lottery slice.",
+          "direction": "neutral",
+          "source": "Subscription data fetched today"
+        },
+        {
+          "text": "The grey market premium has sat near 4% all week while other open issues run at 30-80%. The market is consistently declining an issue whose reported numbers look sound, and that gap deserves an explanation before you supply your own.",
+          "direction": "bearish",
+          "source": "Grey market history, fetched today"
+        }
+      ],
+      "adjustment_reason": "NEUTRAL stands. This is the one issue where you would get essentially the full allotment you ask for - which cuts both ways. Full allotment of something the market is avoiding is not a bargain by itself."
+    },
+    "Lumino Industries Limited": {
+      "final_call": "CONSIDER",
+      "summary": "The best-priced mainboard issue currently open: about 15.6x post-issue earnings against a materially more expensive peer group, with real compounding behind it. The catch is that more than half its revenue depends on government and PSU tenders.",
+      "items": [
+        {
+          "text": "At the upper band of Rs 82 the issue is valued at about 15.6x FY26 post-issue earnings - materially below its listed peer group.",
+          "direction": "bullish",
+          "source": "Business Standard / Business Today"
+        },
+        {
+          "text": "Revenue, EBITDA and PAT compounded at 20.4%, 28.3% and 35.9% respectively over FY24-FY26.",
+          "direction": "bullish",
+          "source": "Business Standard"
+        },
+        {
+          "text": "Rs 337 cr of the proceeds repays borrowings, which directly cuts interest cost and strengthens the balance sheet.",
+          "direction": "bullish",
+          "source": "Business Today"
+        },
+        {
+          "text": "Government and PSU clients account for 53-86% of revenue. That makes cash flows tender-driven and lumpy, and ties the business to the public capex cycle.",
+          "direction": "bearish",
+          "source": "Business Standard risk summary"
+        },
+        {
+          "text": "Manufacturing is concentrated in one region, and margins are exposed to aluminium and other raw-material prices, on top of ordinary EPC execution risk.",
+          "direction": "bearish",
+          "source": "Broker risk notes"
+        },
+        {
+          "text": "Brokerages are broadly positive with 'subscribe' recommendations, citing reasonable valuation, integrated operations and capital efficiency.",
+          "direction": "bullish",
+          "source": "Business Standard / Business Today"
+        }
+      ],
+      "adjustment_reason": "This one exposed a real bug rather than a judgement call. The engine originally scored it NEUTRAL because the book stood at 0.22x - but bidding had opened that morning, and the rule could not tell 'nobody wants it' from 'it opened an hour ago'. Subscription scoring is now window-aware, and the engine independently reaches CONSIDER. The customer concentration on government and PSU clients remains the real risk, so size any application modestly and re-check the book on the final day."
+    },
+    "Kwick Forensic Solutions Limited": {
+      "final_call": "CONSIDER",
+      "summary": "Fast-growing niche forensics supplier with strong reported numbers, but it is an SME issue needing about Rs 1.44 lakh for a single lot, with heavy customer concentration and the thin post-listing liquidity that comes with the SME platform.",
+      "items": [
+        {
+          "text": "Revenue rose from Rs 65.08 cr to Rs 105.80 cr and profit from Rs 8.56 cr to Rs 13.51 cr year on year - roughly 63% and 58% growth.",
+          "direction": "bullish",
+          "source": "IPO Watch / StockGro"
+        },
+        {
+          "text": "EBITDA margin remains healthy near 18%, though it moderated slightly from FY25.",
+          "direction": "neutral",
+          "source": "IPO Watch"
+        },
+        {
+          "text": "Top ten customers account for 77.64% of revenue and government business for 55.22%. That is severe concentration - losing one or two relationships would reshape the company.",
+          "direction": "bearish",
+          "source": "Prospectus risk factors via IPO Watch"
+        },
+        {
+          "text": "The minimum application is 1600 shares at up to Rs 90, roughly Rs 1.44 lakh. That is a single large, undiversified position, and SME shares typically trade in very low volume after listing, so exiting can be genuinely difficult.",
+          "direction": "bearish",
+          "source": "Issue terms, fetched today"
+        },
+        {
+          "text": "IPO Watch rates it suitable for well-informed investors willing to hold medium to long term, rather than as a listing-gain trade.",
+          "direction": "neutral",
+          "source": "IPO Watch review"
+        },
+        {
+          "text": "One source reported the issue at Rs 31.42 cr when announced against about Rs 51 cr now - the size appears to have been revised, so verify the final figure in the RHP before applying.",
+          "direction": "neutral",
+          "source": "ScanX vs current issue terms"
+        }
+      ],
+      "adjustment_reason": "CONSIDER matches the computed verdict, but the SME caveat does most of the work here. The growth is real; the risk is that Rs 1.44 lakh buys an illiquid position in a company where three-quarters of revenue sits with ten customers. Only sensible if that sum is genuinely discretionary for you."
+    },
+    "Paluck Technologies Limited": {
+      "final_call": "CONSIDER",
+      "summary": "Engineering and infrastructure services business with genuinely improving margins and falling debt. But reviewers flag past compliance and repayment slippage, which is exactly the kind of history a scoring formula cannot see - and it is the reason I will not carry the computed APPLY across unchanged.",
+      "items": [
+        {
+          "text": "Net margin improved from about 3.4% in FY24 to 9.4% in FY25 and 13.1% across the eight-month FY26 period, with borrowings declining materially.",
+          "direction": "bullish",
+          "source": "IPO Watch / IPO Central"
+        },
+        {
+          "text": "Operates across telecom engineering, construction equipment rental, automotive services and fleet logistics - diversified, but also thinly spread for a company of this size.",
+          "direction": "neutral",
+          "source": "IPO Central"
+        },
+        {
+          "text": "Reviewers flag signs of past compliance and repayment slippage. For a small company raising Rs 33 crore, a history of missed obligations speaks to governance, and no subscription figure will tell you about it.",
+          "direction": "bearish",
+          "source": "IPO Watch review"
+        },
+        {
+          "text": "Customer concentration is a stated risk, and as a BSE SME listing it will trade thinly with high post-listing volatility. The minimum application is about Rs 1.44 lakh.",
+          "direction": "bearish",
+          "source": "Prospectus risks / issue terms"
+        }
+      ],
+      "adjustment_reason": "I am stepping this down from the computed APPLY to CONSIDER. The margin trajectory is real and the demand is strong, but the compliance history is a governance signal the engine is blind to, and Rs 1.44 lakh into an illiquid SME on that basis is not a decision to take on a score alone. Read the RHP risk factors before applying."
+    },
+    "Esds Software Solution Limited": {
+      "final_call": "CONSIDER",
+      "summary": "High-quality cloud and data-centre business growing fast, priced richly. The engine's NEUTRAL comes from its P/E band alone, which does not account for the growth rate behind that multiple.",
+      "items": [
+        {
+          "text": "Revenue rose from Rs 376.64 cr to Rs 480.65 cr and profit more than doubled, from Rs 55.61 cr to Rs 120.82 cr.",
+          "direction": "bullish",
+          "source": "IndMoney / IPO Watch"
+        },
+        {
+          "text": "FY26 return on equity of 25.1% and return on capital employed of 32.8% - genuinely strong capital efficiency.",
+          "direction": "bullish",
+          "source": "IndMoney"
+        },
+        {
+          "text": "At roughly 16.3x EV/EBITDA it screens cheaper than listed peer E2E Networks despite being larger, profitable and stronger on returns.",
+          "direction": "bullish",
+          "source": "Broker analysis"
+        },
+        {
+          "text": "Post-issue P/E of about 41.6x and price-to-book of 8.15x leave very little room for execution disappointment. Analysts describe it as richly valued with no clean valuation anchor.",
+          "direction": "bearish",
+          "source": "IndMoney / Business Standard"
+        },
+        {
+          "text": "The book was more than half covered within an hour of opening.",
+          "direction": "bullish",
+          "source": "Business Standard"
+        }
+      ],
+      "adjustment_reason": "I disagree with the computed NEUTRAL and would call this CONSIDER. The engine penalises the 41.6x multiple using fixed P/E bands that take no account of growth - and profit here more than doubled year on year. That is a known limitation of the valuation axis, not a judgement about this company. The risk is real though: at this multiple you are paying in advance for execution."
+    }
+  }
+}
