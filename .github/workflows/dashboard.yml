@@ -1,0 +1,118 @@
+name: Update IPO dashboard
+
+# Keeps the published site current without anyone running a command.
+#
+# The 18:00 IST run is the important one: IPO bidding closes around 17:00 IST
+# and the book fills in the final hours, so that is the first moment the
+# subscription figures mean what they appear to mean.
+#
+# These runs produce the computed layer only. The news-and-context research
+# needs a human-driven pass (`/ipo` in Claude Code), and the dashboard says so
+# plainly when that layer is absent or stale rather than implying the verdicts
+# already account for the news.
+
+on:
+  schedule:
+    - cron: "30 2 * * 1-5"    # 08:00 IST - before market open
+    - cron: "30 7 * * 1-5"    # 13:00 IST - midday
+    - cron: "30 12 * * 1-5"   # 18:00 IST - after bidding closes
+    - cron: "30 16 * * 1-5"   # 22:00 IST - evening grey market refresh
+  workflow_dispatch:           # lets you trigger a refresh by hand
+  push:
+    branches: [main]
+    paths:
+      - "templates/**"
+      - "src/report/**"
+      - "publish.py"
+      - ".github/workflows/dashboard.yml"
+
+permissions:
+  contents: write      # commit the refreshed dashboard
+  pages: write         # publish to GitHub Pages
+  id-token: write      # required by deploy-pages
+
+# Never let two refreshes race each other onto the site.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    outputs:
+      built: ${{ steps.build.outputs.built }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch IPO data and build the dashboard
+        id: build
+        # A refresh failure must never take the site down. If the upstream
+        # sources are unreachable or block the runner, keep whatever is
+        # already published and report it instead.
+        run: |
+          set +e
+          python ipo.py --fresh --quiet
+          status=$?
+          if [ $status -ne 0 ]; then
+            echo "::warning::IPO fetch failed (exit $status) - keeping the existing site"
+          fi
+          python publish.py
+          if [ $? -ne 0 ] || [ ! -s docs/index.html ]; then
+            echo "::error::No dashboard was produced; leaving the published site untouched"
+            echo "built=false" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+          echo "built=true" >> "$GITHUB_OUTPUT"
+
+      - name: Guard against publishing anything personal
+        # Belt and braces alongside .gitignore and the check inside publish.py.
+        # The repository is public; holdings must never reach it.
+        run: |
+          if git ls-files --error-unmatch config/portfolio.csv >/dev/null 2>&1; then
+            echo "::error::config/portfolio.csv is tracked - refusing to publish"; exit 1
+          fi
+          if ls docs 2>/dev/null | grep -Ei "portfolio|holdings|secret" ; then
+            echo "::error::personal file found in docs/ - refusing to publish"; exit 1
+          fi
+          echo "No personal data in the published folder."
+
+      - name: Commit the refreshed dashboard
+        run: |
+          git config user.name  "Accayo"
+          git config user.email "aryan.cshah1408@gmail.com"
+          git add docs data/reports data/decisions.jsonl 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Nothing changed since the last refresh."
+          else
+            git commit -m "Refresh IPO dashboard ($(TZ=Asia/Kolkata date '+%Y-%m-%d %H:%M IST'))"
+            git pull --rebase --autostash origin main || true
+            git push
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true      # turns Pages on if it is not already
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: refresh
+    if: needs.refresh.outputs.built == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
