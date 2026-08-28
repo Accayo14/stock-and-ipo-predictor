@@ -468,7 +468,7 @@
     {% if a.unavailable or d.missing %}
     <div class="gaps">
       <b>Not available:</b>
-      {{ (a.unavailable + d.missing)|join('; ') }}.
+      {{ (a.unavailable + d.missing)|unique|sort|join('; ') }}.
       These were excluded from the score rather than estimated.
     </div>
     {% endif %}

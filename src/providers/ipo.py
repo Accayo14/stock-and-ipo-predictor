@@ -672,7 +672,7 @@ def _enrich(ipo: IPOData, ig_row: dict, cache) -> None:
             for row in detail.get("subscription_history", [])
         ]
     else:
-        ipo.missing.append("subscription figures not published yet")
+        ipo.missing.append("subscription figures not yet published")
 
     gmp = detail.get("gmp") or {}
     if gmp:
