@@ -90,7 +90,25 @@ This appends today's calls to the track record so their quality can be
 reviewed later. Do not skip it — a recommendation nobody scores is a
 recommendation nobody learns from.
 
-## Step 6 — report
+## Step 6 — publish the site
+
+```
+python publish.py --push
+```
+
+This copies the dashboard into `docs/`, injects the disclaimer banner,
+archives a dated copy, and pushes to GitHub. The live site is
+<https://accayo14.github.io/stock-and-ipo-predictor/>.
+
+Only the IPO dashboard is published. The portfolio report renders real
+holdings and must never reach `docs/` - `publish.py` refuses to publish if it
+finds anything matching a personal-data filename there, and `.gitignore`
+excludes them too. Do not weaken either check.
+
+Commits are authored by the repository owner. **Never add a co-author trailer
+or any tool attribution to a commit message in this repository.**
+
+## Step 7 — report
 
 In the terminal, lead with what needs a decision **today**, in this order:
 
