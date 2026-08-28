@@ -205,44 +205,8 @@
   body.js .detail.active{display:block}
   body.js.detail-open #overview{display:none}
 </style>
-
-<style>
-  #site-nav{display:flex;justify-content:space-between;align-items:center;
-    gap:16px;flex-wrap:wrap;max-width:1080px;margin:0 auto;
-    padding:14px 18px 0}
-  #site-nav .brand{font-weight:700;font-size:15px;text-decoration:none;
-    color:var(--ink,#12161d)}
-  #site-nav nav{display:flex;gap:16px}
-  #site-nav nav a{font-size:13px;text-decoration:none;
-    color:var(--accent,#1f5fbf)}
-  #site-nav nav a:hover{text-decoration:underline}
-  #site-warning{max-width:1080px;margin:12px auto 0;padding:12px 16px;
-    border:1px solid var(--warn,#96610a);background:var(--warn-bg,#fdf2e0);
-    color:var(--warn,#96610a);border-radius:10px;font-size:13px;
-    line-height:1.5}
-  #site-warning a{color:inherit;font-weight:600}
-  @media (prefers-color-scheme:dark){
-    #site-nav .brand{color:#e9eef5}
-  }
-</style>
 </head>
 <body>
-<div id="site-nav">
-  <a class="brand" href="./index.html">IPO Dashboard</a>
-  <nav>
-    <a href="./archive/index.html">Archive</a>
-    <a href="./disclaimer.html">Disclaimer</a>
-    <a href="https://github.com/Accayo14/stock-and-ipo-predictor" rel="noopener">Source</a>
-  </nav>
-</div>
-<div id="site-warning">
-  <strong>Not financial advice.</strong> This is the output of a scoring
-  formula applied to public data, published so the logic can be inspected —
-  not so the result can be followed. IPOs regularly list below their issue
-  price, including heavily subscribed ones. You can lose money.
-  <a href="./disclaimer.html">Read the full disclaimer</a>.
-</div>
-
 <div class="wrap">
 
   <h1>IPO Dashboard</h1>
@@ -4432,5 +4396,5 @@ Implies a listing near
   render();
 })();
 </script>
-<p style="max-width:1080px;margin:0 auto 40px;padding:0 18px;font-size:12px;color:#8a94a2">Generated 29 Aug 2026, 00:54 IST. Not financial advice — see the disclaimer.</p></body>
+</body>
 </html>
