@@ -1,7 +1,7 @@
 {
-  "generated": "2026-08-28 research pass",
+  "generated": "2026-08-28 research pass (all issues)",
   "by": "claude-code",
-  "method": "Web research per issue on broker views, prospectus risk factors and peer valuation. Excludes subscription and grey market figures, which move hourly and are shown live on the dashboard. Prospectus-level findings from 27 Aug are carried forward where still true.",
+  "method": "Web research on every listed issue - broker reviews, prospectus risk factors, peer valuation and financial trend. Deliberately excludes subscription and grey market figures, which move hourly and are shown live on the dashboard.",
   "notes": {
     "Annu Projects Limited": {
       "final_call": "NEUTRAL",
@@ -162,6 +162,161 @@
         }
       ],
       "adjustment_reason": "I disagree with the computed NEUTRAL and would call this CONSIDER. The engine penalises the 41.6x multiple using fixed P/E bands that take no account of growth - and profit here more than doubled year on year. That is a known limitation of the valuation axis, not a judgement about this company. The risk is real though: at this multiple you are paying in advance for execution."
+    },
+    "Priority Jewels Limited": {
+      "final_call": "CONSIDER",
+      "summary": "B2B jewellery maker supplying retail chains, growing well and raising entirely fresh capital. The catch is structural: it is a working-capital-hungry business exposed to gold and diamond prices, with both factories in one city.",
+      "items": [
+        {
+          "text": "Total income rose from Rs 410.61 cr to Rs 539.03 cr and profit after tax more than doubled, from Rs 7.15 cr to Rs 17.65 cr.",
+          "direction": "bullish",
+          "source": "Finology / IPO Central"
+        },
+        {
+          "text": "The entire Rs 91.5 cr is a fresh issue - no promoter or investor is selling into it, so all proceeds fund the business.",
+          "direction": "bullish",
+          "source": "Chittorgarh / RHP"
+        },
+        {
+          "text": "Jewellery manufacturing is working-capital intensive and margins are exposed to gold and rough-diamond prices, plus currency moves on export realisations.",
+          "direction": "bearish",
+          "source": "Prospectus risk factors"
+        },
+        {
+          "text": "Both manufacturing units are in Mumbai. A single-city disruption would halt production entirely.",
+          "direction": "bearish",
+          "source": "Finology review"
+        },
+        {
+          "text": "Revenue depends on a handful of large jewellery retail customers.",
+          "direction": "bearish",
+          "source": "Prospectus risk factors"
+        }
+      ],
+      "adjustment_reason": "CONSIDER, matching the computed verdict. The growth is real and the all-fresh structure is genuinely shareholder-friendly. The single-city manufacturing concentration is the risk to weigh, and it is not something a subscription figure captures."
+    },
+    "Purple Style Labs Limited": {
+      "final_call": "AVOID",
+      "summary": "Parent of the Pernia luxury fashion platform. The research does not soften the computed AVOID - it hardens it. Revenue went backwards while losses roughly quadrupled, and the issue is priced with no listed peer to anchor against.",
+      "items": [
+        {
+          "text": "Revenue FELL from Rs 510.03 cr to Rs 494.00 cr year on year - this is not a growth company at present.",
+          "direction": "bearish",
+          "source": "IPO Watch / India IPO"
+        },
+        {
+          "text": "Losses widened sharply, from Rs 47.71 cr to Rs 188.55 cr - close to four times deeper, on lower revenue.",
+          "direction": "bearish",
+          "source": "IPO Watch"
+        },
+        {
+          "text": "There are no listed peers, so there is no external check on the asking price. Reviewers describe the pricing as opportunistic on that basis.",
+          "direction": "bearish",
+          "source": "IPO review coverage"
+        },
+        {
+          "text": "Raising Rs 680 cr, increased from the originally proposed size, as an all-fresh issue.",
+          "direction": "neutral",
+          "source": "Inc42"
+        },
+        {
+          "text": "The underlying platform is real: 1,109 active designer brands and 14 experience centres including London and New York.",
+          "direction": "bullish",
+          "source": "RHP via Inc42 / StartupTalky"
+        }
+      ],
+      "adjustment_reason": "AVOID, and the research makes it clearer than the score alone did. A company whose revenue is shrinking while losses quadruple is asking you to fund the gap. The brand is genuinely strong; that is not the same as the shares being worth Rs 575."
+    },
+    "Deepa Jewellers Limited": {
+      "final_call": "CONSIDER",
+      "summary": "The strongest financials among the issues opening next week - revenue up 38% and profit up 158%. Set against that: it is a thin-margin wholesale gold business, and nearly three quarters of revenue comes from two product lines.",
+      "items": [
+        {
+          "text": "Revenue rose from Rs 1,400.10 cr to Rs 1,927.73 cr and profit from Rs 40.58 cr to Rs 104.79 cr - roughly 158% profit growth.",
+          "direction": "bullish",
+          "source": "IPO Central / IPO Watch"
+        },
+        {
+          "text": "Waist belts and CNC machine-cut bangles together contributed over 72% of revenue in H1 FY26 - heavy product concentration behind the growth.",
+          "direction": "bearish",
+          "source": "RHP via IPO reviews"
+        },
+        {
+          "text": "Wholesale jewellery is competitive, margin-sensitive and capital-intensive, and gold-price swings hit inventory, demand and cash flow together.",
+          "direction": "bearish",
+          "source": "Prospectus risk factors"
+        },
+        {
+          "text": "Of the Rs 459.72 cr issue, Rs 250 cr is fresh capital and the remainder an offer for sale, so a meaningful share goes to existing holders.",
+          "direction": "neutral",
+          "source": "Chittorgarh"
+        },
+        {
+          "text": "Reviewers rate it a selective apply, conditional on institutional participation and subscription momentum.",
+          "direction": "neutral",
+          "source": "IPO Platform review"
+        }
+      ],
+      "adjustment_reason": "CONSIDER. The numbers are the best in this batch, but a wholesale gold processor earning thin margins on two product lines is more fragile than the growth rate suggests. Bidding opens 1 September - judge the demand then, not now."
+    },
+    "Rays Of Belief Limited": {
+      "final_call": "AVOID",
+      "summary": "A genuinely worthwhile business - therapy for children with neurodevelopmental disorders - offered at a price that is very hard to defend. Revenue more than doubled, yet profit fell, and the issue is priced near 100 times earnings.",
+      "items": [
+        {
+          "text": "Post-issue P/E is roughly 100.8x at the upper band of Rs 239. That is an extraordinary multiple for a company of this size.",
+          "direction": "bearish",
+          "source": "IPO Central / OneTrader"
+        },
+        {
+          "text": "Revenue grew about 125%, but profit after tax FELL 16% to Rs 4.96 cr, and net margin collapsed from 16.15% to 6.07%. Growth is being bought at the cost of profitability.",
+          "direction": "bearish",
+          "source": "IPO Central"
+        },
+        {
+          "text": "No comparable listed company exists in India or overseas, so there is no peer benchmark to test the valuation against.",
+          "direction": "bearish",
+          "source": "RHP via reviews"
+        },
+        {
+          "text": "EBITDA rose to Rs 11.91 cr at a 14.59% margin, so the operating business does make money.",
+          "direction": "neutral",
+          "source": "IPO Central"
+        },
+        {
+          "text": "The specialised model and the social need it serves are real and hard to replicate.",
+          "direction": "bullish",
+          "source": "HDIN Research"
+        }
+      ],
+      "adjustment_reason": "I am moving this below the computed verdict to AVOID. Paying about 100x earnings for a company whose profit is shrinking needs an exceptional argument, and having no comparable peer is not one - it removes the check rather than justifying the price. This is a judgement about the price, not about the work the company does."
+    },
+    "Complete Sports And Management India Limited": {
+      "final_call": "NEUTRAL",
+      "summary": "Amusement-equipment supplier with a sharp jump in profitability on flat revenue. The market is so far uninterested, and at about Rs 1.35 lakh a lot this is a large, illiquid commitment for a discretionary-spending business.",
+      "items": [
+        {
+          "text": "Profit rose 59%, from Rs 11.41 cr to Rs 18.18 cr, on revenue up only 6.6% (Rs 111.42 cr to Rs 118.76 cr) - better operating leverage rather than growth.",
+          "direction": "bullish",
+          "source": "IPO Central / IPO Watch"
+        },
+        {
+          "text": "Demand is discretionary. Bowling alleys, arcades and trampoline parks are among the first things cut when consumer spending tightens.",
+          "direction": "bearish",
+          "source": "IPO Watch risk summary"
+        },
+        {
+          "text": "Equipment is largely imported, so margins carry currency and supply-chain exposure.",
+          "direction": "bearish",
+          "source": "IPO Watch"
+        },
+        {
+          "text": "A BSE SME listing needing about Rs 1.35 lakh per application, with the thin post-listing liquidity that implies.",
+          "direction": "bearish",
+          "source": "Issue terms"
+        }
+      ],
+      "adjustment_reason": "NEUTRAL stands. The margin improvement is real but revenue is barely moving, and the book has attracted very little interest so far. There is no case here for committing Rs 1.35 lakh to an illiquid SME on present evidence."
     }
   }
 }

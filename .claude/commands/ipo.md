@@ -18,12 +18,18 @@ Then read `data/reports/<today>/ipos.json`.
 
 ## Step 2 — decide what needs research
 
-Research every issue that is **open now or opens today/tomorrow**. Skip
-anything further out unless the user asks — it will be re-run before it
-matters, and stale research is a liability.
+**Research every issue on the dashboard, including upcoming ones.** An
+earlier version of this command told you to skip anything not imminent, which
+left half the published page with no research on it — the page is public and
+has to be usable in full, not in part.
 
-Prioritise by `urgency`: `closes-today` first, then `closes-tomorrow`, then
-`open`, then imminent `upcoming`.
+Work in order of `urgency`: `closes-today` first, then `closes-tomorrow`,
+`open`, and finally `upcoming`. If time is short, say which issues you did not
+get to rather than silently leaving them bare.
+
+The only issues that need no research are those marked `NOT RATED` (InvITs and
+REITs, which this tool deliberately does not score) — note what they are and
+move on.
 
 ## Step 3 — research each one
 
