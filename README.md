@@ -1,6 +1,10 @@
 # BSE IPO & Portfolio Analyser
 
-**[Live dashboard →](https://accayo14.github.io/stock-and-ipo-predictor/)**
+### Live dashboard
+
+- **[Hosted copy](https://claude.ai/code/artifact/1914a218-f89e-4d3e-94b3-1829d245f433)** — works now
+- **[GitHub Pages](https://accayo14.github.io/stock-and-ipo-predictor/)** — once Pages is enabled for this repo
+  (Settings → Pages → Deploy from a branch → `main` / `/docs`)
 
 > ### Not financial advice
 > This is a personal research tool. It applies a fixed scoring formula to
