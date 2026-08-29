@@ -1,589 +1,121 @@
 {
-  "generated": "2026-08-29 deep research pass",
+  "generated": "2026-08-29 research pass",
   "by": "claude-code",
-  "method": "Multi-angle research per issue: analyst calls, prospectus risk factors, anchor book composition, promoter litigation and pledges, customer concentration, objects of the issue, and peer valuation. Subscription and grey market figures are deliberately excluded from these notes because they move hourly and are shown live on the dashboard. Where sources disagreed, both are reported.",
+  "method": "Web searches per company: '<company> IPO review analysis', '<company> IPO risk factors prospectus', '<company> IPO anchor investors', '<company> IPO GMP subscription day'; plus a direct check of cached investorgain.com source JSON to resolve a promoter-holding data discrepancy shared by four issues.",
   "notes": {
     "Lumino Industries Limited": {
-      "final_call": "CONSIDER",
-      "summary": "The best-supported issue in this batch: unanimous broker backing, a serious domestic anchor book, and a valuation roughly a third of its sector. The reason it is not an outright apply is a working-capital cycle that has gone from 11 days to 86 days in two years while most revenue still comes from government clients.",
+      "summary": "A quality domestic-mutual-fund anchor book and a cheap peer multiple are real positives, but the balance sheet carries more stress than the ratios show: rising debt, negative FY25 operating cash flow, and stretched receivables.",
       "items": [
-        {
-          "text": "Every tracked brokerage rates it Subscribe - Adroit, SBI Securities, BP Equities, Capital Market, Marwadi, Swastika and Sushil Finance. Unanimity across seven houses is rare and worth noting.",
-          "direction": "bullish",
-          "source": "Business Standard / IPO Central / Sushil Finance"
-        },
-        {
-          "text": "Anchor book of Rs 207 Cr from 30 institutions, with domestic mutual funds taking 71.59% across 9 fund houses and 22 schemes - HDFC MF largest, plus Kotak, Motilal Oswal, Bandhan, Edelweiss, JM Financial and Bank of India MF, alongside Abakkus Growth Fund. Notably NO foreign investors participated; the book is entirely domestic.",
-          "direction": "bullish",
-          "source": "IPO Central"
-        },
-        {
-          "text": "Order book of Rs 3,149.88 Cr at 31 March 2026 (Rs 1,991.98 Cr EPC, Rs 1,157.90 Cr manufacturing) - roughly four and a half times revenue, so near-term visibility is good.",
-          "direction": "bullish",
-          "source": "RHP via IPO Central"
-        },
-        {
-          "text": "Post-issue P/E about 15.6x against KEC International 19.81x, Kalpataru 22.13x, Apar 69.98x and a sector average near 48.6x, with RoE of 24.62% versus a peer average of 11.9%. Cheaper and more profitable than the comparison set.",
-          "direction": "bullish",
-          "source": "Swastika / IPO Central"
-        },
-        {
-          "text": "THE KEY RISK: the working capital cycle deteriorated from 11 days (FY24) to 54 (FY25) to 86 days (FY26), with net working capital of Rs 716.72 Cr - about 35% of revenue. This is the classic way EPC companies get into trouble, and it is worsening rather than improving.",
-          "direction": "bearish",
-          "source": "IndMoney / Equentis"
-        },
-        {
-          "text": "Government and state electricity board customers were 86%, 80% and 53% of revenue across FY24-FY26. The dependence is falling, but a majority of revenue still comes from the slowest-paying customers in the economy.",
-          "direction": "bearish",
-          "source": "RHP risk factors"
-        },
-        {
-          "text": "Aluminium alone accounts for 83.25% of FY26 raw material cost. No contractual price pass-through mechanism could be found in any source, so margin exposure to one metal appears largely unhedged.",
-          "direction": "bearish",
-          "source": "Tradebrains; pass-through terms NOT FOUND"
-        },
-        {
-          "text": "Rs 337 Cr of proceeds repays borrowings, which directly reduces interest cost.",
-          "direction": "bullish",
-          "source": "Business Today"
-        },
-        {
-          "text": "Operations in Ethiopia, Kenya and Rwanda add currency, payment-cycle and geopolitical exposure. A 55-year operating history under the founding family partly offsets this.",
-          "direction": "neutral",
-          "source": "RHP risk factors / company"
-        },
-        {
-          "text": "SEARCHED AND NOT FOUND: the prospectus references outstanding litigation involving the company, promoters and directors, but no source gave the number, quantum or nature of those cases. Promoter share pledging could not be confirmed either way.",
-          "direction": "bearish",
-          "source": "Research gap, stated explicitly"
-        }
+        {"text": "Borrowings had risen to ₹1,856.78 Cr as of 31 Jul 2026, with negative operating cash flow in FY25 and trade receivables at 43.84% of FY26 revenue; debtor days stand at 145 and net working capital is 35.11% of FY26 revenue.", "direction": "bearish", "source": "Capital Market / ipocentral.in, Equentis"},
+        {"text": "Aluminium is 83.25% of raw-material cost, leaving margins exposed to commodity swings.", "direction": "bearish", "source": "Equentis / OneTrader IPO summary"},
+        {"text": "Anchor book of ₹207 Cr drew 30 institutions, 71.59% from domestic mutual funds (HDFC, Kotak, Motilal Oswal, Bandhan, Edelweiss, JM Financial, Bank of India) plus Abakkus Growth Fund (Sunil Singhania) — a genuinely long-only book, though with zero FPI participation.", "direction": "bullish", "source": "ipocentral.in"},
+        {"text": "Revenue is concentrated with government entities/SEBs as major customers; prospectus discloses ongoing litigation involving the company, promoters and directors, none flagged as material as of the RHP date.", "direction": "neutral", "source": "bajajbroking.in DRHP summary"},
+        {"text": "Most brokerages (Sushil Finance, SBI Securities, Ventura, Adroit) rate it Subscribe, citing valuation cheaper than KEC International (19.8x) and Kalpataru Projects (22.1x) FY26 P/E.", "direction": "bullish", "source": "multiple broker notes"}
       ],
-      "adjustment_reason": "CONSIDER, matching the computed verdict, and it is the strongest issue currently open. What holds it back from an apply is that the single most reliable predictor of trouble in an EPC business - the cash conversion cycle - has gone the wrong way by a factor of eight in two years while government clients still supply most of the revenue. The valuation and the anchor book give real support; the receivables trend is the thing to watch."
-    },
-    "Esds Software Solution Limited": {
-      "final_call": "CONSIDER",
-      "summary": "Real business quality with an unusually good anchor book, priced at about 40 times earnings. The valuation argument depends on a peer comparison that does not hold up, so this rests on the growth being durable.",
-      "items": [
-        {
-          "text": "Anchor book of Rs 215.99 Cr across 19 investors, with domestic mutual funds taking 81.94% through six fund houses - Motilal Oswal, Bandhan, Quant, ITI, JM Financial and Samco. A book that concentrated in domestic MFs is a genuine quality signal.",
-          "direction": "bullish",
-          "source": "Inc42 / IPO Central"
-        },
-        {
-          "text": "Both tracked brokerages say Subscribe: SBI Securities on the differentiated cloud platform and improving profitability, Swastika on patented technology and profit growth.",
-          "direction": "bullish",
-          "source": "Business Standard / IndMoney"
-        },
-        {
-          "text": "Debt to equity fell from 0.66 (FY24) to 0.08 (FY26), with a debt service coverage ratio of 16.15x. The balance sheet is close to unlevered.",
-          "direction": "bullish",
-          "source": "Company financials via Tradebrains"
-        },
-        {
-          "text": "A 100% fresh issue - no promoter or existing investor is selling a single share.",
-          "direction": "bullish",
-          "source": "Religare / Groww"
-        },
-        {
-          "text": "THE VALUATION PROBLEM: post-issue P/E is 39.6x to 41.6x. The 'cheaper than peers' argument rests on E2E Networks, which has NEGATIVE earnings per share of -Rs 0.76 - so there is no meaningful peer multiple to be cheap against.",
-          "direction": "bearish",
-          "source": "IndMoney / IPO Platform"
-        },
-        {
-          "text": "Rs 576 Cr of the Rs 720 Cr raise funds data-centre and cloud infrastructure through FY27-FY28. That is a capital-intensive, execution-dependent plan, not working capital.",
-          "direction": "neutral",
-          "source": "Paytm Money / Tradebrains"
-        },
-        {
-          "text": "Litigation: a former employee claims entitlement to 1% of shares or compensation of about Rs 18.5 Cr. Not existential, but a live claim against equity.",
-          "direction": "bearish",
-          "source": "Company filings via Trendlyne"
-        },
-        {
-          "text": "96.72% of current assets were pledged as security against borrowings at 31 March 2026. This is company assets against company debt, NOT promoter shares pledged - a different and less alarming thing, but it does mean the asset base is encumbered.",
-          "direction": "bearish",
-          "source": "RHP disclosures"
-        },
-        {
-          "text": "Customer concentration is moderate by the standards of this batch: largest customer 15.93% of FY26 revenue, top ten 45.36%.",
-          "direction": "neutral",
-          "source": "Tradebrains"
-        },
-        {
-          "text": "COULD NOT RESOLVE: the company filed draft papers in September 2021 and again in March 2025. No source explained what happened to the 2021 attempt. Whether the 2015-era private equity investors intend to exit after lock-in was also not found.",
-          "direction": "neutral",
-          "source": "Research gap, stated explicitly"
-        }
-      ],
-      "adjustment_reason": "CONSIDER, and I am raising it above the computed NEUTRAL. The engine marks it down on a fixed P/E band, but profit more than doubled and return on equity is above 25% - the band takes no account of growth, which is a known limitation of the valuation axis. What stops it being an apply is that 40x is expensive in absolute terms and the peer that supposedly makes it look cheap is loss-making, so there is no external check on the price."
+      "adjustment_reason": "Agree with the computed CONSIDER, not APPLY. The cheap relative multiple and strong domestic-MF anchor book are genuine positives, but rising leverage and negative FY25 operating cash flow are exactly what a pure P/E/GMP score can't see, and argue against a higher-conviction call."
     },
     "Kwick Forensic Solutions Limited": {
-      "final_call": "NEUTRAL",
-      "summary": "Genuinely good business economics - 63% revenue growth, return on net worth above 32% - undercut by a documented pattern of statutory payment delays and a penalty levied personally on a promoter. The numbers argue apply; the compliance record is what stops it.",
+      "summary": "Strong revenue growth and a cheap headline P/E sit on a small, tender-dependent, geographically concentrated business anchored only by second-tier alternative-investment funds with no marquee long-only name.",
       "items": [
-        {
-          "text": "COMPLIANCE: the company was fined Rs 2 lakh and promoter Shammer Saralal Shah personally fined Rs 50,000 for conducting forensic activities outside the company's stated object clause. Both were paid in July 2026, weeks before this issue opened.",
-          "direction": "bearish",
-          "source": "RHP disclosures via ScanX"
-        },
-        {
-          "text": "COMPLIANCE: penalties totalling over Rs 15 lakh for delays in filing advance tax, EPF, GST and TDS in recent years. The sums are small against Rs 105 Cr of revenue, which is precisely why the pattern matters - and EPF delays are employee money.",
-          "direction": "bearish",
-          "source": "RHP disclosures via ScanX"
-        },
-        {
-          "text": "Top ten customers account for 77.64% of revenue and government business for 55.22%. Losing two or three relationships would reshape the company.",
-          "direction": "bearish",
-          "source": "RHP via ScanX"
-        },
-        {
-          "text": "Revenue grew from Rs 65.08 Cr to Rs 105.80 Cr (+63%) and profit from Rs 8.56 Cr to Rs 13.51 Cr (+58%), with RoNW of 32.62% and RoCE rising to 44.88%.",
-          "direction": "bullish",
-          "source": "IPO Watch"
-        },
-        {
-          "text": "Almost the entire raise - about Rs 31.42 Cr - goes to working capital and general corporate purposes rather than capacity. Reviewer Dilip Davda flagged this explicitly as a limitation.",
-          "direction": "bearish",
-          "source": "IPO Watch, Dilip Davda"
-        },
-        {
-          "text": "Lead manager Corporate Capital Ventures has a checkable record: 13th mandate in four years, and of 11 recent listings only one opened at a discount. This is the only SME issue in the batch where that check produced real evidence.",
-          "direction": "bullish",
-          "source": "IPO Watch, Dilip Davda"
-        },
-        {
-          "text": "Contingent liabilities of Rs 5.93 Cr at 31 March 2026, and the reviewer noted post-issue net asset value data in the offer documents was garbled - a documentation quality concern in itself.",
-          "direction": "bearish",
-          "source": "IPO Watch"
-        },
-        {
-          "text": "Post-issue P/E is cited at 14.29x by one source and 11.25x by another; the methodologies differ. Either way the pricing is not stretched.",
-          "direction": "neutral",
-          "source": "IPO Watch vs IPO Platform"
-        }
+        {"text": "Top 10 customers are 77.64% of revenue; government dependence is 55.22%; Gujarat and Bihar alone account for ~38.41% of revenue.", "direction": "bearish", "source": "RHP-based summary via multibagg.ai"},
+        {"text": "Company incurred over ₹15 lakh in penalties for delayed EPF, GST, TDS and advance-tax filings in recent years.", "direction": "bearish", "source": "multibagg.ai"},
+        {"text": "Anchor book raised only ₹14.43 Cr from 10 institutions led by Bharat Venture Opportunities Fund (18.76%) plus smaller AIFs (Finavenue, CP Capital, Tiger Strategies) — no mutual fund, insurer, or pension fund participated.", "direction": "bearish", "source": "chittorgarh.com anchor allocation letter"},
+        {"text": "Revenue grew from ₹65.08 Cr (FY25) to ₹105.80 Cr (FY26) and profit from ₹8.56 Cr to ₹13.51 Cr.", "direction": "bullish", "source": "ipoplatform.com"},
+        {"text": "No independent coverage found of related-party transactions or specific litigation beyond generic risk-factor boilerplate — a genuine coverage gap for this SME issue, not filled with speculation.", "direction": "neutral", "source": "search coverage gap"}
       ],
-      "adjustment_reason": "Stepping down from CONSIDER to NEUTRAL. The business is the best of the SME issues on economics and the lead manager's record is genuinely reassuring. But this is the only issue in the batch with a penalty levied on a promoter personally, sitting on top of repeated late payment of advance tax, EPF, GST and TDS. A company that can comfortably afford to pay on time and repeatedly does not is telling you how it is run. For roughly Rs 1.44 lakh into a position that is hard to exit, that record outweighs the growth rate."
-    },
-    "Paluck Technologies Limited": {
-      "final_call": "NEUTRAL",
-      "summary": "Profit has quadrupled, but on revenue that is essentially flat - this is margin expansion, not growth. A deliberate hunt for litigation, related-party and auditor disclosures returned nothing at all, so the governance picture here is a blank page rather than a clean one.",
-      "items": [
-        {
-          "text": "Revenue is close to FLAT: Rs 101.74 Cr (FY24), Rs 102.90 Cr (FY25), Rs 105.09 Cr (8 months of FY26). The profit story is entirely margin expansion - 3.37% to 9.37% to 13.05% - not more business.",
-          "direction": "neutral",
-          "source": "IPO Watch"
-        },
-        {
-          "text": "Profit rose from Rs 3.43 Cr to Rs 9.63 Cr to Rs 13.84 Cr across those periods. The improvement is real; whether a margin that quadrupled in two years is durable is unaddressed in the disclosure.",
-          "direction": "bullish",
-          "source": "IPO Watch"
-        },
-        {
-          "text": "Objects of the issue are concrete rather than vague: about Rs 10 Cr for machinery and generator sets, Rs 3.10 Cr to repay debt, Rs 10 Cr working capital. Money going into named assets beats a general-corporate-purposes catch-all.",
-          "direction": "bullish",
-          "source": "IPO Watch"
-        },
-        {
-          "text": "All revenue comes from North India, and the prospectus flags exposure to state policy changes and infrastructure delays in that region.",
-          "direction": "bearish",
-          "source": "RHP risk factors"
-        },
-        {
-          "text": "Two sources give materially different borrowing figures (Rs 30.05 Cr to Rs 17.49 Cr versus Rs 40.01 Cr to Rs 14.81 Cr). They agree debt is falling but not by how much - treat the magnitude as unverified.",
-          "direction": "neutral",
-          "source": "IPO Watch vs Chanakya Nipothi"
-        },
-        {
-          "text": "An anchor book of about Rs 9.39 Cr was raised, but no anchor investor names could be found anywhere. An anchor book you cannot inspect tells you nothing about who actually committed.",
-          "direction": "bearish",
-          "source": "Names NOT FOUND in any source"
-        },
-        {
-          "text": "Lead manager Horizon Management has no findable listing track record, so there is no way to judge how its past SME issues performed.",
-          "direction": "bearish",
-          "source": "Track record NOT FOUND"
-        },
-        {
-          "text": "SEARCHED AND NOT FOUND: outstanding litigation, related-party transactions, auditor qualifications, customer concentration figures, and any compliance or default history. The prospectus has a litigation section but its contents were not retrievable. This is an information gap, not a clean bill of health.",
-          "direction": "bearish",
-          "source": "Research gap, stated explicitly"
-        }
-      ],
-      "adjustment_reason": "Stepping down from the computed APPLY to NEUTRAL. Two things drive it. Revenue is flat - the entire profit story is a margin that went from 3.4% to 13.1% in two years, with nothing in the disclosure explaining why it should hold. More importantly, a deliberate search for litigation, related-party dealings and auditor qualifications returned nothing, alongside an anchor book with no visible names and a lead manager with no track record. Committing about Rs 1.44 lakh to an illiquid SME on a governance picture that is simply blank is not something a strong subscription figure compensates for."
-    },
-    "Complete Sports And Management India Limited": {
-      "final_call": "AVOID",
-      "summary": "Almost nobody is bidding, and the one figure that would explain the profit record - a year in which margin halved - is attributed to accounting adjustments that no source could describe.",
-      "items": [
-        {
-          "text": "Day one subscription was 0.12x overall, retail 0.04x, NII 0.39x. The other SME issues in this batch were multiply oversubscribed on day one. This moves hourly, but it is the weakest demand signal found anywhere in this research.",
-          "direction": "bearish",
-          "source": "IPO Guru / IPO Watch"
-        },
-        {
-          "text": "Grey market premium is zero and trackers report the grey market has not started - unusual when comparable SME issues are running at 50-70%.",
-          "direction": "bearish",
-          "source": "IPO trackers"
-        },
-        {
-          "text": "The margin record is erratic and unexplained: 17.56%, 16.92%, then 8.97% in FY25, then back to 15.81%. Sources attribute the collapse to accounting adjustments but NOT ONE specifies what they were. A halving of margin that nobody can explain is a material gap.",
-          "direction": "bearish",
-          "source": "IPO Central / IPO Watch"
-        },
-        {
-          "text": "Promoters hold 96.8% before the issue. Even for an SME that is extreme, leaving almost no free float beyond the issue itself and compounding the liquidity problem SME listings already have.",
-          "direction": "bearish",
-          "source": "IPO Watch"
-        },
-        {
-          "text": "Revenue grew only 7% (Rs 111.42 Cr to Rs 118.76 Cr) while profit rose 59% (Rs 11.41 Cr to Rs 18.18 Cr) - again margin, not growth. Return ratios are strong if sustainable: RoE 53.55%, RoCE 47.97%.",
-          "direction": "neutral",
-          "source": "IPO Watch"
-        },
-        {
-          "text": "Objects of the issue are specific and well disclosed: about Rs 39.88 Cr of gaming equipment and warehouse capex, Rs 8.09 Cr for a named bowling centre in Mumbai, Rs 11.50 Cr of bank debt repayment.",
-          "direction": "bullish",
-          "source": "IPO Watch"
-        },
-        {
-          "text": "Lead manager Smart Horizon Capital Advisors was founded only in 2023 and has no quantified listing-performance record that could be found.",
-          "direction": "bearish",
-          "source": "Track record NOT FOUND"
-        },
-        {
-          "text": "Demand is discretionary - bowling, arcades and trampoline parks are among the first things households cut - and equipment is largely imported, adding currency and supply-chain exposure.",
-          "direction": "bearish",
-          "source": "IPO Watch risk summary"
-        }
-      ],
-      "adjustment_reason": "Moving down from NEUTRAL to AVOID. The market is declining this issue while comparable SME offers are five to twenty times subscribed - that is not noise, it is a collective judgement by people who can also read the prospectus. And the single most important number in the financial record, the year margin halved, is explained by no source I could find. Add a 96.8% promoter holding leaving almost no float and an unproven merchant banker, and there is no version of this where Rs 1.35 lakh is justified on present evidence."
+      "adjustment_reason": "I would push toward AVOID / high-caution rather than the computed CONSIDER. Customer and geographic concentration, compliance penalties, and an anchor book with zero institutional heavyweight participation outweigh the growth numbers, especially given the ₹1.44 lakh minimum lot makes this a large, illiquid, hard-to-exit single bet."
     },
     "Priority Jewels Limited": {
-      "final_call": "NEUTRAL",
-      "summary": "Blue-chip customers and all proceeds going to debt repayment rather than a promoter exit are genuine positives. The problem is that it grows far slower than its listed peers while costing about the same.",
+      "summary": "The computed score's most bearish input — a 100% promoter exit — is very likely a data artifact, not a real event; the actual structural concerns are customer concentration and a tight working-capital cycle.",
       "items": [
-        {
-          "text": "THE DECIDING FIGURE: revenue compounded at 14.58% over FY24-FY26 against Khazanchi Jewellers at 58.01%, RBZ Jewellers 39.42% and Ashapuri Gold 38.62%. It grows at roughly a third of the peer rate.",
-          "direction": "bearish",
-          "source": "IPO Platform"
-        },
-        {
-          "text": "Yet post-issue P/E is about 13.90x and price to book 1.94x, described as not very different from peers. You are paying a peer-like multiple for materially slower growth.",
-          "direction": "bearish",
-          "source": "IPO Platform"
-        },
-        {
-          "text": "Customer roster is genuinely blue-chip: CaratLane, Kalyan Jewellers, Reliance Retail, Malabar Gold and Diamonds, TBZ and Senco Gold. That reduces credit risk even though concentration is high.",
-          "direction": "bullish",
-          "source": "Tradebrains"
-        },
-        {
-          "text": "Customer concentration is high but improving: top ten fell from 69.97% (FY23) to 57.72% (FY24) to about 55.61%, with top five at 41.87%. Sources disagree on the latest exact reading; the direction is consistent.",
-          "direction": "neutral",
-          "source": "Whalesbook / Chanakya Nipothi"
-        },
-        {
-          "text": "Rs 75 Cr of the Rs 91.5 Cr raise - 82% - repays debt, and the issue is 100% fresh with no promoter selling.",
-          "direction": "bullish",
-          "source": "Business Standard / Outlook Business"
-        },
-        {
-          "text": "No confirmed formal gold hedge, only informal price-fixing arrangements, with diamonds bought largely on the open market without long-term contracts.",
-          "direction": "bearish",
-          "source": "Chanakya Nipothi"
-        },
-        {
-          "text": "Export exposure roughly doubled to about 49% of revenue, adding currency risk on half the business.",
-          "direction": "neutral",
-          "source": "RHP / Chanakya Nipothi"
-        },
-        {
-          "text": "Working capital cycle of 164 days in FY25 with debt coverage described as moderate.",
-          "direction": "bearish",
-          "source": "Chanakya Nipothi"
-        },
-        {
-          "text": "Anchor book of Rs 27.45 Cr from just four investors, of which only WhiteOak Capital is named. A thin book with mostly unnamed participants.",
-          "direction": "neutral",
-          "source": "Anchor allocation; three of four names NOT FOUND"
-        },
-        {
-          "text": "Both manufacturing units are in Mumbai - a single-city disruption would halt production entirely.",
-          "direction": "bearish",
-          "source": "Finology review"
-        }
+        {"text": "DATA CORRECTION: the pipeline's promoter_post=0.00% is very likely an unfilled placeholder in the source (investorgain.com), not a real full exit. This issue has 0% OFS (100% fresh issue) — a genuine full promoter exit is mechanically impossible through a fresh-issue-only structure. Back-of-envelope math from disclosed pre-issue holding (1.26 crore shares, 93.85%) against the post-issue share base implies promoters retain roughly 70%, not 0%. Independent sources (Bajaj Broking, Chittorgarh) confirm zero OFS and do not report any promoter exit.", "direction": "neutral", "source": "cached investorgain.com JSON + Bajaj Broking, Chittorgarh"},
+        {"text": "Top 10 customers are 53.2% of Q1 FY27 revenue — meaningful concentration for a jewellery retailer.", "direction": "bearish", "source": "Equentis"},
+        {"text": "Working capital cycle is 148-164 days with ₹96.75 Cr secured borrowings as of June 2026; raw materials are 92.5% of FY26 costs, making margins gold-price sensitive.", "direction": "bearish", "source": "Equentis, Chittorgarh"},
+        {"text": "DRHP discloses ongoing related-party transactions with no assurance that terms are equivalent to arm's-length.", "direction": "bearish", "source": "BSE DRHP filing"},
+        {"text": "Anchor book raised only ₹27.45 Cr — modest size for a ₹91.5 Cr issue.", "direction": "neutral", "source": "Business Standard"},
+        {"text": "One broker (via Equentis) called the issue 'fully priced' at 20.5x FY26 P/E but still rated it 'Subscribe for Long Term'.", "direction": "neutral", "source": "Equentis"}
       ],
-      "adjustment_reason": "Stepping down from CONSIDER to NEUTRAL. The structure is shareholder-friendly and the customers are real names, but the deep comparison is unflattering: growing at 14.6% against peers at 39-58% while trading at a similar multiple means you are paying full price for the slowest horse. Unhedged gold exposure and a 164-day cash cycle compound it."
+      "adjustment_reason": "Agree with the computed CONSIDER, but for different reasons than the tool states. Ignore the 'full promoter exit' evidence line — it is almost certainly a source data placeholder rather than a real 0% holding. The real caution points are customer concentration and a stretched working-capital cycle typical of a jewellery trader."
     },
-    "Deepa Jewellers Limited": {
-      "final_call": "CONSIDER",
-      "summary": "Priced at roughly a third of its listed peers on earnings, with the strongest growth and return ratios in this batch. Against that: nearly half the issue is promoters taking money off the table, and the company admits it does not hedge gold at all.",
+    "Esds Software Solution Limited": {
+      "summary": "A genuinely long-only anchor book and strong revenue/profit growth partly justify the rich multiple, but declining return on equity, heavily pledged current assets, and an unresolved equity litigation claim are exactly what the valuation multiple alone can't show.",
       "items": [
-        {
-          "text": "Post-issue P/E of about 16.2x against Kalyan Jewellers at 53.71x, Motisons at 39.8x and a peer average near 28.4x - while growing considerably faster than any of them.",
-          "direction": "bullish",
-          "source": "Chanakya Nipothi / Choice India"
-        },
-        {
-          "text": "FY26 revenue up 37.69% and profit up 158.23%, with RoE of 56.45% and RoCE of 52.08%.",
-          "direction": "bullish",
-          "source": "Chanakya Nipothi"
-        },
-        {
-          "text": "THE OFS: promoters Ashish Agarwal and Seema Agarwal are each selling 59,24,170 shares - about Rs 209.72 Cr, roughly 46% of the total issue. None of that reaches the company.",
-          "direction": "bearish",
-          "source": "Chanakya Nipothi / issue notice"
-        },
-        {
-          "text": "NO GOLD HEDGING, admitted directly in the prospectus: volatility in gold cost and the absence of hedging facilities may have an adverse effect. Gold is bought from bullion banks, dealers and the exchange with no long-term supply contracts.",
-          "direction": "bearish",
-          "source": "RHP risk factors via Chittorgarh"
-        },
-        {
-          "text": "Top ten customers are 70.74% of revenue (H1 FY26), and one source puts the total customer count at just 373. Named clients include Kalyan Jewellers, Joyalukkas and TBZ.",
-          "direction": "bearish",
-          "source": "Chanakya Nipothi"
-        },
-        {
-          "text": "Rs 215 Cr of the Rs 250 Cr fresh portion - 86% - goes to long-term working capital, with no new capacity, technology or geographic spend disclosed.",
-          "direction": "neutral",
-          "source": "Business Today"
-        },
-        {
-          "text": "Post-issue debt to equity is estimated at 0.55, described as strengthened, though borrowings had risen to about Rs 111.11 Cr before the issue.",
-          "direction": "neutral",
-          "source": "Chanakya Nipothi"
-        },
-        {
-          "text": "The prospectus explicitly flags order-cancellation and quality-control risk, tied directly to that concentrated business-to-business customer base.",
-          "direction": "bearish",
-          "source": "RHP via Chittorgarh"
-        },
-        {
-          "text": "Analyst call is a hedged Selective Apply rather than an outright Subscribe.",
-          "direction": "neutral",
-          "source": "Chanakya Nipothi"
-        }
+        {"text": "Anchor book was ₹216 Cr, with domestic mutual funds (Motilal Oswal, Bandhan, Quant, ITI, JM Financial, Samco) taking 82% of the allocation — a genuinely long-only quality book.", "direction": "bullish", "source": "Inc42, IPO Central"},
+        {"text": "A former employee (Rajeev Papneja) claims entitlement to 1% equity or ₹184.8 million in compensation, per prospectus disclosure.", "direction": "bearish", "source": "prospectus disclosure via search"},
+        {"text": "96.72% of current assets were hypothecated/pledged to lenders as of 31 March 2026, and the prospectus warns lenders could sell pledged shares.", "direction": "bearish", "source": "prospectus risk factor"},
+        {"text": "FY26 revenue grew 28% and PAT grew 117% YoY (₹120.8 Cr vs ₹55.6 Cr).", "direction": "bullish", "source": "IPO review aggregators"},
+        {"text": "RoNW of 13.7%, down from 22.9%, looks weak relative to the 41.6x post-issue multiple being paid; one reviewer explicitly recommended 'watchlist' over subscribe.", "direction": "bearish", "source": "IndMoney/composite review"}
       ],
-      "adjustment_reason": "CONSIDER. On numbers this is the most attractive issue opening this week - genuinely cheap against peers with far better growth and returns. Two things stop it being an apply: 46% of the money goes to promoters rather than the business, and a wholesale gold processor that admits to running no hedge at all is carrying a commodity risk it cannot control. Bidding opens 1 September - judge the demand then."
+      "adjustment_reason": "Agree with the computed NEUTRAL. Anchor quality and growth are real, but declining RoNW, heavily pledged current assets, and a live equity claim offset them enough to avoid a conviction call either way."
+    },
+    "Paluck Technologies Limited": {
+      "summary": "A cheap headline P/E and unusually early institutional demand are real, but they sit on top of a one-year profit spike that even a bullish tracker flags as needing scrutiny, plus a documentation irregularity in the offer papers.",
+      "items": [
+        {"text": "Business is diversified engineering/infra services: automobile and telecom-tower engineering (7,500+ sites serviced), plus logistics and equipment rental (92 transit mixers, 13 concrete pumps, 23 trucks); evolved from a diesel-generator servicing business.", "direction": "neutral", "source": "IPO Watch"},
+        {"text": "FY25 net profit jumped from ₹3.43 Cr to ₹9.63 Cr — IPO Watch itself flags this 'sudden profit surge' as needing scrutiny, and notes post-IPO NAV data is garbled in the offer documents.", "direction": "bearish", "source": "IPO Watch"},
+        {"text": "QIB book showed 10.49x demand unusually early (Day 1, 28 Aug) for an SME issue, per Chittorgarh/IPO Guru — real early conviction, but cannot be distinguished from SME-typical operator-driven bidding using public sources alone.", "direction": "neutral", "source": "Chittorgarh, IPO Guru"},
+        {"text": "Anchor book raised only ₹9.39 Cr with no disclosed anchor names — thin and unnamed, typical for small SME issues, and doesn't confirm serious long-only participation.", "direction": "bearish", "source": "search coverage"},
+        {"text": "IPO Watch rates it 'Subscribe' for well-informed investors on a medium-to-long-term view, citing 6.62x FY26-annualized P/E.", "direction": "bullish", "source": "IPO Watch"},
+        {"text": "No independent source discussed related-party transactions, litigation, or pledged promoter shares — a genuine coverage gap, not filled with speculation.", "direction": "neutral", "source": "search coverage gap"}
+      ],
+      "adjustment_reason": "I would soften the computed APPLY toward 'apply cautiously.' The profit surge that even IPO Watch calls out as unexplained, and the NAV documentation issue, are real diligence flags the P/E-and-subscription-driven score cannot see."
+    },
+    "Complete Sports And Management India Limited": {
+      "summary": "Reasonable profitability ratios mask very weak market reception, and the 100% promoter-exit figure driving the bearish qualitative score is very likely a data artifact rather than a confirmed event.",
+      "items": [
+        {"text": "DATA CORRECTION: promoter_post=0.00% is very likely an unfilled placeholder in the source (investorgain.com) rather than a real event — this issue also has 0% OFS (100% fresh issue), the same pattern seen on Priority Jewels, Purple Style Labs, and Rays of Belief. No independent source corroborates a full promoter exit; a genuine full exit is not mechanically possible through a fresh-issue-only structure without an undisclosed separate share transfer.", "direction": "neutral", "source": "cached investorgain.com JSON"},
+        {"text": "Business sources, trades, and distributes amusement/leisure equipment, and is forward-integrating into operating family entertainment centres and mall gaming zones (including a new 'Duckpin' centre in Mumbai).", "direction": "neutral", "source": "search synthesis"},
+        {"text": "PAT margin 15.81%, ROE 53.55%, ROCE 47.97%, manageable debt (₹8.99 Cr); post-issue P/E ~15.27x is not obviously cheap for an SME.", "direction": "neutral", "source": "financial ratios"},
+        {"text": "Chanakya Nipothi rates it 4/5 'Apply' but explicitly conditions this on GMP/subscription staying healthy — they are not: GMP is flat at 0% and subscription is only 0.12-0.13x through day 2.", "direction": "bearish", "source": "Chanakya Nipothi via IPO Guru"},
+        {"text": "No source discussed related-party transactions, litigation, or customer/supplier concentration — thin coverage typical of, and itself a risk for, SME issues.", "direction": "neutral", "source": "search coverage gap"}
+      ],
+      "adjustment_reason": "Agree with the computed NEUTRAL, but discount the 'full promoter exit' evidence line as a likely data artifact. The genuine warning sign here is zero grey-market interest combined with sub-1x subscription through day 2 — a classic weak-listing setup that argues for caution regardless of the promoter-holding number."
     },
     "Purple Style Labs Limited": {
-      "final_call": "AVOID",
-      "summary": "An important correction: the headline loss is largely a one-off share-based payment charge, not an operating collapse. The case against it is different but still holds - negative net worth, cash still burning, and most of the money going into store leases rather than growth.",
+      "summary": "This is Pernia's Pop-Up Shop, a loss-making luxury/designer fashion e-commerce platform whose losses widened, not narrowed, year over year, and which carries a working-capital deficit — a strong anchor book is the only real counterweight.",
       "items": [
-        {
-          "text": "CORRECTION TO THE HEADLINE: the Rs 188.55 Cr loss includes an exceptional non-cash employee stock option charge of about Rs 123 Cr. Excluding it, the loss is around Rs 65.5 Cr - still up 36% year on year from Rs 47.71 Cr, but nothing like a quadrupling.",
-          "direction": "neutral",
-          "source": "Entrackr / Angel One"
-        },
-        {
-          "text": "Even so, operating losses grew 36% on revenue that FELL from Rs 510.03 Cr to Rs 494.00 Cr. The underlying direction is still the wrong one.",
-          "direction": "bearish",
-          "source": "Entrackr / IPO Watch"
-        },
-        {
-          "text": "BALANCE SHEET: current liabilities exceed current assets by Rs 255.12 Cr, retained earnings are negative Rs 423.05 Cr, and operating cash flow was minus Rs 45.19 Cr. This is a company that needs the money.",
-          "direction": "bearish",
-          "source": "RHP via StartupTalky"
-        },
-        {
-          "text": "WHERE THE MONEY GOES: of Rs 680 Cr, about Rs 371.1 Cr settles lease liabilities on experience centres and back-office space and Rs 138.9 Cr funds sales and marketing. There is no debt repayment line and little that looks like growth capital.",
-          "direction": "bearish",
-          "source": "Business Standard / Whalesbook"
-        },
-        {
-          "text": "Audits are clean and unqualified across all three years by Walker Chandiok and Co LLP - a genuine positive given everything else here.",
-          "direction": "bullish",
-          "source": "RHP via StartupTalky"
-        },
-        {
-          "text": "100% fresh issue with zero offer for sale - no existing shareholder is cashing out.",
-          "direction": "bullish",
-          "source": "RHP via StartupTalky"
-        },
-        {
-          "text": "Supplier concentration is rising: the top ten designer brands were 30.24% of gross merchandise value in FY26, up from 26.54%, and those agreements are non-exclusive - the brands can leave.",
-          "direction": "bearish",
-          "source": "RHP via StartupTalky / Chittorgarh"
-        },
-        {
-          "text": "No comparable listed peer exists, so there is no external check on the asking price.",
-          "direction": "bearish",
-          "source": "IPO Platform"
-        },
-        {
-          "text": "Litigation found is minor: eight police complaints over theft at experience centres totalling Rs 1.30 lakh. No promoter litigation, penalty or pledge was found.",
-          "direction": "neutral",
-          "source": "RHP via StartupTalky"
-        },
-        {
-          "text": "Cap table features Shah Rukh Khan, the Salman Khan family, Sachin Tendulkar, Madhuri Dixit and Mahesh Babu. The largest institutional holder is Enam at just 2.9% - celebrity backing is not institutional validation.",
-          "direction": "neutral",
-          "source": "RHP via StartupTalky"
-        },
-        {
-          "text": "UNRESOLVED: one source cites a loss of Rs 285.4 Cr against the Rs 188.55 Cr used elsewhere. The discrepancy could not be reconciled - likely a different or restated period. No named brokerage call and no cash runway figure could be found.",
-          "direction": "neutral",
-          "source": "Research gap, stated explicitly"
-        }
+        {"text": "Business is Pernia's Pop-Up Shop (PPUS), an omnichannel luxury/designer fashion platform with 1,100+ designer brands.", "direction": "neutral", "source": "IPO Watch, Business Standard"},
+        {"text": "PAT fell 51% YoY (FY25 to FY26) even as revenue rose 15% — losses are widening, not merely persisting, despite the margin figures (-38.45% vs -51.16%) reading as improvement in isolation. Current liabilities exceed current assets by ₹255.12 Cr.", "direction": "bearish", "source": "StartupTalky RHP summary"},
+        {"text": "Top 10 designer brands are 30.24% of platform GMV in FY26, and brand agreements are non-exclusive, creating concentration and defection risk; no listed peer exists, so pricing is unanchored.", "direction": "bearish", "source": "StartupTalky, Business Standard"},
+        {"text": "Anchor book raised ₹306 Cr from ICICI Prudential MF, Aditya Birla Sun Life Insurance, ITI MF, Jupiter India Fund, plus BofA Securities and Morgan Stanley Asia; domestic MFs took 32.68% of the anchor allocation — a genuinely credible book.", "direction": "bullish", "source": "Inc42, Business Standard"},
+        {"text": "DATA NOTE: promoter_post=0.00% follows the same pattern seen on Priority Jewels, Complete Sports, and Rays of Belief (0% OFS, likely unfilled source placeholder), though promoter_pre here is already low (26.34%) after prior VC dilution, so a further large reduction is plausible even if not literally to zero.", "direction": "neutral", "source": "cached investorgain.com JSON"}
       ],
-      "adjustment_reason": "Still AVOID, but I want the earlier reasoning corrected: I described losses as having quadrupled, and the deep research shows most of that was a one-off stock-option charge. The real case against is quieter and more serious - negative working capital of Rs 255 Cr, negative retained earnings of Rs 423 Cr, cash still going out of the door, and more than half the raise settling lease obligations rather than funding growth, with no peer to price it against. The brand is genuinely strong; that is not the same as the shares being worth Rs 575."
-    },
-    "Rays Of Belief Limited": {
-      "final_call": "AVOID",
-      "summary": "A worthwhile business at an indefensible price. Roughly 100 times earnings for a company whose profit fell, with a quarter of revenue coming from an entity the promoter controls.",
-      "items": [
-        {
-          "text": "Post-issue P/E of about 100.84x on FY26 profit of Rs 4.96 Cr, valuing the company near Rs 499.55 Cr.",
-          "direction": "bearish",
-          "source": "IPO Platform / Chanakya Nipothi"
-        },
-        {
-          "text": "RELATED PARTY: 39.64% of FY25 revenue came from Carving Futures Pte Ltd, the promoter's own Singapore holding entity, and an associated US entity. That fell to 25.56% in FY26 - improving, but a quarter of revenue still comes from a party the promoter controls.",
-          "direction": "bearish",
-          "source": "RHP-derived, corroborated across searches"
-        },
-        {
-          "text": "Revenue grew about 125% but profit FELL 16% to Rs 4.96 Cr, with net margin collapsing from 16.15% to 6.07%. Growth is being bought at the cost of profitability.",
-          "direction": "bearish",
-          "source": "IPO Central"
-        },
-        {
-          "text": "The only named analyst rating found is an explicit Avoid at Present, 2.5 out of 5, citing little margin of safety. Other trackers call the valuation exceptionally demanding without issuing a formal rating.",
-          "direction": "bearish",
-          "source": "Chanakya Nipothi"
-        },
-        {
-          "text": "No comparable listed company exists in India or overseas, by the prospectus's own admission - which removes any ceiling that might justify 100x rather than supporting it.",
-          "direction": "bearish",
-          "source": "IPO Platform"
-        },
-        {
-          "text": "Part of the proceeds services EXISTING obligations rather than growth: Rs 14.45 Cr for current India centre leases and Rs 10.13 Cr into the US subsidiary for existing lease and licence payments, against Rs 41.36 Cr of genuine new-centre capex.",
-          "direction": "bearish",
-          "source": "Free Press Journal / Business Today"
-        },
-        {
-          "text": "The rollout plan is aggressive and is the prospectus's own top-flagged risk: 71 centres in FY23 grew to 136 by March 2026, with 319 more planned across FY27-FY29.",
-          "direction": "neutral",
-          "source": "OneTrader / NSE filing"
-        },
-        {
-          "text": "EBITDA margin reportedly improved from 4.87% to 14.59% even as profit fell, suggesting the decline sits below EBITDA in depreciation, lease accounting, finance costs or tax. No source provided a clean bridge, so this remains unverified.",
-          "direction": "neutral",
-          "source": "Unverified - no EBITDA-to-PAT bridge found"
-        },
-        {
-          "text": "The corporate promoter holds a USD 2.02 million LEGO Foundation partnership for India and UAE expansion - a real credibility signal, though it also reinforces dependence on the Singapore entity.",
-          "direction": "bullish",
-          "source": "Business Today"
-        },
-        {
-          "text": "A per-centre breakeven of 8-12 months is claimed across several sources, but no absolute per-centre revenue or cost figure could be found anywhere to test it.",
-          "direction": "neutral",
-          "source": "Unverified claim"
-        }
-      ],
-      "adjustment_reason": "AVOID, below the computed verdict. Paying about 100 times earnings for a company whose profit is shrinking needs an exceptional argument, and having no comparable peer is not one - it removes the check rather than justifying the price. The related-party revenue concentration with the promoter's own Singapore entity is the second problem: a quarter of sales are to a party on the other side of the table. This is a judgement about the price, not about the work the company does, which is genuinely valuable."
-    },
-    "Annu Projects Limited": {
-      "final_call": "AVOID",
-      "summary": "The question worth asking was why an issue with 34% revenue growth and 57% profit growth attracted no anchor investors and barely filled its book. The prospectus answers it: customers take 237 days to pay, ten customers are 98% of revenue, and contingent liabilities are two thirds of net worth.",
-      "items": [
-        {
-          "text": "THE ANSWER: customers take an average of 237 DAYS to pay, and borrowings rose from Rs 22.27 Cr to Rs 52.54 Cr despite higher net worth. The company is borrowing to bridge a collection gap while reporting growing profits.",
-          "direction": "bearish",
-          "source": "Business Standard"
-        },
-        {
-          "text": "Top ten customers are 97.96% of FY26 revenue and government entities alone 57.09%. Telecom and sewerage supplied over 90% of revenue for three straight years, and 70% of business sits in five states.",
-          "direction": "bearish",
-          "source": "InCred Money / Equentis"
-        },
-        {
-          "text": "Contingent liabilities of Rs 100.87 Cr at 31 March 2026 - 64.97% of net worth. The company is contesting about Rs 42.5 Cr of tax demands including an Rs 18.2 Cr GST demand before the appellate authority, plus roughly Rs 24.1 Cr in arbitration with former joint-venture partners and subcontractors.",
-          "direction": "bearish",
-          "source": "RHP disclosures"
-        },
-        {
-          "text": "CONFIRMED: no anchor investor allocation at all - the anchor quota is simply not applicable for this issue. Institutions did not merely decline; there was no anchor round.",
-          "direction": "bearish",
-          "source": "HDFC Sky"
-        },
-        {
-          "text": "Liquidated damages were paid for project delays in each of the last three years - Rs 4.21 Cr, Rs 0.85 Cr and Rs 0.09 Cr - with extensions sought on 16, 25 and 30 projects respectively. Declining, but an execution record with real penalties.",
-          "direction": "bearish",
-          "source": "RHP disclosures"
-        },
-        {
-          "text": "Priced at about 19.6x earnings against peer Bondada at 16.60x, despite Bondada generating roughly twelve times the revenue. A much smaller company asking a higher multiple than a much larger one.",
-          "direction": "bearish",
-          "source": "IPO Platform"
-        },
-        {
-          "text": "The fundamentals in isolation are genuinely good: EBITDA margin 20.81% against Bondada 11.49%, RoE 21.27% and RoCE 22.66% above peers, book-to-bill of 3.89x, and an order book of Rs 1,005 Cr.",
-          "direction": "bullish",
-          "source": "IPO Platform / InCred Money"
-        },
-        {
-          "text": "Zero percent of promoter shareholding is pledged - a clear governance positive.",
-          "direction": "bullish",
-          "source": "IPO Platform"
-        },
-        {
-          "text": "Analysts were split rather than supportive: one suggested considering it long term, another advised waiting for final subscription numbers before applying.",
-          "direction": "neutral",
-          "source": "Business Standard"
-        },
-        {
-          "text": "IMPORTANT CAVEAT: no source explicitly linked the weak anchor and subscription outcome to these disclosures. The connection is my reading of the risk factors, not a quoted attribution.",
-          "direction": "neutral",
-          "source": "Stated as inference, not sourced attribution"
-        }
-      ],
-      "adjustment_reason": "AVOID, below the computed NEUTRAL, and worth recording even though bidding has closed. This is the clearest example of why the news layer exists: the reported financials look strong, and the engine scored them as such, but a 237-day receivable cycle funded by rising debt, 98% customer concentration and contingent liabilities at two thirds of net worth are all in the prospectus and none of them reach the scoring formula. The market read those pages and stayed away."
+      "adjustment_reason": "Agree with AVOID, and if anything the computed confidence (0.77) understates the case: the fresh PAT decline (-51% YoY, not just a persistently thin margin) and the working-capital deficit are real deterioration, not stability, in a discretionary luxury category. The strong anchor names signal institutional appetite for the story, not a profitability turnaround."
     },
     "Phychem Technologies Limited": {
-      "final_call": "AVOID",
-      "summary": "A very small issue - about Rs 14.58 Cr - from a single-factory maker of plastic moulding compounds, on a 5.65% margin, with raw material costs tied to crude oil and no ability to hedge them.",
+      "summary": "Improving profitability and a diversified customer base are real positives largely invisible in the raw ratios, but a meaningful P/E discrepancy against an independent source and a total absence of named anchor investors are genuine gaps.",
       "items": [
-        {
-          "text": "The issue raises only about Rs 14.58 Cr. An issue this small almost always trades thinly after listing, which makes exiting difficult regardless of how the business performs.",
-          "direction": "bearish",
-          "source": "IPO Central / Chittorgarh"
-        },
-        {
-          "text": "Net profit margin is 5.65% - thin enough that a modest cost increase erases most of it.",
-          "direction": "bearish",
-          "source": "Chanakya Nipothi"
-        },
-        {
-          "text": "Main raw materials LLDPE and HDPE are crude-oil linked. A sharp rise in polymer prices that cannot be passed through cuts margin quickly, and no pass-through mechanism is disclosed.",
-          "direction": "bearish",
-          "source": "Chanakya Nipothi"
-        },
-        {
-          "text": "The entire business runs from one factory in Nashik with three moulding machines. A problem at that single site stops everything.",
-          "direction": "bearish",
-          "source": "Chanakya Nipothi / IPO Central"
-        },
-        {
-          "text": "Customers are rotational moulding manufacturers - a narrow trade with no alternative customer base if that industry slows.",
-          "direction": "bearish",
-          "source": "Chanakya Nipothi"
-        },
-        {
-          "text": "DISCREPANCY: one source states a minimum retail application of about Rs 2.16 lakh (4,000 shares), while the issue terms we hold imply about Rs 1.08 lakh. Confirm the actual lot with your broker before applying - the difference is a full lakh.",
-          "direction": "neutral",
-          "source": "Chanakya Nipothi vs issue terms held here"
-        },
-        {
-          "text": "Reviewers suggest applying for listing gains only if the grey market stays supportive - which is a recommendation about sentiment, not about the business.",
-          "direction": "neutral",
-          "source": "Chanakya Nipothi"
-        }
+        {"text": "Business manufactures rotational-molding (roto-molding) polyethylene compounds for hollow plastic products — a niche industrial-chemicals supplier, not pharma.", "direction": "neutral", "source": "Business Standard, ipocentral.in"},
+        {"text": "Customer base includes roughly 265 domestic and 24 global customers across ~21 export countries; exports are 23.32% of FY26 revenue, somewhat mitigating concentration risk.", "direction": "bullish", "source": "search synthesis, unattributed secondary source - treat as indicative only"},
+        {"text": "FY25 PAT grew 68% with improving EBITDA and lower borrowings; however, one independent source pegs post-issue P/E at 19.42x versus the 13.5x in our computed figures - a real discrepancy worth flagging.", "direction": "neutral", "source": "ipocentral.in"},
+        {"text": "No named anchor investors could be found in any source - only that an anchor tranche of 7.68 lakh shares exists structurally. Explicitly no credible finding on anchor quality.", "direction": "neutral", "source": "search coverage gap"},
+        {"text": "GMP is inconsistent across trackers: ₹3 (~5.6%) on some, ₹0 on another - thin and contradictory, consistent with normal SME pre-listing noise rather than a genuine signal.", "direction": "neutral", "source": "cross-source comparison"}
       ],
-      "adjustment_reason": "AVOID, below the computed NEUTRAL. Every structural feature points the same way: a tiny issue, one factory, one customer industry, a 5.65% margin, and input costs that move with crude oil and cannot be passed on. The only argument offered in its favour is a supportive grey market, which is sentiment rather than evidence. Committing over a lakh to something this concentrated and this illiquid is not justified by what is disclosed."
+      "adjustment_reason": "Keep the computed NEUTRAL but lean slightly cautious given the unresolved valuation discrepancy (13.5x vs 19.42x) - re-verify the post-issue P/E before the closing-day call. Promoter dilution to 72.56% and lack of anchor disclosure are typical SME opacity, not disqualifying on their own."
+    },
+    "Deepa Jewellers Limited": {
+      "summary": "Strong ROE/ROCE and revenue growth are real, but they say nothing about the gold-price and working-capital exposure inherent to jewellery trading, or the fact that nearly half the issue proceeds go to selling shareholders rather than the company.",
+      "items": [
+        {"text": "Business is a jewellery wholesaler/trader with dependence on gold bullion, exposing it to price volatility, supply constraints, forex, and import-duty risk; only 373 customers, a real concentration risk. Borrowings have risen to ₹111.11 Cr.", "direction": "bearish", "source": "IPO Central, RHP-derived risk summary"},
+        {"text": "FY26 revenue grew 37.69% and PAT grew 158.23%, with ROE 56.45% and ROCE 52.08% - strong on paper, but IPO Central explicitly pairs this with a caution on thin margins and rising leverage.", "direction": "neutral", "source": "IPO Central"},
+        {"text": "~46% of the issue is an offer for sale, which 'will not benefit the company' per IPO Central - a large share of proceeds is going to sellers monetizing, not the business.", "direction": "bearish", "source": "IPO Central"},
+        {"text": "GMP discrepancy: independent trackers showed ₹42 / 23.73% (implied listing ₹219) at time of search, materially below the ~31% figure in our computed data - worth re-checking closer to listing since GMP moves hourly.", "direction": "neutral", "source": "IPO Central, cross-check vs our data"},
+        {"text": "Multiple trackers (Chanakya Nipothi, Chittorgarh) converge on a 'Selective Apply' framing conditioned on final subscription/QIB momentum, not an outright buy call.", "direction": "neutral", "source": "Chanakya Nipothi, Chittorgarh"},
+        {"text": "No credible named anchor investor list surfaced in searches.", "direction": "neutral", "source": "search coverage gap"}
+      ],
+      "adjustment_reason": "Broadly consistent with the computed CONSIDER at 0.48 confidence - the low confidence is appropriate given thin margins, customer concentration, and heavy OFS. The lower independently-observed GMP (23.7% vs our 31%) argues against nudging this toward APPLY; re-check both figures once bidding opens."
+    },
+    "Rays Of Belief Limited": {
+      "summary": "A compelling ROE/margin story funds an aggressive, execution-heavy expansion into a talent-constrained sector at a rich valuation alongside full promoter exit — a classic story-stock pattern the ratios alone don't flag, and one source directly contradicts our margin-expansion figures.",
+      "items": [
+        {"text": "Business is a for-profit social enterprise (brand 'Mom's Belief') delivering intervention plans for children with neurodevelopmental disorders (autism, ADHD, Down syndrome, CP); 136 centres across 57 cities as of March 2026.", "direction": "neutral", "source": "IPO Central, Business Standard"},
+        {"text": "Proceeds are earmarked to open 319 new centres between FY27-FY29 - an aggressive, execution-dependent plan in a sector facing a 'systemic shortage of specialized clinical talent'.", "direction": "bearish", "source": "HDIN Research / OneTrader"},
+        {"text": "DISCREPANCY: one source (Chanakya Nipothi via IPO Central) describes 'declining FY26 PAT', which conflicts with our computed margin-expansion figures (PAT margin 16.15%, up from 6.07%). This should be resolved against the actual RHP financials before trusting either figure at face value.", "direction": "neutral", "source": "Chanakya Nipothi via IPO Central - conflicts with ipos.json"},
+        {"text": "Post-issue P/E of 100.84x (market cap ₹499.55 Cr) is flagged industry-wide as rich, 'leaving little margin of safety'.", "direction": "bearish", "source": "IPO Central"},
+        {"text": "DATA NOTE: promoter_post=0.00% follows the same pattern as Priority Jewels, Purple Style Labs, and Complete Sports (0% OFS, likely an unfilled source placeholder rather than a confirmed full exit) - no independent source confirms a literal 100% exit.", "direction": "neutral", "source": "cached investorgain.com JSON"},
+        {"text": "GMP as of 26 Aug was ₹18 (7.53%), lower than the ~11.3% in our computed data but consistent with a premium that has been rising from 0% toward listing.", "direction": "neutral", "source": "cross-check vs our data"}
+      ],
+      "adjustment_reason": "I would lean below the computed NEUTRAL toward caution for listing-gain seekers, not because of a clean reason to override the verdict, but because the unresolved PAT discrepancy plus a 100x P/E funding an execution-heavy expansion stack multiple soft-data red flags that the computed 0.78 confidence may be overstating. Resolve the PAT conflict against the RHP before the closing-day call."
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-29T00:54:50.236977",
+  "generated": "2026-08-29T21:39:23.839518",
   "date": "2026-08-29",
   "count": 10,
   "ipos": [
@@ -49,20 +49,26 @@
       },
       "retail_allotment_odds": 0.1456,
       "gmp": {
-        "value": 61.5,
-        "pct": 75.0,
-        "estimated_listing": 143.5,
-        "updated": "Aug 28th 2026 09:35 PM"
+        "value": 63.0,
+        "pct": 76.83,
+        "estimated_listing": 145.0,
+        "updated": "Aug 29th 2026 08:53 PM"
       },
       "gmp_trend": {
         "direction": "rising",
-        "change_pp": 18.9,
-        "latest": 75.0,
-        "earlier": 56.1,
+        "change_pp": 15.850000000000001,
+        "latest": 76.83,
+        "earlier": 60.98,
         "days": 3,
         "points": 7
       },
       "gmp_history": [
+        {
+          "date": "29-08-2026",
+          "gmp": 63.0,
+          "pct": 76.83,
+          "estimated_listing": 145.0
+        },
         {
           "date": "28-08-2026",
           "gmp": 61.5,
@@ -98,12 +104,6 @@
           "gmp": 49.0,
           "pct": 59.76,
           "estimated_listing": 131.0
-        },
-        {
-          "date": "22-08-2026",
-          "gmp": 52.0,
-          "pct": 63.41,
-          "estimated_listing": 134.0
         }
       ],
       "timetable": {
@@ -156,7 +156,7 @@
       "evidence": [
         {
           "axis": "gmp",
-          "statement": "Grey market premium is 75.0%, implying a listing near 144 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
+          "statement": "Grey market premium is 76.8%, implying a listing near 145 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
           "direction": "bullish",
           "score": 1.0
         },
@@ -192,7 +192,7 @@
         },
         {
           "axis": "gmp",
-          "statement": "The premium has risen from 56.1% to 75.0% over the last 3 day(s) - unofficial demand is building into the close",
+          "statement": "The premium has risen from 61.0% to 76.8% over the last 3 day(s) - unofficial demand is building into the close",
           "direction": "bullish",
           "score": 0.4
         },
@@ -240,7 +240,7 @@
       "name": "Kwick Forensic Solutions Limited",
       "type": "SME",
       "verdict": "CONSIDER",
-      "score": 0.353,
+      "score": 0.383,
       "confidence": 1.0,
       "open_date": "2026-08-27",
       "close_date": "2026-08-31",
@@ -282,20 +282,26 @@
       },
       "retail_allotment_odds": 0.0276,
       "gmp": {
-        "value": 64.0,
-        "pct": 71.11,
-        "estimated_listing": 154.0,
-        "updated": "Aug 28th 2026 09:30 PM"
+        "value": 70.0,
+        "pct": 77.78,
+        "estimated_listing": 160.0,
+        "updated": "Aug 29th 2026 09:01 PM"
       },
       "gmp_trend": {
-        "direction": "flat",
-        "change_pp": 0.0,
-        "latest": 71.11,
+        "direction": "rising",
+        "change_pp": 6.670000000000002,
+        "latest": 77.78,
         "earlier": 71.11,
         "days": 3,
         "points": 7
       },
       "gmp_history": [
+        {
+          "date": "29-08-2026",
+          "gmp": 70.0,
+          "pct": 77.78,
+          "estimated_listing": 160.0
+        },
         {
           "date": "28-08-2026",
           "gmp": 64.0,
@@ -331,12 +337,6 @@
           "gmp": 61.0,
           "pct": 67.78,
           "estimated_listing": 151.0
-        },
-        {
-          "date": "22-08-2026",
-          "gmp": 51.0,
-          "pct": 56.67,
-          "estimated_listing": 141.0
         }
       ],
       "timetable": {
@@ -383,7 +383,7 @@
         "subscription": 0.65,
         "valuation": 0.137,
         "financials": 0.661,
-        "gmp": 0.5,
+        "gmp": 0.7,
         "qualitative": 0.417
       },
       "evidence": [
@@ -401,7 +401,7 @@
         },
         {
           "axis": "gmp",
-          "statement": "Grey market premium is 71.1%, implying a listing near 154 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
+          "statement": "Grey market premium is 77.8%, implying a listing near 160 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
           "direction": "bullish",
           "score": 1.0
         },
@@ -442,6 +442,12 @@
           "score": -0.425
         },
         {
+          "axis": "gmp",
+          "statement": "The premium has risen from 71.1% to 77.8% over the last 3 day(s) - unofficial demand is building into the close",
+          "direction": "bullish",
+          "score": 0.4
+        },
+        {
           "axis": "qualitative",
           "statement": "Promoters retain 64.7% after the issue (from 88.5%), keeping their interests aligned with yours",
           "direction": "bullish",
@@ -464,12 +470,6 @@
           "statement": "Institutional (QIB) book is 0.00x, but QIB bids almost always arrive on the final day, so this figure carries little information yet",
           "direction": "neutral",
           "score": -0.05
-        },
-        {
-          "axis": "gmp",
-          "statement": "The premium has held roughly flat near 71.1% across 7 days of quotes - stable, if unexciting, sentiment",
-          "direction": "neutral",
-          "score": 0.0
         }
       ],
       "unavailable": [],
@@ -511,17 +511,23 @@
         "value": 45.0,
         "pct": 22.5,
         "estimated_listing": 245.0,
-        "updated": "Aug 28th 2026 09:30 PM"
+        "updated": "Aug 29th 2026 09:00 PM"
       },
       "gmp_trend": {
         "direction": "rising",
-        "change_pp": 7.5,
+        "change_pp": 12.5,
         "latest": 22.5,
-        "earlier": 15.0,
+        "earlier": 10.0,
         "days": 3,
-        "points": 5
+        "points": 6
       },
       "gmp_history": [
+        {
+          "date": "29-08-2026",
+          "gmp": 45.0,
+          "pct": 22.5,
+          "estimated_listing": 245.0
+        },
         {
           "date": "28-08-2026",
           "gmp": 45.0,
@@ -627,7 +633,7 @@
         },
         {
           "axis": "gmp",
-          "statement": "The premium has risen from 15.0% to 22.5% over the last 3 day(s) - unofficial demand is building into the close",
+          "statement": "The premium has risen from 10.0% to 22.5% over the last 3 day(s) - unofficial demand is building into the close",
           "direction": "bullish",
           "score": 0.4
         },
@@ -704,25 +710,31 @@
       "subscription_momentum": null,
       "retail_allotment_odds": 0.3521,
       "gmp": {
-        "value": 380.0,
-        "pct": 88.58,
-        "estimated_listing": 809.0,
-        "updated": "Aug 28th 2026 09:32 PM"
+        "value": 372.0,
+        "pct": 86.71,
+        "estimated_listing": 801.0,
+        "updated": "Aug 29th 2026 08:57 PM"
       },
       "gmp_trend": {
         "direction": "rising",
-        "change_pp": 24.480000000000004,
-        "latest": 88.58,
-        "earlier": 64.1,
+        "change_pp": 1.6299999999999955,
+        "latest": 86.71,
+        "earlier": 85.08,
         "days": 3,
-        "points": 4
+        "points": 5
       },
       "gmp_history": [
         {
+          "date": "29-08-2026",
+          "gmp": 372.0,
+          "pct": 86.71,
+          "estimated_listing": 801.0
+        },
+        {
           "date": "28-08-2026",
-          "gmp": 380.0,
-          "pct": 88.58,
-          "estimated_listing": 809.0
+          "gmp": 360.0,
+          "pct": 83.92,
+          "estimated_listing": 789.0
         },
         {
           "date": "27-08-2026",
@@ -793,7 +805,7 @@
       "evidence": [
         {
           "axis": "gmp",
-          "statement": "Grey market premium is 88.6%, implying a listing near 809 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
+          "statement": "Grey market premium is 86.7%, implying a listing near 801 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
           "direction": "bullish",
           "score": 1.0
         },
@@ -823,7 +835,7 @@
         },
         {
           "axis": "gmp",
-          "statement": "The premium has risen from 64.1% to 88.6% over the last 3 day(s) - unofficial demand is building into the close",
+          "statement": "The premium has risen from 85.1% to 86.7% over the last 3 day(s) - unofficial demand is building into the close",
           "direction": "bullish",
           "score": 0.4
         },
@@ -871,7 +883,7 @@
       "name": "Paluck Technologies Limited",
       "type": "SME",
       "verdict": "APPLY",
-      "score": 0.489,
+      "score": 0.459,
       "confidence": 1.0,
       "open_date": "2026-08-28",
       "close_date": "2026-09-01",
@@ -903,17 +915,23 @@
         "value": 25.0,
         "pct": 52.08,
         "estimated_listing": 73.0,
-        "updated": "Aug 28th 2026 09:31 PM"
+        "updated": "Aug 29th 2026 08:57 PM"
       },
       "gmp_trend": {
-        "direction": "rising",
-        "change_pp": 14.579999999999998,
+        "direction": "flat",
+        "change_pp": 0.0,
         "latest": 52.08,
-        "earlier": 37.5,
+        "earlier": 52.08,
         "days": 3,
-        "points": 5
+        "points": 6
       },
       "gmp_history": [
+        {
+          "date": "29-08-2026",
+          "gmp": 25.0,
+          "pct": 52.08,
+          "estimated_listing": 73.0
+        },
         {
           "date": "28-08-2026",
           "gmp": 25.0,
@@ -989,7 +1007,7 @@
         "subscription": 0.65,
         "valuation": 0.7,
         "financials": 0.41,
-        "gmp": 0.7,
+        "gmp": 0.5,
         "qualitative": 0.417
       },
       "evidence": [
@@ -1022,12 +1040,6 @@
           "statement": "100% of the issue is fresh capital going into the business rather than to selling shareholders",
           "direction": "bullish",
           "score": 0.5
-        },
-        {
-          "axis": "gmp",
-          "statement": "The premium has risen from 37.5% to 52.1% over the last 3 day(s) - unofficial demand is building into the close",
-          "direction": "bullish",
-          "score": 0.4
         },
         {
           "axis": "qualitative",
@@ -1064,6 +1076,12 @@
           "statement": "This is an SME issue. SME listings trade in large lot sizes with far thinner liquidity and lighter disclosure than mainboard stocks, so the score carries a 0.10 risk penalty and exiting can be genuinely difficult",
           "direction": "bearish",
           "score": -0.1
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has held roughly flat near 52.1% across 6 days of quotes - stable, if unexciting, sentiment",
+          "direction": "neutral",
+          "score": 0.0
         }
       ],
       "unavailable": [],
@@ -1105,7 +1123,7 @@
         "value": 0.0,
         "pct": 0.0,
         "estimated_listing": 135.0,
-        "updated": "Aug 28th 2026 09:36 PM"
+        "updated": "Aug 29th 2026 08:55 PM"
       },
       "gmp_trend": {
         "direction": "flat",
@@ -1113,9 +1131,15 @@
         "latest": 0.0,
         "earlier": 0.0,
         "days": 3,
-        "points": 6
+        "points": 7
       },
       "gmp_history": [
+        {
+          "date": "29-08-2026",
+          "gmp": 0.0,
+          "pct": 0.0,
+          "estimated_listing": 135.0
+        },
         {
           "date": "28-08-2026",
           "gmp": 0.0,
@@ -1275,7 +1299,7 @@
         },
         {
           "axis": "gmp",
-          "statement": "The premium has held roughly flat near 0.0% across 6 days of quotes - stable, if unexciting, sentiment",
+          "statement": "The premium has held roughly flat near 0.0% across 7 days of quotes - stable, if unexciting, sentiment",
           "direction": "neutral",
           "score": 0.0
         }
@@ -1287,7 +1311,7 @@
       "name": "Purple Style Labs Limited",
       "type": "MainBoard",
       "verdict": "AVOID",
-      "score": -0.458,
+      "score": -0.456,
       "confidence": 0.77,
       "open_date": "2026-08-31",
       "close_date": "2026-09-02",
@@ -1307,20 +1331,26 @@
       "subscription_momentum": null,
       "retail_allotment_odds": null,
       "gmp": {
-        "value": 30.0,
-        "pct": 5.22,
-        "estimated_listing": 605.0,
-        "updated": "Aug 28th 2026 09:29 PM"
+        "value": 35.0,
+        "pct": 6.09,
+        "estimated_listing": 610.0,
+        "updated": "Aug 29th 2026 08:59 PM"
       },
       "gmp_trend": {
         "direction": "rising",
-        "change_pp": 5.22,
-        "latest": 5.22,
+        "change_pp": 6.09,
+        "latest": 6.09,
         "earlier": 0.0,
-        "days": 2,
-        "points": 3
+        "days": 3,
+        "points": 4
       },
       "gmp_history": [
+        {
+          "date": "29-08-2026",
+          "gmp": 35.0,
+          "pct": 6.09,
+          "estimated_listing": 610.0
+        },
         {
           "date": "28-08-2026",
           "gmp": 30.0,
@@ -1384,7 +1414,7 @@
         "subscription": 0.0,
         "valuation": -0.454,
         "financials": -1.0,
-        "gmp": 0.265,
+        "gmp": 0.276,
         "qualitative": -0.2
       },
       "evidence": [
@@ -1420,7 +1450,7 @@
         },
         {
           "axis": "gmp",
-          "statement": "The premium has risen from 0.0% to 5.2% over the last 2 day(s) - unofficial demand is building into the close",
+          "statement": "The premium has risen from 0.0% to 6.1% over the last 3 day(s) - unofficial demand is building into the close",
           "direction": "bullish",
           "score": 0.4
         },
@@ -1432,9 +1462,9 @@
         },
         {
           "axis": "gmp",
-          "statement": "Grey market premium is 5.2% - a slim expected listing gain, easily erased by a weak market on listing day",
+          "statement": "Grey market premium is 6.1% - a slim expected listing gain, easily erased by a weak market on listing day",
           "direction": "bullish",
-          "score": 0.131
+          "score": 0.152
         }
       ],
       "unavailable": [
@@ -1447,7 +1477,7 @@
       "name": "Phychem Technologies Limited",
       "type": "SME",
       "verdict": "NEUTRAL",
-      "score": 0.136,
+      "score": 0.099,
       "confidence": 0.78,
       "open_date": "2026-08-31",
       "close_date": "2026-09-02",
@@ -1470,17 +1500,23 @@
         "value": 3.0,
         "pct": 5.56,
         "estimated_listing": 57.0,
-        "updated": "Aug 28th 2026 09:35 PM"
+        "updated": "Aug 29th 2026 09:01 PM"
       },
       "gmp_trend": {
-        "direction": "rising",
-        "change_pp": 5.56,
+        "direction": "flat",
+        "change_pp": 0.0,
         "latest": 5.56,
-        "earlier": 0.0,
+        "earlier": 5.56,
         "days": 3,
-        "points": 4
+        "points": 5
       },
       "gmp_history": [
+        {
+          "date": "29-08-2026",
+          "gmp": 3.0,
+          "pct": 5.56,
+          "estimated_listing": 57.0
+        },
         {
           "date": "28-08-2026",
           "gmp": 3.0,
@@ -1528,7 +1564,7 @@
         "participated": 1,
         "shares": 768000,
         "note": "768,000 shares placed with anchor investors",
-        "url": null
+        "url": "https://www.chittorgarh.net/reports/anchor-investor/phychem-technologies-ipo-anchor-allocation-letter.pdf"
       },
       "is_upcoming": true,
       "closes_today": false,
@@ -1550,7 +1586,7 @@
         "subscription": 0.0,
         "valuation": 0.086,
         "financials": 0.325,
-        "gmp": 0.27,
+        "gmp": 0.069,
         "qualitative": 0.417
       },
       "evidence": [
@@ -1577,12 +1613,6 @@
           "statement": "100% of the issue is fresh capital going into the business rather than to selling shareholders",
           "direction": "bullish",
           "score": 0.5
-        },
-        {
-          "axis": "gmp",
-          "statement": "The premium has risen from 0.0% to 5.6% over the last 3 day(s) - unofficial demand is building into the close",
-          "direction": "bullish",
-          "score": 0.4
         },
         {
           "axis": "qualitative",
@@ -1619,6 +1649,12 @@
           "statement": "This is an SME issue. SME listings trade in large lot sizes with far thinner liquidity and lighter disclosure than mainboard stocks, so the score carries a 0.10 risk penalty and exiting can be genuinely difficult",
           "direction": "bearish",
           "score": -0.1
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has held roughly flat near 5.6% across 5 days of quotes - stable, if unexciting, sentiment",
+          "direction": "neutral",
+          "score": 0.0
         }
       ],
       "unavailable": [
@@ -1630,7 +1666,7 @@
       "name": "Deepa Jewellers Limited",
       "type": "MainBoard",
       "verdict": "CONSIDER",
-      "score": 0.332,
+      "score": 0.409,
       "confidence": 0.48,
       "open_date": "2026-09-01",
       "close_date": "2026-09-03",
@@ -1650,20 +1686,26 @@
       "subscription_momentum": null,
       "retail_allotment_odds": null,
       "gmp": {
-        "value": 47.0,
-        "pct": 26.55,
-        "estimated_listing": 224.0,
-        "updated": "Aug 28th 2026 09:35 PM"
+        "value": 55.0,
+        "pct": 31.07,
+        "estimated_listing": 232.0,
+        "updated": "Aug 29th 2026 08:58 PM"
       },
       "gmp_trend": {
-        "direction": "flat",
-        "change_pp": 0.0,
-        "latest": 26.55,
+        "direction": "rising",
+        "change_pp": 4.52,
+        "latest": 31.07,
         "earlier": 26.55,
-        "days": 1,
-        "points": 2
+        "days": 2,
+        "points": 3
       },
       "gmp_history": [
+        {
+          "date": "29-08-2026",
+          "gmp": 55.0,
+          "pct": 31.07,
+          "estimated_listing": 232.0
+        },
         {
           "date": "28-08-2026",
           "gmp": 47.0,
@@ -1721,7 +1763,7 @@
         "subscription": 0.0,
         "valuation": 0.0,
         "financials": 0.436,
-        "gmp": 0.332,
+        "gmp": 0.588,
         "qualitative": 0.075
       },
       "evidence": [
@@ -1733,9 +1775,15 @@
         },
         {
           "axis": "gmp",
-          "statement": "Grey market premium is 26.6%, implying a listing near 224",
+          "statement": "Grey market premium is 31.1%, implying a listing near 232 - strong unofficial demand, but GMP is an unregulated, thinly traded quote that can be moved cheaply and often compresses sharply in the final days",
           "direction": "bullish",
-          "score": 0.664
+          "score": 0.777
+        },
+        {
+          "axis": "gmp",
+          "statement": "The premium has risen from 26.6% to 31.1% over the last 2 day(s) - unofficial demand is building into the close",
+          "direction": "bullish",
+          "score": 0.4
         },
         {
           "axis": "qualitative",
@@ -1750,6 +1798,12 @@
           "score": 0.353
         },
         {
+          "axis": "gmp",
+          "statement": "Stripping out grey market premium, the score falls from +0.41 to +0.33 - not enough to justify applying on fundamentals alone. GMP is unofficial and can move sharply before listing, so this is held at CONSIDER rather than APPLY.",
+          "direction": "bearish",
+          "score": -0.3
+        },
+        {
           "axis": "qualitative",
           "statement": "46% of the issue is an offer for sale, so only 54% of the proceeds fund the company itself",
           "direction": "bearish",
@@ -1760,12 +1814,6 @@
           "statement": "Net profit margin is 5.4%",
           "direction": "neutral",
           "score": -0.047
-        },
-        {
-          "axis": "gmp",
-          "statement": "The premium has held roughly flat near 26.6% across 2 days of quotes - stable, if unexciting, sentiment",
-          "direction": "neutral",
-          "score": 0.0
         }
       ],
       "unavailable": [
@@ -1778,7 +1826,7 @@
       "name": "Rays Of Belief Limited",
       "type": "MainBoard",
       "verdict": "NEUTRAL",
-      "score": 0.067,
+      "score": 0.065,
       "confidence": 0.78,
       "open_date": "2026-09-01",
       "close_date": "2026-09-03",
@@ -1798,20 +1846,26 @@
       "subscription_momentum": null,
       "retail_allotment_odds": null,
       "gmp": {
-        "value": 29.0,
-        "pct": 12.13,
-        "estimated_listing": 268.0,
-        "updated": "Aug 28th 2026 09:29 PM"
+        "value": 27.0,
+        "pct": 11.3,
+        "estimated_listing": 266.0,
+        "updated": "Aug 29th 2026 08:59 PM"
       },
       "gmp_trend": {
         "direction": "rising",
-        "change_pp": 12.13,
-        "latest": 12.13,
-        "earlier": 0.0,
+        "change_pp": 3.7700000000000005,
+        "latest": 11.3,
+        "earlier": 7.53,
         "days": 3,
         "points": 7
       },
       "gmp_history": [
+        {
+          "date": "29-08-2026",
+          "gmp": 27.0,
+          "pct": 11.3,
+          "estimated_listing": 266.0
+        },
         {
           "date": "28-08-2026",
           "gmp": 29.0,
@@ -1844,12 +1898,6 @@
         },
         {
           "date": "23-08-2026",
-          "gmp": 0.0,
-          "pct": 0.0,
-          "estimated_listing": null
-        },
-        {
-          "date": "22-08-2026",
           "gmp": 0.0,
           "pct": 0.0,
           "estimated_listing": null
@@ -1899,7 +1947,7 @@
         "subscription": 0.0,
         "valuation": -0.575,
         "financials": 0.773,
-        "gmp": 0.352,
+        "gmp": 0.341,
         "qualitative": -0.2
       },
       "evidence": [
@@ -1947,15 +1995,15 @@
         },
         {
           "axis": "gmp",
-          "statement": "The premium has risen from 0.0% to 12.1% over the last 3 day(s) - unofficial demand is building into the close",
+          "statement": "The premium has risen from 7.5% to 11.3% over the last 3 day(s) - unofficial demand is building into the close",
           "direction": "bullish",
           "score": 0.4
         },
         {
           "axis": "gmp",
-          "statement": "Grey market premium is 12.1%, implying a listing near 268",
+          "statement": "Grey market premium is 11.3%, implying a listing near 266",
           "direction": "bullish",
-          "score": 0.303
+          "score": 0.283
         }
       ],
       "unavailable": [
